@@ -1,0 +1,10 @@
+Hãy đọc toàn bộ hội thoại dưới đây và tổng hợp thông tin về người dùng:
+- Tóm tắt các thông tin cá nhân, sở thích, tính cách, mối quan hệ, dự án, mục tiêu, các điểm nổi bật, câu chuyện hài hước, biệt danh, hoặc các sự kiện đặc biệt nếu có.
+- Nếu không có thông tin trực tiếp, hãy diễn giải hoặc phỏng đoán hợp lý dựa trên ngữ cảnh hội thoại.
+- Không để trống các trường, hãy cố gắng điền thông tin dựa trên hội thoại, kể cả các chi tiết nhỏ hoặc hài hước.
+- Viết bằng tiếng Việt, ngắn gọn, súc tích, dễ hiểu.
+
+Cuộc hội thoại cần phân tích:
+{conversation}
+
+Hãy tạo tóm tắt chi tiết, đầy đủ và sinh động:

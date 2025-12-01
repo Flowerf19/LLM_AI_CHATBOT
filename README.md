@@ -305,16 +305,17 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ```mermaid
 flowchart LR
-   DG[Discord Gateway] --> BotCore[Bot Core\n(bot.py)]
-   BotCore --> LLM[LLM Service\n(Gemini / DeepSeek)]
-   BotCore --> MQ[Message Queue Manager]
-   BotCore --> CB[Context Builder / Summary Service]
-   CB --> DB[(JSON Database)]
-   MQ --> CB
-   LLM --> CB
-   CB --> BotCore
-   classDef infra fill:#f9f,stroke:#333,stroke-width:1px;
-   class DG,DB infra;
+    DG["Discord Gateway"] --> BotCore["Bot Core<br/>(bot.py)"]
+    BotCore --> LLM["LLM Service<br/>(Gemini/DeepSeek)"]
+    BotCore --> MQ["Message Queue"]
+    BotCore --> CB["Context Builder"]
+    CB --> DB[("JSON Database")]
+    MQ --> CB
+    LLM --> CB
+    CB --> BotCore
+    
+    style DG fill:#f9f,stroke:#333
+    style DB fill:#f9f,stroke:#333
 ```
 
 ### Security & Preventing Secret Leaks

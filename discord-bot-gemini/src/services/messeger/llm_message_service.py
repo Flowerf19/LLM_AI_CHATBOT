@@ -7,7 +7,6 @@ from services.messeger.context_builder import ContextBuilder
 from services.relationship.relationship_service import RelationshipService
 from services.user_summary.summary_service import SummaryService
 from config.settings import Config
-import os
 import re
 
 logger = logging.getLogger('discord_bot.LLMMessageService')
@@ -16,13 +15,8 @@ class LLMMessageService(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.gemini_service = GeminiService()
-        # Đảm bảo lấy đúng thư mục src
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        src_dir = os.path.dirname(os.path.dirname(current_dir))
-        prompts_dir = os.path.join(src_dir, 'data', 'prompts')
-        config_dir = os.path.join(src_dir, 'data', 'config')
-        data_dir = os.path.join(src_dir, 'data')
-        self.summary_service = SummaryService(self.gemini_service, prompts_dir, config_dir)
+        
+        self.summary_service = SummaryService(self.gemini_service)
         self.relationship_service = RelationshipService(self.gemini_service)
         self.queue_manager = MessageQueueManager()
         self.context_builder = ContextBuilder(bot, self.summary_service, self.relationship_service)
@@ -62,8 +56,8 @@ class LLMMessageService(commands.Cog):
             await message.reply(spam_msg)
             return
         if self.queue_manager.is_conversation_locked(user_id):
-            duration = self.queue_manager.get_lock_duration()
-            busy_msg = f"⏳ Tôi đang trả lời người khác ({duration}s). Xin đợi một chút nhé!"
+            duration = self.queue_manager.get_lock_duration(user_id)
+            busy_msg = f"⏳ Tôi đang xử lý tin nhắn trước của bạn ({duration}s). Xin đợi một chút nhé!"
             await message.reply(busy_msg)
             self.queue_manager.add_to_pending_queue(message, content)
             return
@@ -93,7 +87,7 @@ class LLMMessageService(commands.Cog):
             logger.error(f"❌ Error processing AI response: {e}")
             await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
         finally:
-            self.queue_manager.release_conversation_lock()
+            self.queue_manager.release_conversation_lock(user_id)
 
     def _should_respond_to_message(self, message) -> bool:
         """Determine if bot should respond to message"""
@@ -298,7 +292,7 @@ class LLMMessageService(commands.Cog):
         try:
             # Get author info
             author_username = message.author.display_name or message.author.name
-            author_real_name = message.author.global_name if hasattr(message.author, 'global_name') else None
+            message.author.global_name if hasattr(message.author, 'global_name') else None
             
             # Extract mentioned users
             mentioned_user_ids = []

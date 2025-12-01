@@ -2,8 +2,6 @@ import logging
 from services.conversation.conversation_manager import ConversationManager
 from services.conversation.anti_spam_service import AntiSpamService
 from services.conversation.message_processor import MessageProcessor
-from config.settings import Config
-import discord
 
 logger = logging.getLogger('discord_bot.MessageQueue')
 
@@ -19,8 +17,8 @@ class MessageQueueManager:
     def is_conversation_locked(self, user_id: str):
         return self.conversation_manager.is_conversation_locked(user_id)
 
-    def get_lock_duration(self):
-        return self.conversation_manager.get_lock_duration()
+    def get_lock_duration(self, user_id: str):
+        return self.conversation_manager.get_lock_duration(user_id)
 
     def add_to_pending_queue(self, message, content):
         self.conversation_manager.add_to_pending_queue(message, content)
@@ -28,8 +26,8 @@ class MessageQueueManager:
     def set_conversation_lock(self, user_id: str):
         self.conversation_manager.set_conversation_lock(user_id)
 
-    def release_conversation_lock(self):
-        self.conversation_manager.release_conversation_lock()
+    def release_conversation_lock(self, user_id: str):
+        self.conversation_manager.release_conversation_lock(user_id)
 
     def add_to_history(self, user_id: str, content: str, response: str):
         self.conversation_manager.add_to_history(user_id, content, response)

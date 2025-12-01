@@ -1,0 +1,12 @@
+# GPU Support - AMD ROCm
+# Install with: pip install -r requirements-gpu-rocm.txt
+# Note: Requires AMD ROCm drivers installed on system
+# Download from: https://rocm.docs.amd.com/
+
+# PyTorch with ROCm support (install specific version based on your ROCm version)
+# For ROCm 5.4.2: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
+# For ROCm 5.6.0: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6.0
+
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0

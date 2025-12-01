@@ -1,0 +1,9 @@
+# NPU Support - Neural Processing Units
+# Install with: pip install -r requirements-npu.txt
+openvino>=2023.0.0
+openvino-dev>=2023.0.0
+onnxruntime>=1.15.0
+onnxruntime-openvino>=1.15.0
+
+# Note: OpenVINO supports various NPU implementations
+# Download additional tools from: https://docs.openvino.ai/

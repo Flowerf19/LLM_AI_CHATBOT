@@ -90,29 +90,18 @@ class HistoryService:
 
     def load_summary(self, user_id: str) -> str:
         """REALTIME: Load user summary - sync với SummaryService"""
-        # Try TXT file first (SummaryService format)
-        txt_summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.txt")
-        if os.path.exists(txt_summary_file):
-            try:
-                with open(txt_summary_file, 'r', encoding='utf-8') as f:
-                    content = f.read().strip()
-                    logger.debug(f"📖 Loaded TXT summary for {user_id}: {len(content)} chars")
-                    return content
-            except Exception as e:
-                logger.error(f"Error loading TXT summary for {user_id}: {e}")
-        
-        # Fallback to JSON file (old format)
+        # Try JSON file first (SummaryService format)
         json_summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.json")
         if os.path.exists(json_summary_file):
             try:
                 with open(json_summary_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                logger.debug(f"📖 Loaded JSON summary for {user_id}")
-                return data.get('summary', '')
+                    content = json.dumps(data, ensure_ascii=False, indent=2)
+                    logger.debug(f"📖 Loaded JSON summary for {user_id}: {len(content)} chars")
+                    return content
             except Exception as e:
                 logger.error(f"Error loading JSON summary for {user_id}: {e}")
         
-        logger.debug(f"📖 No summary found for {user_id}")
         return ""
 
     def save_summary(self, user_id: str, summary: str):

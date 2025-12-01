@@ -1,29 +1,24 @@
 import os
 import aiohttp
 import logging
-import json
 from typing import Optional, List
+from config.settings import Config
 
 class GeminiService:
     def __init__(self):
-        self.api_key: Optional[str] = os.getenv('GEMINI_API_KEY')
-        self.api_url: str = os.getenv('GEMINI_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models')
-        self.model: str = os.getenv('LLM_MODEL', 'gemini-1.5-flash')
+        self.api_key: Optional[str] = Config.GEMINI_API_KEY
+        self.api_url: str = Config.GEMINI_API_URL
+        self.model: str = Config.LLM_MODEL
         self.session: Optional[aiohttp.ClientSession] = None
         self.logger = logging.getLogger('discord_bot.GeminiService')
         
         # Load prompts
-        self.personality_prompt: str = self._load_prompt('personality.txt')
-        self.conversation_prompt: str = self._load_prompt('conversation_prompt.txt')
+        self.personality_prompt: str = self._load_prompt('personality.json')
+        self.conversation_prompt: str = self._load_prompt('conversation_prompt.json')
         
     def _load_prompt(self, filename: str) -> str:
-        # Đường dẫn tuyệt đối tới thư mục chứa file này
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        # Lên tới thư mục src
-        src_dir = os.path.dirname(os.path.dirname(current_dir))
-        prompts_dir = os.path.join(src_dir, 'data', 'prompts')
-        filepath = os.path.join(prompts_dir, filename)
-        if os.path.exists(filepath):
+        filepath = Config.PROMPTS_DIR / filename
+        if filepath.exists():
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read().strip()
                 self.logger.info(f"✅ Loaded prompt: {filename}")
@@ -113,7 +108,7 @@ class GeminiService:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         src_dir = os.path.dirname(os.path.dirname(current_dir))
         prompts_dir = os.path.join(src_dir, 'data', 'prompts')
-        task_file = os.path.join(prompts_dir, 'task_instruction.txt')
+        task_file = os.path.join(prompts_dir, 'task_instruction.json')
         if os.path.exists(task_file):
             with open(task_file, 'r', encoding='utf-8') as f:
                 task_instruction = f.read().strip()

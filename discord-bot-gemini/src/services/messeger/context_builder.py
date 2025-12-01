@@ -1,6 +1,5 @@
 import logging
 import discord
-from typing import Optional
 
 logger = logging.getLogger('discord_bot.ContextBuilder')
 

@@ -1,93 +1,949 @@
-2025-07-29 14:05:43,449 - INFO - 🚀 Starting Discord Bot...
-2025-07-29 14:05:43,450 - WARNING - PyNaCl is not installed, voice will NOT be supported
-2025-07-29 14:05:43,472 - INFO - ✅ Loaded services.base_service
-2025-07-29 14:05:43,474 - INFO - ✅ Loaded services.channel.admin_channels_service
-2025-07-29 14:05:43,475 - INFO - ✅ Loaded services.channel.server_relationships
-2025-07-29 14:05:43,503 - INFO - ✅ Loaded prompt: personality.txt
-2025-07-29 14:05:43,503 - INFO - ✅ Loaded prompt: conversation_prompt.txt
-2025-07-29 14:05:43,503 - INFO - 📁 SummaryService using directory: D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries
-2025-07-29 14:05:43,505 - INFO - 🔗 RelationshipService initialized with 0 relationships
-2025-07-29 14:05:43,508 - INFO - 🤖 LLMMessageService initialized with modular services including RelationshipService
-2025-07-29 14:05:43,508 - INFO - ✅ Loaded services.messeger.llm_message_service
-2025-07-29 14:05:43,510 - INFO - ✅ Loaded services.user.user_commands
-2025-07-29 14:05:43,519 - INFO - ✅ SummaryServiceCog loaded and extension setup called
-2025-07-29 14:05:43,519 - INFO - ✅ Loaded services.user_summary.summary_service
-2025-07-29 14:05:43,519 - INFO - 📦 Loaded 6/6 services
-2025-07-29 14:05:43,520 - INFO - logging in using static token
-2025-07-29 14:05:45,599 - INFO - Shard ID None has connected to Gateway (Session ID: 9e63f737b4bec524f400cadcc28eb279).
-2025-07-29 14:05:47,612 - INFO - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
-2025-07-29 14:05:48,100 - INFO - ✅ Slash commands synced
-2025-07-29 14:05:50,790 - INFO - 🔒 Conversation locked to user 726302130318868500
-2025-07-29 14:05:58,061 - INFO - 🔒 Conversation locked to user 726302130318868500
-2025-07-29 14:06:00,998 - INFO - 🔒 Conversation locked to user 726302130318868500
-2025-07-29 14:06:01,271 - INFO - 💾 Saved conversation history for user 726302130318868500 to D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_history.json
-2025-07-29 14:06:01,272 - INFO - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
-2025-07-29 14:06:01,272 - INFO - 🔄 Starting REALTIME summary update for user 726302130318868500
-2025-07-29 14:06:01,279 - INFO - ✅ Successfully loaded 2 messages for user 726302130318868500
-2025-07-29 14:06:01,280 - INFO - 📊 History stats for user 726302130318868500: 2 total messages
-2025-07-29 14:06:01,280 - INFO - � TEMPLATE DETECTED for user 726302130318868500: Force updating...
-2025-07-29 14:06:01,281 - INFO - 📝 User 726302130318868500: Generating summary from 2 recent messages
-2025-07-29 14:06:01,281 - INFO - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
-2025-07-29 14:06:02,402 - INFO - 📝 Summary saved for user 726302130318868500 at: D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
-2025-07-29 14:06:02,402 - INFO - ✅ REALTIME Summary updated for user 726302130318868500 (2 total messages)
-2025-07-29 14:06:02,402 - INFO - 📄 New summary preview: ```json
-{
-"Tên": "Không có",
-"Sinh nhật": "Không có",
-"Tuổi": "Không có",
-"Sở thích": "Không có",
-"T...
-2025-07-29 14:06:02,402 - INFO - 🔓 Conversation unlocked from user 726302130318868500
-2025-07-29 14:06:17,286 - INFO - 💾 Saved conversation history for user 726302130318868500 to D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_history.json
-2025-07-29 14:06:17,286 - INFO - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
-2025-07-29 14:06:17,286 - INFO - 🔄 Starting REALTIME summary update for user 726302130318868500
-2025-07-29 14:06:17,294 - INFO - ✅ Successfully loaded 4 messages for user 726302130318868500
-2025-07-29 14:06:17,294 - INFO - 📊 History stats for user 726302130318868500: 4 total messages
-2025-07-29 14:06:17,298 - INFO - 📝 User 726302130318868500: Generating summary from 4 recent messages
-2025-07-29 14:06:17,299 - INFO - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
-2025-07-29 14:06:18,557 - INFO - 📝 Summary saved for user 726302130318868500 at: D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
-2025-07-29 14:06:18,558 - INFO - ✅ REALTIME Summary updated for user 726302130318868500 (4 total messages)
-2025-07-29 14:06:18,558 - INFO - 📄 New summary preview: ```json
-{
-  "Tên": "Hoà",
-  "Sinh nhật": "Không có",
-  "Tuổi": "Không có",
-  "Sở thích": "Chụp ảnh",...
-2025-07-29 14:06:22,634 - INFO - 💾 Saved conversation history for user 726302130318868500 to D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_history.json
-2025-07-29 14:06:22,634 - INFO - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
-2025-07-29 14:06:22,635 - INFO - 🔄 Starting REALTIME summary update for user 726302130318868500
-2025-07-29 14:06:22,642 - INFO - ✅ Successfully loaded 6 messages for user 726302130318868500
-2025-07-29 14:06:22,642 - INFO - 📊 History stats for user 726302130318868500: 6 total messages
-2025-07-29 14:06:22,643 - INFO - 📝 User 726302130318868500: Generating summary from 6 recent messages
-2025-07-29 14:06:22,644 - INFO - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
-2025-07-29 14:06:25,488 - INFO - 📝 Summary saved for user 726302130318868500 at: D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
-2025-07-29 14:06:25,488 - INFO - ✅ REALTIME Summary updated for user 726302130318868500 (6 total messages)
-2025-07-29 14:06:25,489 - INFO - 📄 New summary preview: ```json
-{
-  "summary": {
-    "THÔNG TIN CƠ BẢN": {
-      "Tên": "Hoà",
-      "Tuổi": "19"
-    },
-   ...
-2025-07-29 14:06:38,750 - INFO - 🔒 Conversation locked to user 726302130318868500
-2025-07-29 14:06:57,221 - INFO - 💾 Saved conversation history for user 726302130318868500 to D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_history.json
-2025-07-29 14:06:57,222 - INFO - 🔄 Starting REALTIME summary update for user 726302130318868500
-2025-07-29 14:06:57,229 - INFO - ✅ Successfully loaded 8 messages for user 726302130318868500
-2025-07-29 14:06:57,230 - INFO - 📊 History stats for user 726302130318868500: 8 total messages
-2025-07-29 14:06:57,230 - INFO - 📝 User 726302130318868500: Generating summary from 8 recent messages
-2025-07-29 14:06:57,231 - INFO - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
-2025-07-29 14:06:59,626 - INFO - 📝 Summary saved for user 726302130318868500 at: D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
-2025-07-29 14:06:59,627 - INFO - ✅ REALTIME Summary updated for user 726302130318868500 (8 total messages)
-2025-07-29 14:06:59,627 - INFO - 📄 New summary preview: ```json
-{
-  "summary": {
-    "THÔNG TIN CƠ BẢN": {
-      "Tên": "Hoà",
-      "Tuổi": "19"
-    },
-   ...
-2025-07-29 14:06:59,628 - INFO - 🔓 Conversation unlocked from user 726302130318868500
-2025-07-29 14:07:10,251 - INFO - 🔒 Conversation locked to user 726302130318868500
-2025-07-29 14:07:27,549 - INFO - 💾 Saved conversation history for user 726302130318868500 to D:\ChatBot\GeminiAPI_chatbot\discord-bot-gemini\src\data\user_summaries\726302130318868500_history.json
-2025-07-29 14:07:27,550 - INFO - 🔓 Conversation unlocked from user 726302130318868500
+2025-12-01 15:25:51 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:25:51 - INFO - discord.client - logging in using static token
+2025-12-01 15:25:52 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:25:52 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:25:52 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:25:52 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:25:52 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:25:52 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.txt
+2025-12-01 15:25:52 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:25:52 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:25:52 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:25:52 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:25:52 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:25:53 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:25:53 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:25:53 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:25:53 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:25:54 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: d8465686c0b3dc8e9248f60e3c66749f).
+2025-12-01 15:25:56 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:26:12 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:26:13 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:26:16 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 2 messages for user 726302130318868500
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 2 total messages
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 2 recent messages
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:26:16 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (2 total messages)
+2025-12-01 15:26:16 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:26:16 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:28:06 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000210692860D0>
+2025-12-01 15:28:10 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:28:10 - INFO - discord.client - logging in using static token
+2025-12-01 15:28:12 - CRITICAL - DiscordBot - ❌ Fatal error: Cannot connect to host discord.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1032)')]
+2025-12-01 15:29:43 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:29:43 - INFO - discord.client - logging in using static token
+2025-12-01 15:29:45 - CRITICAL - DiscordBot - ❌ Fatal error: Cannot connect to host discord.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1032)')]
+2025-12-01 15:31:11 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:31:11 - INFO - discord.client - logging in using static token
+2025-12-01 15:31:12 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:31:12 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:31:12 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.txt
+2025-12-01 15:31:12 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:31:12 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:31:12 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:31:12 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:31:12 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:31:12 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:31:12 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:31:14 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 10b82a3705c931132f5da3c976caf0ac).
+2025-12-01 15:31:16 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:31:24 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:31:25 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 34.268060465s.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-2.0-flash-exp",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-2.0-flash-exp"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "34s"
+      }
+    ]
+  }
+}
+
+2025-12-01 15:31:30 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:31:30 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:33:33 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:33:33 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 400,
+    "message": "API Key not found. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API Key not found. Please pass a valid API key."
+      }
+    ]
+  }
+}
+
+2025-12-01 15:33:36 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 6 messages for user 726302130318868500
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 6 total messages
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 6 recent messages
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:33:36 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 400,
+    "message": "API Key not found. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API Key not found. Please pass a valid API key."
+      }
+    ]
+  }
+}
+
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (6 total messages)
+2025-12-01 15:33:36 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:33:36 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:34:48 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:34:49 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 400,
+    "message": "API Key not found. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API Key not found. Please pass a valid API key."
+      }
+    ]
+  }
+}
+
+2025-12-01 15:34:52 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 8 messages for user 726302130318868500
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 8 total messages
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 8 recent messages
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:34:52 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 400,
+    "message": "API Key not found. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "API_KEY_INVALID",
+        "domain": "googleapis.com",
+        "metadata": {
+          "service": "generativelanguage.googleapis.com"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+        "locale": "en-US",
+        "message": "API Key not found. Please pass a valid API key."
+      }
+    ]
+  }
+}
+
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (8 total messages)
+2025-12-01 15:34:52 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:34:52 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:35:06 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C8A3E17610>
+2025-12-01 15:35:06 - ERROR - asyncio - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000001C8A3F6F590>, 249889.1234898)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000001C8A3E179D0>
+2025-12-01 15:35:11 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:35:11 - INFO - discord.client - logging in using static token
+2025-12-01 15:35:13 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:35:13 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:35:13 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:35:14 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:35:14 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:35:14 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.txt
+2025-12-01 15:35:14 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:35:14 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:35:14 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:35:14 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:35:14 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:35:14 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:35:14 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:35:14 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:35:14 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:35:15 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 196c9d202b4876a8e12ec502c1e51fe5).
+2025-12-01 15:35:17 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:35:27 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:35:28 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:35:32 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 10 messages for user 726302130318868500
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 10 total messages
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 10 recent messages
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:35:32 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (10 total messages)
+2025-12-01 15:35:32 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:35:32 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:36:21 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002C6DCDA7610>
+2025-12-01 15:36:28 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:36:28 - INFO - discord.client - logging in using static token
+2025-12-01 15:36:29 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:36:29 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:36:29 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.txt
+2025-12-01 15:36:29 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:36:29 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:36:29 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:36:29 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:36:29 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:36:29 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:36:29 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:36:31 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: bef4bf21adfdffc25f651d5de24f7e53).
+2025-12-01 15:36:33 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:36:37 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:36:38 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:36:40 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 12 messages for user 726302130318868500
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 12 total messages
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 12 recent messages
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:36:40 - ERROR - discord_bot.GeminiService - Gemini API error: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (12 total messages)
+2025-12-01 15:36:40 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:36:40 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:41:04 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:41:04 - INFO - discord.client - logging in using static token
+2025-12-01 15:41:05 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:41:05 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:41:05 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.txt
+2025-12-01 15:41:05 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:41:05 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:41:05 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:41:05 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:41:05 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:41:05 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:41:05 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:41:06 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: b6c668ec4ec85c73874754bae3ed957b).
+2025-12-01 15:41:08 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:41:13 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:41:20 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 14 messages for user 726302130318868500
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 14 total messages
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 14 recent messages
+2025-12-01 15:41:20 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:41:21 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:41:21 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (14 total messages)
+2025-12-01 15:41:21 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:41:21 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:41:31 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:41:41 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:41:41 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:41:53 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:42:04 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:42:04 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:42:04 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 18 messages for user 726302130318868500
+2025-12-01 15:42:04 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 18 total messages
+2025-12-01 15:42:04 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 18 recent messages
+2025-12-01 15:42:04 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:42:06 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:42:06 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (18 total messages)
+2025-12-01 15:42:06 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:42:06 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:42:19 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:42:31 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:42:31 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:42:33 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:42:45 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - Important keyword 'bỏ' found in message from 726302130318868500
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 22 messages for user 726302130318868500
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 22 total messages
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:42:45 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:42:47 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:42:47 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (22 total messages)
+2025-12-01 15:42:47 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 15:42:47 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:43:18 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:43:31 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - Important keyword 'yêu' found in message from 726302130318868500
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 24 messages for user 726302130318868500
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 24 total messages
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:43:31 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:43:33 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:43:33 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (24 total messages)
+2025-12-01 15:43:33 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Chưa rõ (biệt danh có thể là cậu)
+Tuổi: ** Chưa rõ
+Sinh nhật: None
+...
+2025-12-01 15:43:33 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:43:43 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:43:54 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-01 15:43:57 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:43:57 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:44:00 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:44:12 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:44:12 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:44:13 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 28 messages for user 726302130318868500
+2025-12-01 15:44:13 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 28 total messages
+2025-12-01 15:44:13 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:44:13 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:44:15 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:44:15 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (28 total messages)
+2025-12-01 15:44:15 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Chưa rõ (biệt danh có thể là cậu)
+Tuổi: ** Chưa rõ
+Sinh nhật: None
+...
+2025-12-01 15:44:15 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:44:20 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:44:33 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-01 15:44:38 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - Important keyword 'tên' found in message from 726302130318868500
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 30 messages for user 726302130318868500
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 30 total messages
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:44:38 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:44:40 - WARNING - discord_bot.AntiSpamService - 🚫 User 726302130318868500 spam detected! 30s cooldown
+2025-12-01 15:44:42 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:44:42 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (30 total messages)
+2025-12-01 15:44:42 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** Chưa rõ
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Cô...
+2025-12-01 15:44:42 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:45:23 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:45:37 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - Important keyword 'tuổi' found in message from 726302130318868500
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 32 messages for user 726302130318868500
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 32 total messages
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:45:37 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:45:39 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:45:39 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (32 total messages)
+2025-12-01 15:45:39 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** 335000 (tự nhận)
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ...
+2025-12-01 15:45:39 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:45:45 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:46:10 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - Important keyword 'tuổi' found in message from 726302130318868500
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 34 messages for user 726302130318868500
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 34 total messages
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:46:10 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:46:13 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:46:13 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (34 total messages)
+2025-12-01 15:46:13 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** 335000 (tự nhận)
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ...
+2025-12-01 15:46:13 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:47:11 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:47:34 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - Important keyword 'sinh' found in message from 726302130318868500
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 36 messages for user 726302130318868500
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 36 total messages
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:47:34 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:47:36 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:47:36 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (36 total messages)
+2025-12-01 15:47:36 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** 335000 (tự nhận)
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ...
+2025-12-01 15:47:36 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:47:45 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:47:54 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:47:54 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:47:54 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 38 messages for user 726302130318868500
+2025-12-01 15:47:54 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 38 total messages
+2025-12-01 15:47:54 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:47:54 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:47:57 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:47:57 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (38 total messages)
+2025-12-01 15:47:57 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** 335000 tuổi (khá oách!)
+Sinh nhật: None
+=== SỞ THÍCH &...
+2025-12-01 15:47:57 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:48:29 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:48:52 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:48:52 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:49:21 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:49:46 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:49:46 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 15:54:51 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002346DED7390>
+2025-12-01 15:58:06 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 15:58:06 - INFO - discord.client - logging in using static token
+2025-12-01 15:58:07 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 15:58:07 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.txt
+2025-12-01 15:58:07 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-01 15:58:07 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 15:58:07 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\dummy\important_keywords.json
+2025-12-01 15:58:07 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 15:58:07 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 15:58:07 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 15:58:07 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 15:58:07 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 15:58:09 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 67c64eec7718a7ead4d3aa7980065dc7).
+2025-12-01 15:58:11 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 15:58:32 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 15:58:39 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 44 messages for user 726302130318868500
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 44 total messages
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 20 recent messages
+2025-12-01 15:58:39 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 15:58:41 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.txt
+2025-12-01 15:58:41 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (44 total messages)
+2025-12-01 15:58:41 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: ** 335000 tuổi (khá oách!)
+Sinh nhật: None
+=== SỞ THÍCH &...
+2025-12-01 15:58:41 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:02:39 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002C6BD0A7390>
+2025-12-01 16:20:04 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 16:20:04 - INFO - discord.client - logging in using static token
+2025-12-01 16:20:06 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 16:20:06 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-01 16:20:06 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-01 16:20:06 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 16:20:06 - INFO - services.user_summary.summary_service - Loaded important_keywords from: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\config\important_keywords.json
+2025-12-01 16:20:06 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 16:20:06 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 16:20:06 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 16:20:06 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 16:20:06 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 16:20:07 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a79d497cb48ce44eab2fb9acd331c351).
+2025-12-01 16:20:09 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 16:20:15 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:20:20 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 2 messages for user 726302130318868500
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 2 total messages
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 2 recent messages
+2025-12-01 16:20:20 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:20:22 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:20:22 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:20:22 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (2 total messages)
+2025-12-01 16:20:22 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 16:20:22 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:20:41 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:20:41 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:20:47 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 4 messages for user 726302130318868500
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 4 total messages
+2025-12-01 16:20:47 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 4 recent messages
+2025-12-01 16:20:47 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:20:49 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:20:49 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:20:49 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (4 total messages)
+2025-12-01 16:20:49 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 16:20:49 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:21:09 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:21:09 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:21:17 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 6 messages for user 726302130318868500
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 6 total messages
+2025-12-01 16:21:17 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 6 recent messages
+2025-12-01 16:21:17 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:21:20 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:21:20 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:21:20 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (6 total messages)
+2025-12-01 16:21:20 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 16:21:20 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:22:54 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 16:22:54 - INFO - discord.client - logging in using static token
+2025-12-01 16:22:55 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 16:22:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-01 16:22:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-01 16:22:55 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 16:22:55 - INFO - services.user_summary.summary_service - Loaded important_keywords from: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\config\important_keywords.json
+2025-12-01 16:22:55 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 16:22:55 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 16:22:55 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 16:22:55 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 16:22:55 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 16:22:56 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: abfef347cd4c2be29a41e1a4745898fa).
+2025-12-01 16:22:58 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 16:23:15 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:23:15 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:23:15 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:23:15 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:23:27 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 8 messages for user 726302130318868500
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 8 total messages
+2025-12-01 16:23:27 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 8 recent messages
+2025-12-01 16:23:27 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:23:28 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 10 messages for user 726302130318868500
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 10 total messages
+2025-12-01 16:23:28 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 10 recent messages
+2025-12-01 16:23:28 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:23:29 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:23:29 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:23:29 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (8 total messages)
+2025-12-01 16:23:29 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 16:23:29 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:23:30 - INFO - services.user_summary.summary_service - 📝 LLM returned JSON, converting to text format for summary.
+2025-12-01 16:23:30 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:23:30 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (10 total messages)
+2025-12-01 16:23:30 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": null,
+    "age": null,
+    "birthday": null
+  },
+  "hobbies_and_pass...
+2025-12-01 16:23:30 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:23:52 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:23:52 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:24:02 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - Important keyword 'tên' found in message from 726302130318868500
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 12 messages for user 726302130318868500
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 12 total messages
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 12 recent messages
+2025-12-01 16:24:02 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:24:04 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:24:04 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (12 total messages)
+2025-12-01 16:24:04 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "** Hòa (Tự xưng)",
+    "age": null,
+    "birthday": null
+  },
+  "ho...
+2025-12-01 16:24:04 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:24:05 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - Important keyword 'tên' found in message from 726302130318868500
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 14 messages for user 726302130318868500
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 14 total messages
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 14 recent messages
+2025-12-01 16:24:05 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:24:07 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:24:07 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:24:07 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (14 total messages)
+2025-12-01 16:24:07 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: None
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công nghệ:...
+2025-12-01 16:24:07 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:26:09 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D150607390>
+2025-12-01 16:26:30 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 16:26:30 - INFO - discord.client - logging in using static token
+2025-12-01 16:26:31 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 16:26:31 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-01 16:26:31 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-01 16:26:31 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 16:26:31 - INFO - services.user_summary.summary_service - Loaded important_keywords from: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\config\important_keywords.json
+2025-12-01 16:26:31 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 16:26:31 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 16:26:31 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 16:26:31 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 16:26:31 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 16:26:33 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 231ea5a4985aae9d31b906b48cd72384).
+2025-12-01 16:26:35 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 16:26:37 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:26:37 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:26:37 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:26:37 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:26:44 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 16 messages for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 16 total messages
+2025-12-01 16:26:44 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 16 recent messages
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:26:44 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 18 messages for user 726302130318868500
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 18 total messages
+2025-12-01 16:26:44 - ERROR - services.user_summary.summary_service - Error loading JSON summary for 726302130318868500: Expecting value: line 1 column 1 (char 0)
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 18 recent messages
+2025-12-01 16:26:44 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:26:45 - ERROR - services.user_summary.summary_service - Error loading or formatting summary template: '\n  "basic_info"'
+2025-12-01 16:26:45 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: c:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:26:45 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (18 total messages)
+2025-12-01 16:26:45 - INFO - services.user_summary.summary_service - 📄 New summary preview: === THÔNG TIN CƠ BẢN ===
+Tên: ** Hòa
+Tuổi: None
+Sinh nhật: None
+=== SỞ THÍCH & ĐAM MÊ ===
+• Công ngh...
+2025-12-01 16:26:45 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:26:46 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:26:46 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (16 total messages)
+2025-12-01 16:26:46 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "Không có",
+    "age": "Không có",
+    "birthday": "Không có"
+  },
+ ...
+2025-12-01 16:26:46 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:26:56 - ERROR - services.relationship.relationship_service - Error saving user names: [Errno 2] No such file or directory: 'C:\\Users\\ENGUYEHWC\\Downloads\\Discord_Chatbot\\LLM_AI_CHATBOT\\discord-bot-gemini\\src\\data\\relationships\\user_names.json'
+2025-12-01 16:26:56 - ERROR - services.relationship.relationship_service - Error saving conversation history: [Errno 2] No such file or directory: 'C:\\Users\\ENGUYEHWC\\Downloads\\Discord_Chatbot\\LLM_AI_CHATBOT\\discord-bot-gemini\\src\\data\\relationships\\conversation_history.json'
+2025-12-01 16:26:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:26:56 - ERROR - services.relationship.relationship_service - Error saving user names: [Errno 2] No such file or directory: 'c:\\Users\\ENGUYEHWC\\Downloads\\Discord_Chatbot\\LLM_AI_CHATBOT\\discord-bot-gemini\\src\\data\\relationships\\user_names.json'
+2025-12-01 16:26:56 - ERROR - services.relationship.relationship_service - Error saving conversation history: [Errno 2] No such file or directory: 'c:\\Users\\ENGUYEHWC\\Downloads\\Discord_Chatbot\\LLM_AI_CHATBOT\\discord-bot-gemini\\src\\data\\relationships\\conversation_history.json'
+2025-12-01 16:26:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:26:59 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 2 messages for user 726302130318868500
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 2 total messages
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 🔄 TEMPLATE DETECTED for user 726302130318868500: Force updating...
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 2 recent messages
+2025-12-01 16:26:59 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:27:02 - INFO - services.user_summary.summary_service - 📝 LLM returned JSON, converting to text format for summary.
+2025-12-01 16:27:02 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:27:02 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (2 total messages)
+2025-12-01 16:27:02 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "Không có",
+    "age": "Không có",
+    "birthday": "Không có"
+  },
+ ...
+2025-12-01 16:27:02 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:27:03 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:27:03 - INFO - services.user_summary.summary_service - 🔄 Template summary detected for 726302130318868500 - FORCE UPDATE
+2025-12-01 16:27:03 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:27:03 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 4 messages for user 726302130318868500
+2025-12-01 16:27:03 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 4 total messages
+2025-12-01 16:27:03 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:27:40 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000021B26121BD0>
+2025-12-01 16:27:53 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-01 16:27:53 - INFO - discord.client - logging in using static token
+2025-12-01 16:27:54 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.base_service
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-01 16:27:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-01 16:27:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-01 16:27:54 - INFO - services.user_summary.summary_service - 📁 SummaryService using directory: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries
+2025-12-01 16:27:54 - INFO - services.user_summary.summary_service - Loaded important_keywords from: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\config\important_keywords.json
+2025-12-01 16:27:54 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-01 16:27:54 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-01 16:27:54 - INFO - services.user_summary.summary_service - ✅ SummaryServiceCog loaded and extension setup called
+2025-12-01 16:27:54 - INFO - DiscordBot - ✅ Loaded service: services.user_summary.summary_service
+2025-12-01 16:27:54 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-01 16:27:55 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: c031dbf86667c81cc3c87708c8ae1799).
+2025-12-01 16:27:57 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-01 16:28:00 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:28:08 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - Important keyword 'lo' found in message from 726302130318868500
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 6 messages for user 726302130318868500
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 6 total messages
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 6 recent messages
+2025-12-01 16:28:08 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:28:11 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:28:11 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (6 total messages)
+2025-12-01 16:28:11 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "** Chưa rõ.",
+    "age": "Không có",
+    "birthday": "Không có"
+  }...
+2025-12-01 16:28:11 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:28:11 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:28:22 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - Important keyword 'tên' found in message from 726302130318868500
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 8 messages for user 726302130318868500
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 8 total messages
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 8 recent messages
+2025-12-01 16:28:22 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:28:23 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:28:23 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (8 total messages)
+2025-12-01 16:28:23 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "** Hòa",
+    "age": "Không có",
+    "birthday": "Không có"
+  },
+  "...
+2025-12-01 16:28:23 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:28:33 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-01 16:28:42 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - Important keyword 'yêu' found in message from 726302130318868500
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - 🔄 Starting REALTIME summary update for user 726302130318868500
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - ✅ Successfully loaded 10 messages for user 726302130318868500
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - 📊 History stats for user 726302130318868500: 10 total messages
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - 📝 User 726302130318868500: Generating summary from 10 recent messages
+2025-12-01 16:28:42 - INFO - services.user_summary.summary_service - 🤖 Sending REALTIME summary request to LLM for user 726302130318868500
+2025-12-01 16:28:45 - INFO - services.user_summary.summary_service - 📝 Summary saved for user 726302130318868500 at: C:\Users\ENGUYEHWC\Downloads\Discord_Chatbot\LLM_AI_CHATBOT\discord-bot-gemini\src\data\user_summaries\726302130318868500_summary.json
+2025-12-01 16:28:45 - INFO - services.user_summary.summary_service - ✅ REALTIME Summary updated for user 726302130318868500 (10 total messages)
+2025-12-01 16:28:45 - INFO - services.user_summary.summary_service - 📄 New summary preview: {
+  "basic_info": {
+    "name": "Không có",
+    "age": "Không có",
+    "birthday": "Không có"
+  },
+ ...
+2025-12-01 16:28:45 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-01 16:29:32 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000026DB27E7390>

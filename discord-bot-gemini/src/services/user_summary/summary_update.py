@@ -6,18 +6,26 @@ from typing import Callable, Optional, List, Dict
 logger = logging.getLogger(__name__)
 
 class SummaryUpdateManager:
-    def __init__(self, prompts_dir: str, config_dir: str, llm_service, summaries_dir: Optional[str] = None):
+    def __init__(self, prompts_dir: Optional[str] = None, config_dir: Optional[str] = None, llm_service=None, summaries_dir: Optional[str] = None):
         # Chuẩn hóa: Luôn lưu vào src/data cho các file cấu hình và prompt
         project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        self.prompts_dir = os.path.join(project_root, 'data', 'prompts')
-        self.config_dir = os.path.join(project_root, 'data', 'config')
+        # If explicit prompts_dir or config_dir provided, use it (for testing or custom deployment).
+        if prompts_dir:
+            self.prompts_dir = prompts_dir
+        else:
+            self.prompts_dir = os.path.join(project_root, 'data', 'prompts')
+        if config_dir:
+            self.config_dir = config_dir
+        else:
+            self.config_dir = os.path.join(project_root, 'data', 'config')
         self.llm_service = llm_service
         # Luôn xác định đường dẫn dựa trên vị trí file hiện tại
-        if summaries_dir is None or not os.path.isabs(summaries_dir):
+        if summaries_dir:
+            # Use provided summaries_dir directly
+            self.summaries_dir = summaries_dir
+        else:
             base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             self.summaries_dir = os.path.join(base_dir, 'data', 'user_summaries')
-        else:
-            self.summaries_dir = summaries_dir
         self.important_keywords = self._load_important_keywords()
         self._last_update = {}
         # Cho phép gán các hàm thao tác file từ bên ngoài
@@ -163,7 +171,7 @@ class SummaryUpdateManager:
         return random.random() < 0.3
 
     def _load_summary_prompt(self) -> str:
-        prompt_file = os.path.join(self.prompts_dir, 'summary_prompt.txt')
+        prompt_file = os.path.join(self.prompts_dir, 'summary_prompt.json')
         if not os.path.exists(prompt_file):
             raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
         with open(prompt_file, 'r', encoding='utf-8') as f:

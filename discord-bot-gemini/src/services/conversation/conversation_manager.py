@@ -1,8 +1,8 @@
 import logging
 from datetime import datetime
-from typing import Optional, List, Dict
+from typing import List, Dict, Set
 import json
-import os
+from config.settings import Config
 
 logger = logging.getLogger('discord_bot.ConversationManager')
 
@@ -10,33 +10,37 @@ class ConversationManager:
     """Manages conversation locks, queuing, and history"""
     
     def __init__(self):
-        self.currently_responding_to: Optional[str] = None
-        self.response_start_time: Optional[datetime] = None
+        # Changed from single user lock to set of active users for concurrency
+        self.active_users: Set[str] = set()
+        self.user_lock_times: Dict[str, datetime] = {}
+        
         self.pending_messages: List[Dict] = []
         self.conversation_history = {}
         self.max_history_length = 10
     
     def set_conversation_lock(self, user_id: str):
-        """Lock conversation to specific user"""
-        self.currently_responding_to = user_id
-        self.response_start_time = datetime.utcnow()
-        logger.info(f"🔒 Conversation locked to user {user_id}")
+        """Lock conversation for a specific user"""
+        self.active_users.add(user_id)
+        self.user_lock_times[user_id] = datetime.utcnow()
+        logger.info(f"🔒 Conversation locked for user {user_id}")
     
-    def release_conversation_lock(self):
-        """Release conversation lock"""
-        if self.currently_responding_to:
-            logger.info(f"🔓 Conversation unlocked from user {self.currently_responding_to}")
-        self.currently_responding_to = None
-        self.response_start_time = None
+    def release_conversation_lock(self, user_id: str):
+        """Release conversation lock for a specific user"""
+        if user_id in self.active_users:
+            self.active_users.discard(user_id)
+            self.user_lock_times.pop(user_id, None)
+            logger.info(f"🔓 Conversation unlocked for user {user_id}")
     
     def is_conversation_locked(self, user_id: str) -> bool:
-        """Check if conversation is locked to someone else"""
-        return self.currently_responding_to is not None and self.currently_responding_to != user_id
+        """Check if conversation is locked for this specific user"""
+        # Now we only check if THIS user is already being processed
+        # We don't block other users anymore
+        return user_id in self.active_users
     
-    def get_lock_duration(self) -> int:
-        """Get how long conversation has been locked (in seconds)"""
-        if self.response_start_time:
-            return int((datetime.utcnow() - self.response_start_time).total_seconds())
+    def get_lock_duration(self, user_id: str) -> int:
+        """Get how long conversation has been locked for a user (in seconds)"""
+        if user_id in self.user_lock_times:
+            return int((datetime.utcnow() - self.user_lock_times[user_id]).total_seconds())
         return 0
     
     def add_to_pending_queue(self, message, content: str):
@@ -86,28 +90,22 @@ class ConversationManager:
     def save_to_persistent_history(self, user_id: str, user_message: str, bot_response: str):
         """Save conversation to persistent file storage"""
         try:
-            # Đảm bảo lưu đúng vào src/data/user_summaries
-            base_dir = os.path.dirname(os.path.abspath(__file__))  # .../src/services/...
-            src_dir = os.path.dirname(os.path.dirname(base_dir))    # .../src
-            history_dir = os.path.join(src_dir, 'data', 'user_summaries')
-            history_file = os.path.join(history_dir, f"{user_id}_history.json")
+            history_dir = Config.USER_SUMMARIES_DIR
+            history_file = history_dir / f"{user_id}_history.json"
             
-            logger.debug(f"🔍 Debug: src_dir = {src_dir}")
-            logger.debug(f"🔍 Debug: history_dir = {history_dir}")
-            logger.debug(f"🔍 Debug: history_file = {history_file}")
-            
-            os.makedirs(history_dir, exist_ok=True)
+            history_dir.mkdir(parents=True, exist_ok=True)
             timestamp = datetime.utcnow().isoformat()
+            
             # Load existing history
             history = []
-            if os.path.exists(history_file):
+            if history_file.exists():
                 try:
                     with open(history_file, 'r', encoding='utf-8') as f:
                         history = json.load(f)
-                    logger.debug(f"📄 Loaded existing history: {len(history)} messages")
                 except Exception as e:
                     logger.error(f"❌ Error loading existing history: {e}")
                     history = []
+            
             # Add new messages
             history.extend([
                 {
@@ -121,24 +119,24 @@ class ConversationManager:
                     'timestamp': timestamp
                 }
             ])
+            
             # Keep only recent history
             if len(history) > 100:
                 history = history[-100:]
+                
             # Save back to file
             with open(history_file, 'w', encoding='utf-8') as f:
                 json.dump(history, f, ensure_ascii=False, indent=2)
-            logger.info(f"💾 Saved conversation history for user {user_id} to {history_file}")
-            logger.debug(f"📄 Total messages in history: {len(history)}")
+                
+            logger.info(f"💾 Saved conversation history for user {user_id}")
         except Exception as e:
             logger.error(f"❌ Error saving persistent history for {user_id}: {e}")
-            logger.error(f"❌ Exception details: {type(e).__name__}: {str(e)}")
     
     def get_queue_status(self) -> dict:
         """Get queue status information"""
         pending_users = [pm['message'].author.id for pm in self.pending_messages[-3:]]
         return {
-            'currently_responding_to': self.currently_responding_to,
-            'lock_duration': self.get_lock_duration(),
+            'active_users_count': len(self.active_users),
             'pending_count': len(self.pending_messages),
             'pending_users': pending_users
         }

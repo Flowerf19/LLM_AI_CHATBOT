@@ -2,141 +2,124 @@ import os
 import sys
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
-import logging
-import asyncio
-# Import AdminChannelsService for setup
-from services.channel.admin_channels_service import AdminChannelsService
+from config.settings import Config
+from config.logging_config import setup_logging
 
-# Add project root to path for importing services
+# Add project root to path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
-load_dotenv()
 
-# Simplified logging configuration
-logging.basicConfig(
-    level=logging.INFO,  # Changed from DEBUG to INFO
-    format='%(asctime)s - %(levelname)s - %(message)s',  # Simplified format
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler('bot.log', encoding='utf-8')
-    ]
-)
-logger = logging.getLogger('discord_bot')
 
-logger.info("🚀 Starting Discord Bot...")
+# Configure logging
+logger = setup_logging()
 
-intents = discord.Intents.default()
-intents.messages = True
-intents.guilds = True
-intents.message_content = True
-
-bot = commands.Bot(
-    command_prefix="!",
-    intents=intents,
-    help_command=None,
-    case_insensitive=True,
-    strip_after_prefix=True,
-    max_messages=500
-)
-
-@bot.event
-async def on_ready():
-    logger.info(f'🚀 Bot started as {bot.user} in {len(bot.guilds)} guilds')
+class DiscordBot(commands.Bot):
+    """
+    Main Bot class that handles initialization, service loading, and event handling.
+    Follows Singleton pattern implicitly as the main application entry point.
+    """
     
-    if os.getenv('SYNC_COMMANDS') == '1':
+    def __init__(self):
+        # Initialize Intents
+        intents = discord.Intents.default()
+        intents.messages = True
+        intents.guilds = True
+        intents.message_content = True
+        
+        super().__init__(
+            command_prefix="!",
+            intents=intents,
+            help_command=None,
+            case_insensitive=True,
+            strip_after_prefix=True,
+            max_messages=500
+        )
+        
+    async def setup_hook(self):
+        """
+        Async setup hook called before the bot starts.
+        Used for loading extensions and syncing commands.
+        """
+        logger.info("🚀 Initializing Discord Bot...")
+        
+        # Validate configuration
         try:
-            await bot.tree.sync()
-            logger.info("✅ Slash commands synced")
-        except Exception as e:
-            logger.warning(f"⚠️ Slash command sync failed: {e}")
+            Config.validate()
+        except ValueError as e:
+            logger.critical(f"❌ Configuration Error: {e}")
+            await self.close()
+            return
 
-@bot.event
-async def on_error(event, *args, **kwargs):
-    logger.error(f"❌ Unhandled error in {event}", exc_info=True)
+        # Load services
+        await self.load_services()
+        
+        # Sync commands if enabled
+        if Config.SYNC_COMMANDS:
+            try:
+                synced = await self.tree.sync()
+                logger.info(f"✅ Synced {len(synced)} slash commands")
+            except Exception as e:
+                logger.warning(f"⚠️ Slash command sync failed: {e}")
 
-async def load_services():
-    """Load all services from services directory"""
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    services_dir = os.path.join(current_dir, 'services')
-    
-    if not os.path.exists(services_dir):
-        logger.warning(f"⚠️ Services directory not found: {services_dir}")
-        return
-    
-    # Tìm tất cả file .py trong services và subfolder
-    # Chỉ load các file có hàm setup(bot)
-    import ast
-    service_files = []
-    for root, dirs, files in os.walk(services_dir):
-        for filename in files:
-            if filename.endswith('.py') and not filename.startswith('__'):
-                file_path = os.path.join(root, filename)
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    source = f.read()
-                try:
-                    tree = ast.parse(source)
-                    has_setup = any(
-                        isinstance(node, ast.AsyncFunctionDef) and node.name == 'setup'
-                        for node in tree.body
-                    )
-                except Exception:
-                    has_setup = False
-                if has_setup:
-                    rel_path = os.path.relpath(file_path, services_dir)
-                    module_path = rel_path.replace('\\', '.').replace('/', '.')
-                    module_name = f"services.{module_path[:-3]}"
-                    service_files.append(module_name)
+    async def load_services(self):
+        """Dynamically load all service modules that have a setup function"""
+        services_dir = Config.SRC_DIR / 'services'
+        
+        if not services_dir.exists():
+            logger.warning(f"⚠️ Services directory not found: {services_dir}")
+            return
 
-    if not service_files:
-        logger.warning("⚠️ No service files found with setup(bot)")
-        return
-
-    loaded = 0
-    for service in service_files:
-        try:
-            await bot.load_extension(service)
-            loaded += 1
-            logger.info(f"✅ Loaded {service}")
-        except Exception as e:
-            logger.error(f"❌ Failed to load service {service}: {e}")
-
-    logger.info(f"📦 Loaded {loaded}/{len(service_files)} services")
-
-async def main():
-    try:
-        async with bot:
-            await load_services()
-            
-            token = os.getenv('DISCORD_LLM_BOT_TOKEN')
-            if not token:
-                logger.error("❌ No Discord token found in environment")
-                return
+        count = 0
+        # Walk through services directory
+        for path in services_dir.rglob('*.py'):
+            if path.name.startswith('__'):
+                continue
                 
-            await bot.start(token)
-            
-    except discord.LoginFailure:
-        logger.error("❌ Invalid Discord token")
-    except Exception as e:
-        logger.error(f"❌ Bot startup failed: {e}")
-    finally:
-        if not bot.is_closed():
-            await bot.close()
-        logger.info("🔒 Bot shutdown complete")
+            # Convert file path to module path
+            # e.g. src/services/ai/gemini_service.py -> services.ai.gemini_service
+            try:
+                relative_path = path.relative_to(Config.SRC_DIR)
+                module_path = str(relative_path).replace(os.sep, '.')[:-3]
+                
+                await self.load_extension(module_path)
+                logger.info(f"✅ Loaded service: {module_path}")
+                count += 1
+            except commands.NoEntryPointError:
+                # Skip files without setup() function
+                pass 
+            except Exception as e:
+                logger.error(f"❌ Failed to load service {module_path}: {e}")
 
-async def setup(bot):
-    await bot.add_cog(AdminChannelsService(bot))
+        if count == 0:
+            logger.warning("⚠️ No services loaded!")
+        else:
+            logger.info(f"✨ Successfully loaded {count} services")
+
+    async def on_ready(self):
+        """Called when the bot is ready"""
+        logger.info(f'🚀 Bot started as {self.user} in {len(self.guilds)} guilds')
+
+    async def on_error(self, event_method, *args, **kwargs):
+        """Global error handler"""
+        logger.error(f"❌ Unhandled error in {event_method}", exc_info=True)
+
+def main():
+    """Entry point"""
+    bot = DiscordBot()
+    
+    if not Config.DISCORD_BOT_TOKEN:
+        logger.critical("❌ Bot token not found! Please check your .env file.")
+        return
+
     try:
-        await bot.tree.sync()  # Sync tất cả slash commands lên server
-        print("✅ Slash commands synced!")
+        bot.run(Config.DISCORD_BOT_TOKEN)
     except Exception as e:
-        print(f"❌ Error syncing slash commands: {e}")
+        logger.critical(f"❌ Fatal error: {e}")
 
 if __name__ == "__main__":
-    import asyncio
     try:
-        asyncio.run(main())
+        main()
     except KeyboardInterrupt:
         logger.info("🛑 Bot stopped by user (Ctrl+C)")
     except Exception as e:

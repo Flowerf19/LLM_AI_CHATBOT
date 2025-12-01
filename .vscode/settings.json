@@ -1,5 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./discord-bot-gemini/src"
-    ]
-}

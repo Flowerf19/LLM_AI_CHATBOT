@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Pre-commit hook to detect secrets in staged files
+set -e
+echo "🔒 Running pre-commit secret check..."
+
+STAGED_FILES=$(git diff --name-only --cached --diff-filter=ACM)
+if [ -z "$STAGED_FILES" ]; then
+  exit 0
+fi
+
+BAD=0
+PATTERNS=(
+  "GEMINI_API_KEY="
+  "DISCORD_LLM_BOT_TOKEN="
+  "DEEPSEEK_API_KEY="
+  "AIzaSy" # Google API key prefix
+  "-----BEGIN PRIVATE KEY-----"
+)
+
+for f in $STAGED_FILES; do
+  for p in "${PATTERNS[@]}"; do
+    if git show :"$f" | grep -q "$p"; then
+      echo "❌ Secret pattern found in staged file: $f (pattern: $p)"
+      BAD=1
+    fi
+  done
+done
+
+if [ "${BAD}" -ne 0 ]; then
+  echo "🔴 Aborting commit. Remove secrets or add them to .env and keep .env out of git (.gitignore)."
+  exit 1
+fi
+
+echo "✅ No obvious secrets detected in staged files."
+exit 0

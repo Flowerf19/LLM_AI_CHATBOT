@@ -4,22 +4,22 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import json
-import os
 import logging
 from typing import Optional
+from config.settings import Config
 
 logger = logging.getLogger('discord_bot.AdminChannelsService')
 
 class AdminChannelsService(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.data_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'bot_channels.json')
+        self.data_file = Config.DATA_DIR / 'bot_channels.json'
         self.bot_channels = self.load_bot_channels()
 
     def load_bot_channels(self):
         """Load bot channels from file"""
         try:
-            if os.path.exists(self.data_file):
+            if self.data_file.exists():
                 with open(self.data_file, 'r', encoding='utf-8') as f:
                     return json.load(f)
             return {}
@@ -30,7 +30,7 @@ class AdminChannelsService(commands.Cog):
     def save_bot_channels(self):
         """Save bot channels to file"""
         try:
-            os.makedirs(os.path.dirname(self.data_file), exist_ok=True)
+            self.data_file.parent.mkdir(parents=True, exist_ok=True)
             with open(self.data_file, 'w', encoding='utf-8') as f:
                 json.dump(self.bot_channels, f, indent=2, ensure_ascii=False)
         except Exception as e:
@@ -226,7 +226,7 @@ class AdminChannelsService(commands.Cog):
                     channels.append(f"• {channel.mention}")
             
             if channels:
-                await ctx.send(f"📋 **Danh sách kênh bot:**\n" + "\n".join(channels))
+                await ctx.send("📋 **Danh sách kênh bot:**\n" + "\n".join(channels))
             else:
                 await ctx.send("📋 Không có kênh bot nào")
 

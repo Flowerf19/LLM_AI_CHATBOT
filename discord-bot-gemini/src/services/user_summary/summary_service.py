@@ -1,14 +1,14 @@
-import discord
 import os
-import aiofiles
-import asyncio
 import logging
 from typing import Dict, List, Optional
 import json
+import re
+from discord.ext import commands
+from config.settings import Config
 
 logger = logging.getLogger(__name__)
 
-from discord.ext import commands
+
 # Extension setup function for discord.py
 async def setup(bot: commands.Bot):
     # Thêm Cog thực thi vào bot
@@ -28,15 +28,21 @@ class SummaryServiceCog(commands.Cog):
 class SummaryService:
     def _clean_summary_text(self, text: str) -> str:
         """Loại bỏ escape, markdown, ký tự thừa khỏi summary text."""
-        import re
+
         if not text:
             return ""
+        # If the text is valid JSON, return as-is (don't strip JSON content)
+        try:
+            json.loads(text)
+            return text
+        except Exception:
+            pass
         # Xoá code block markdown
         text = re.sub(r"```[\s\S]*?```", "", text)
-        # Xoá dấu ngoặc kép thừa
+        # Xoá dấu ngoặc kép thừa (không áp dụng cho JSON vì chúng đã được trả về phía trên)
         text = text.replace('"', "")
         # Xoá các ký tự escape \n, \\n+        text = text.replace('\\n', '\n').replace('\\', '')
-        # Xoá các đoạn JSON hoặc dấu ngoặc thừa
+        # Nếu không phải JSON, xoá các đoạn ngoặc nhọn/cú pháp giống JSON (nếu có)
         text = re.sub(r'\{.*?\}', '', text, flags=re.DOTALL)
         # Xoá khoảng trắng thừa
         text = re.sub(r'\n+', '\n', text)
@@ -45,6 +51,57 @@ class SummaryService:
     def _parse_summary_fields(self, summary_text: str) -> dict:
         """Parse summary text thành dict các trường chính (theo format chuẩn)."""
         import re
+        import json
+        
+        # Try parsing as JSON first (for new format)
+        try:
+            data = json.loads(summary_text)
+            flat_data = {}
+            
+            # Map JSON structure back to internal keys
+            if isinstance(data, dict):
+                # Basic Info
+                basic = data.get("basic_info", {})
+                flat_data["Tên"] = basic.get("name")
+                flat_data["Tuổi"] = basic.get("age")
+                flat_data["Sinh nhật"] = basic.get("birthday")
+                
+                # Hobbies
+                hobbies = data.get("hobbies_and_passion", {})
+                flat_data["Công nghệ"] = hobbies.get("tech")
+                flat_data["Giải trí"] = hobbies.get("entertainment")
+                flat_data["Khác"] = hobbies.get("other")
+                
+                # Personality
+                personality = data.get("personality_and_style", {})
+                flat_data["Giao tiếp"] = personality.get("communication")
+                flat_data["Tâm trạng"] = personality.get("mood")
+                flat_data["Đặc điểm"] = personality.get("traits")
+                
+                # Relationships
+                rels = data.get("relationships", {})
+                flat_data["Bạn bè"] = rels.get("friends")
+                flat_data["Gia đình"] = rels.get("family")
+                flat_data["Đồng nghiệp"] = rels.get("colleagues")
+                flat_data["Người quan trọng"] = rels.get("significant_other")
+                flat_data["Ghi chú về tương tác"] = rels.get("interaction_notes")
+                
+                # History
+                history = data.get("interaction_history", {})
+                flat_data["Chủ đề đã thảo luận"] = history.get("discussed_topics")
+                flat_data["Mức độ thân thiết"] = history.get("intimacy_level")
+                flat_data["Ghi chú đặc biệt"] = history.get("special_notes")
+                
+                # Projects
+                projects = data.get("projects_and_goals", {})
+                flat_data["Hiện tại"] = projects.get("current")
+                flat_data["Kế hoạch"] = projects.get("plans")
+                
+                # Return only non-None values
+                return {k: str(v) if v is not None else None for k, v in flat_data.items()}
+        except (json.JSONDecodeError, AttributeError):
+            pass
+
         fields = [
             ("Tên", r"Tên:\s*(.*)"),
             ("Tuổi", r"Tuổi:\s*(.*)"),
@@ -77,8 +134,6 @@ class SummaryService:
 
     def _merge_summary_fields(self, old_summary: str, new_summary: str) -> str:
         """Chỉ cập nhật trường có thông tin mới, giữ lại trường cũ nếu trường mới rỗng hoặc 'Không có'."""
-        import re
-        import os
         # Làm sạch text trước khi parse
         old_clean = self._clean_summary_text(old_summary or "")
         new_clean = self._clean_summary_text(new_summary or "")
@@ -92,60 +147,57 @@ class SummaryService:
                 merged[k] = v_new
             else:
                 merged[k] = old_fields.get(k, "Không có")
+        
         # Load template format từ file
         try:
-            base_dir = os.path.dirname(os.path.abspath(__file__))
-            src_dir = os.path.dirname(os.path.dirname(base_dir))
-            format_path = os.path.join(src_dir, 'data', 'prompts', 'summary_format.txt')
+            import json
+            # Ensure path is correct and handle potential Path/str mismatch
+            prompts_dir = getattr(Config, 'PROMPTS_DIR', 'src/data/prompts')
+            if isinstance(prompts_dir, str):
+                format_path = os.path.join(prompts_dir, 'summary_format.json')
+            else:
+                format_path = prompts_dir / 'summary_format.json'
+                
             with open(format_path, 'r', encoding='utf-8') as f:
-                template = f.read()
-            # Format template với merged dict
-            return template.format(**merged)
+                template_data = json.load(f)
+            
+            # Recursive function to fill template
+            def fill_template(data, values):
+                if isinstance(data, dict):
+                    return {k: fill_template(v, values) for k, v in data.items()}
+                elif isinstance(data, list):
+                    return [fill_template(item, values) for item in data]
+                elif isinstance(data, str):
+                    # Check if string is a placeholder like "{Key}"
+                    if data.startswith("{") and data.endswith("}"):
+                        key = data[1:-1]
+                        # Handle None values gracefully
+                        val = values.get(key)
+                        return val if val is not None else "Không có"
+                    return data
+                else:
+                    return data
+
+            filled_data = fill_template(template_data, merged)
+            return json.dumps(filled_data, ensure_ascii=False, indent=2)
+
         except Exception as e:
-            logger.error(f"Error loading or formatting summary template: {e}")
-            # Fallback về format cứng nếu lỗi
-            lines = []
-            lines.append("=== THÔNG TIN CƠ BẢN ===")
-            lines.append(f"Tên: {merged['Tên']}")
-            lines.append(f"Tuổi: {merged['Tuổi']}")
-            lines.append(f"Sinh nhật: {merged['Sinh nhật']}")
-            lines.append("=== SỞ THÍCH & ĐAM MÊ ===")
-            lines.append(f"• Công nghệ: {merged['Công nghệ']}")
-            lines.append(f"• Giải trí: {merged['Giải trí']}")
-            lines.append(f"• Khác: {merged['Khác']}")
-            lines.append("=== TÍNH CÁCH & PHONG CÁCH ===")
-            lines.append(f"• Giao tiếp: {merged['Giao tiếp']}")
-            lines.append(f"• Tâm trạng: {merged['Tâm trạng']}")
-            lines.append(f"• Đặc điểm: {merged['Đặc điểm']}")
-            lines.append("=== MỐI QUAN HỆ VỚI NGƯỜI KHÁC ===")
-            lines.append(f"• Bạn bè: {merged['Bạn bè']}")
-            lines.append(f"• Gia đình: {merged['Gia đình']}")
-            lines.append(f"• Đồng nghiệp: {merged['Đồng nghiệp']}")
-            lines.append(f"• Người quan trọng: {merged['Người quan trọng']}")
-            lines.append(f"• Ghi chú về tương tác: {merged['Ghi chú về tương tác']}")
-            lines.append("=== LỊCH SỬ TƯƠNG TÁC ===")
-            lines.append(f"• Chủ đề đã thảo luận: {merged['Chủ đề đã thảo luận']}")
-            lines.append(f"• Mức độ thân thiết: {merged['Mức độ thân thiết']}")
-            lines.append(f"• Ghi chú đặc biệt: {merged['Ghi chú đặc biệt']}")
-            lines.append("=== DỰ ÁN & MỤC TIÊU ===")
-            lines.append(f"• Hiện tại: {merged['Hiện tại']}")
-            lines.append(f"• Kế hoạch: {merged['Kế hoạch']}")
-            return "\n".join(lines)
-    def __init__(self, llm_service, prompts_dir: str, config_dir: str):
+            logger.error(f"Error loading or formatting summary template: {e}", exc_info=True)
+            # Fallback to simple JSON dump of merged data to avoid reverting to text format
+            return json.dumps(merged, ensure_ascii=False, indent=2)
+    def __init__(self, llm_service, prompts_dir: str = None, config_dir: str = None):
         self.llm_service = llm_service
-        # Đảm bảo lưu đúng vào src/data/user_summaries
-        base_dir = os.path.dirname(os.path.abspath(__file__))  # .../src/services/...
-        src_dir = os.path.dirname(os.path.dirname(base_dir))    # .../src
-        self.prompts_dir = os.path.join(src_dir, 'data', 'prompts')
-        self.config_dir = os.path.join(src_dir, 'data', 'config')
-        self.summaries_dir = os.path.join(src_dir, 'data', 'user_summaries')
+        
+        self.prompts_dir = Config.PROMPTS_DIR
+        self.config_dir = Config.DATA_DIR / 'config'
+        self.summaries_dir = Config.USER_SUMMARIES_DIR
         
         logger.info(f"📁 SummaryService using directory: {self.summaries_dir}")
         
         # Ensure directories exist
-        os.makedirs(self.summaries_dir, exist_ok=True)
-        os.makedirs(self.prompts_dir, exist_ok=True)
-        os.makedirs(self.config_dir, exist_ok=True)
+        self.summaries_dir.mkdir(parents=True, exist_ok=True)
+        self.prompts_dir.mkdir(parents=True, exist_ok=True)
+        self.config_dir.mkdir(parents=True, exist_ok=True)
         
         # Load important keywords
         self.important_keywords = self._load_important_keywords()
@@ -156,27 +208,18 @@ class SummaryService:
     def _load_important_keywords(self) -> Dict:
         """Load important keywords for summary updates"""
         import json
-        # Ưu tiên file dummy nếu có
-        dummy_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'dummy', 'important_keywords.json')
         config_path = os.path.join(self.config_dir, 'important_keywords.json')
-        default_keywords = {
-            "basic_info": ["tên", "tuổi", "sinh", "sinh nhật", "ngày sinh"],
-            "hobbies": ["thích", "yêu", "mê", "sở thích", "hobby"],
-            "emotions": ["buồn", "vui", "stress", "lo", "hạnh phúc", "tâm trạng"],
-            "relationships": ["độc thân", "người yêu", "bạn gái", "bạn trai"],
-            "dreams": ["muốn", "ước", "dự định", "kế hoạch", "mơ ước"],
-            "changes": ["không thích", "bỏ", "giờ thích", "chuyển sang", "chia tay", "có người yêu"]
-        }
-        for path in [dummy_path, config_path]:
-            if os.path.exists(path):
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        logger.info(f"Loaded important_keywords from: {path}")
-                        return json.load(f)
-                except Exception as e:
-                    logger.error(f"Error loading important_keywords from {path}: {e}")
-        logger.warning("No important_keywords.json found, using default keywords.")
-        return default_keywords
+        
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    logger.info(f"Loaded important_keywords from: {config_path}")
+                    return json.load(f)
+            except Exception as e:
+                logger.error(f"Error loading important_keywords from {config_path}: {e}")
+                
+        logger.warning("No important_keywords.json found. Summary updates will rely on random chance.")
+        return {}
     
     def get_user_history(self, user_id: str) -> List[Dict]:
         """FIXED: Get user conversation history với absolute path"""
@@ -228,40 +271,51 @@ class SummaryService:
     
     def get_user_summary(self, user_id: str) -> str:
         """Get user summary với absolute path và better caching"""
-        summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.txt")
+        summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.json")
         
-        if not os.path.exists(summary_file):
-            logger.debug(f"📝 Summary file not found: {summary_file}")
-            return ""
+        content = ""
+        if os.path.exists(summary_file):
+            try:
+                with open(summary_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    content = json.dumps(data, ensure_ascii=False, indent=2)
+            except Exception as e:
+                logger.error(f"Error loading JSON summary for {user_id}: {e}")
         
-        try:
-            with open(summary_file, 'r', encoding='utf-8') as f:
-                content = f.read().strip()
-                
-            if content and len(content) > 10:
-                logger.debug(f"📖 Loaded summary for {user_id}: {len(content)} chars")
-                return content
-            else:
-                logger.debug(f"📝 Empty summary for {user_id}")
-                return ""
-                
-        except Exception as e:
-            logger.error(f"Error loading summary for {user_id}: {e}")
+        if content and len(content) > 10:
+            logger.debug(f"📖 Loaded summary for {user_id}: {len(content)} chars")
+            return content
+        else:
+            logger.debug(f"📝 Empty summary for {user_id}")
             return ""
     
     def save_user_summary(self, user_id: str, summary: str):
         """Save user summary với absolute path"""
         import json
-        summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.txt")
+        summary_file = os.path.join(self.summaries_dir, f"{user_id}_summary.json")
         try:
             # Ensure directory exists
             os.makedirs(os.path.dirname(summary_file), exist_ok=True)
-            # Nếu summary là dict, chuyển thành text
-            if isinstance(summary, dict):
-                summary = json.dumps(summary, ensure_ascii=False, indent=2)
+            
+            # Nếu summary là string, thử parse json
+            data = summary
+            if isinstance(summary, str):
+                try:
+                    data = json.loads(summary)
+                except Exception:
+                    # Nếu không phải json, giữ nguyên string (cho legacy text format)
+                    # Nhưng tốt nhất là convert sang dict nếu có thể
+                    pass
+
             with open(summary_file, 'w', encoding='utf-8') as f:
-                f.write(summary.strip())
+                if isinstance(data, dict) or isinstance(data, list):
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+                else:
+                    # Fallback for raw text
+                    f.write(str(data))
+                    
             logger.info(f"📝 Summary saved for user {user_id} at: {summary_file}")
+                
         except Exception as e:
             logger.error(f"Error saving summary for {user_id}: {e}")
     
@@ -368,7 +422,7 @@ Hãy tạo tóm tắt chi tiết và chính xác:"""
             try:
                 parsed = json.loads(new_summary)
                 if isinstance(parsed, dict):
-                    logger.info(f"📝 LLM returned JSON, converting to text format for summary.")
+                    logger.info("📝 LLM returned JSON, converting to text format for summary.")
                     # Chuyển dict sang text format chuẩn bằng _merge_summary_fields
                     new_summary = self._merge_summary_fields(existing_summary, json.dumps(parsed, ensure_ascii=False))
             except Exception:
@@ -389,7 +443,7 @@ Hãy tạo tóm tắt chi tiết và chính xác:"""
     
     def _load_summary_prompt(self) -> str:
         """Load summary prompt from file"""
-        prompt_file = os.path.join(self.prompts_dir, 'summary_prompt.txt')
+        prompt_file = os.path.join(self.prompts_dir, 'summary_prompt.json')
         
         if not os.path.exists(prompt_file):
             return "Phân tích cuộc hội thoại và tạo tóm tắt thông tin người dùng."

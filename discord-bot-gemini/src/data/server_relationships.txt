@@ -4,15 +4,63 @@
 {
   "description": "Prompt để tổng hợp và phân tích các mối quan hệ trong server Discord",
   "placeholders": {
-    "overview": "TỔNG NGƯỜI DÙNG: 1
+    "overview": "TỔNG NGƯỜI DÙNG: 9
 TỔNG MỐI QUAN HỆ: 0
 TỔNG TƯƠNG TÁC: 0
 ",
     "details": "- User ID: 726302130318868500: 0 mối quan hệ, 0 tương tác
+- User ID: test_user_12345: 0 mối quan hệ, 0 tương tác
+- User ID: test_user_67890: 0 mối quan hệ, 0 tương tác
+- User ID: test_user_real: 0 mối quan hệ, 0 tương tác
+- User ID: priority_user: 0 mối quan hệ, 0 tương tác
+- User ID: msg_author_123: 0 mối quan hệ, 0 tương tác
+- User ID: user_conv: 0 mối quan hệ, 0 tương tác
+- User ID: summary_user: 0 mối quan hệ, 0 tương tác
+- User ID: 638747875471261726: 0 mối quan hệ, 0 tương tác
 
 DỮ LIỆU CHI TIẾT:
 
 === User ID: 726302130318868500 ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: test_user_12345 ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: test_user_67890 ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: test_user_real ===
+Tên thật: Nguyễn Văn A
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: priority_user ===
+Tên thật: Real Name
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: msg_author_123 ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: user_conv ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: summary_user ===
+Tên thật: None
+Số mối quan hệ: 0
+Tổng tương tác: 0
+
+=== User ID: 638747875471261726 ===
 Tên thật: None
 Số mối quan hệ: 0
 Tổng tương tác: 0"

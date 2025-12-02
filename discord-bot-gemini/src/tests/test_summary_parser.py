@@ -186,33 +186,219 @@ class TestSummaryParserFormatToJson:
 
 
 class TestSummaryParserIsTemplateSummary:
-    """Tests for is_template_summary method."""
+    """Tests for is_template_summary method - comprehensive edge cases."""
     
     @pytest.fixture
     def parser(self):
         return SummaryParser()
     
-    def test_empty_is_template(self, parser):
-        """Empty summary should be considered a template."""
+    # =========================================================================
+    # Empty/None cases
+    # =========================================================================
+    
+    def test_empty_string_is_template(self, parser):
+        """Empty string should be considered a template."""
         assert parser.is_template_summary("") is True
+    
+    def test_none_is_template(self, parser):
+        """None should be considered a template."""
         assert parser.is_template_summary(None) is True
     
-    def test_template_with_placeholders(self, parser):
-        """Summary with [Không có] placeholders is a template."""
+    def test_whitespace_only_is_template(self, parser):
+        """Whitespace-only string should be considered a template."""
+        assert parser.is_template_summary("   ") is True
+        assert parser.is_template_summary("\n\n") is True
+    
+    # =========================================================================
+    # JSON format with "Không có" (actual production format)
+    # =========================================================================
+    
+    def test_json_with_khong_co_is_template(self, parser):
+        """JSON summary with 'Không có' values is a template."""
+        json_summary = json.dumps({
+            "basic_info": {"name": "Không có", "age": "Không có", "birthday": "Không có"},
+            "hobbies_and_passion": {"tech": "Không có", "entertainment": "Không có"}
+        }, ensure_ascii=False)
+        
+        assert parser.is_template_summary(json_summary) is True
+    
+    def test_json_with_all_khong_co_is_template(self, parser):
+        """Full JSON template with all 'Không có' is detected."""
+        json_summary = json.dumps({
+            "basic_info": {"name": "Không có", "age": "Không có", "birthday": "Không có"},
+            "hobbies_and_passion": {"tech": "Không có", "entertainment": "Không có", "other": "Không có"},
+            "personality_and_style": {"communication": "Không có", "mood": "Không có", "traits": "Không có"},
+            "relationships": {"friends": "Không có", "family": "Không có"},
+            "interaction_history": {"discussed_topics": "Không có", "intimacy_level": "Không có"},
+            "projects_and_goals": {"current": "Không có", "plans": "Không có"}
+        }, ensure_ascii=False)
+        
+        assert parser.is_template_summary(json_summary) is True
+    
+    def test_json_with_partial_data_not_template(self, parser):
+        """JSON with mostly filled data is NOT a template."""
+        json_summary = json.dumps({
+            "basic_info": {"name": "Hoà", "age": "364000", "birthday": "Không có"},
+            "hobbies_and_passion": {"tech": "Python", "entertainment": "Gaming"}
+        }, ensure_ascii=False)
+        
+        # Only 1 "Không có" - should NOT be template
+        assert parser.is_template_summary(json_summary) is False
+    
+    def test_json_with_two_khong_co_is_template(self, parser):
+        """JSON with exactly 2 'Không có' IS a template (threshold = 2)."""
+        json_summary = json.dumps({
+            "basic_info": {"name": "Hoà", "age": "Không có", "birthday": "Không có"}
+        }, ensure_ascii=False)
+        
+        assert parser.is_template_summary(json_summary) is True
+    
+    # =========================================================================
+    # Text format with [Không có] brackets
+    # =========================================================================
+    
+    def test_text_with_bracket_placeholders(self, parser):
+        """Text format with [Không có] placeholders is a template."""
         template = """
         Tên: [Không có]
         Tuổi: [Không có]
         Sở thích: [Không có]
         """
-        
         assert parser.is_template_summary(template) is True
     
-    def test_filled_summary_not_template(self, parser):
-        """Summary with real data is not a template."""
+    def test_text_mixed_brackets_and_plain(self, parser):
+        """Mixed [Không có] and plain Không có are both counted."""
+        template = """
+        Tên: [Không có]
+        Tuổi: Không có
+        """
+        assert parser.is_template_summary(template) is True
+    
+    # =========================================================================
+    # Other placeholder indicators
+    # =========================================================================
+    
+    def test_chua_xac_dinh_is_template(self, parser):
+        """'Chưa xác định' placeholders are detected."""
+        template = """
+        Tên: Chưa xác định
+        Tuổi: Chưa xác định
+        """
+        assert parser.is_template_summary(template) is True
+    
+    def test_khong_ro_is_template(self, parser):
+        """'Không rõ' placeholders are detected."""
+        template = """
+        Tên: Không rõ
+        Tuổi: Không rõ
+        """
+        assert parser.is_template_summary(template) is True
+    
+    def test_mixed_placeholders_is_template(self, parser):
+        """Mixed placeholder types are all counted."""
+        template = """
+        Tên: Không có
+        Tuổi: Chưa xác định
+        Sinh nhật: Không rõ
+        """
+        assert parser.is_template_summary(template) is True
+    
+    # =========================================================================
+    # Filled summaries (should NOT be templates)
+    # =========================================================================
+    
+    def test_filled_text_not_template(self, parser):
+        """Text summary with real data is NOT a template."""
         filled = """
         Tên: Nguyên
         Tuổi: 25
         Công nghệ: Python
         """
+        assert parser.is_template_summary(filled) is False
+    
+    def test_filled_json_not_template(self, parser):
+        """JSON summary with real data is NOT a template."""
+        filled = json.dumps({
+            "basic_info": {"name": "Hoà", "age": "25", "birthday": "15/03"},
+            "hobbies_and_passion": {"tech": "Python", "entertainment": "Gaming"}
+        }, ensure_ascii=False)
         
         assert parser.is_template_summary(filled) is False
+    
+    def test_mostly_filled_with_one_empty_not_template(self, parser):
+        """Summary with only 1 'Không có' is NOT a template."""
+        mostly_filled = json.dumps({
+            "basic_info": {"name": "Hoà", "age": "25", "birthday": "Không có"}
+        }, ensure_ascii=False)
+        
+        assert parser.is_template_summary(mostly_filled) is False
+    
+    # =========================================================================
+    # Edge cases
+    # =========================================================================
+    
+    def test_khong_co_in_content_not_counted_wrong(self, parser):
+        """'Không có' as part of actual content should still be counted."""
+        # If user says "Tôi không có bạn", the "không có" is in content
+        # This is an edge case - current logic counts all occurrences
+        content = json.dumps({
+            "basic_info": {"name": "Test", "age": "25"},
+            "hobbies_and_passion": {"tech": "Tôi không có thời gian học"}
+        }, ensure_ascii=False)
+        
+        # Only 1 occurrence of "không có" - should NOT be template
+        assert parser.is_template_summary(content) is False
+    
+    def test_case_sensitivity(self, parser):
+        """Check case sensitivity of placeholder detection."""
+        # "Không có" vs "không có" - current implementation is case-sensitive
+        lower_case = 'Tên: không có\nTuổi: không có'
+        
+        # Lowercase should NOT match (implementation uses exact match)
+        assert parser.is_template_summary(lower_case) is False
+    
+    def test_unicode_handling(self, parser):
+        """Ensure Vietnamese characters are handled correctly."""
+        vietnamese = json.dumps({
+            "basic_info": {"name": "Nguyễn Văn Hoà", "age": "25"}
+        }, ensure_ascii=False)
+        
+        assert parser.is_template_summary(vietnamese) is False
+    
+    def test_real_production_template(self, parser):
+        """Test with actual production template format."""
+        # This is the exact format from 726302130318868500_summary.json
+        production_template = '''{
+  "basic_info": {
+    "name": "Không có",
+    "age": "Không có",
+    "birthday": "Không có"
+  },
+  "hobbies_and_passion": {
+    "tech": "Không có",
+    "entertainment": "Không có",
+    "other": "Không có"
+  },
+  "personality_and_style": {
+    "communication": "Không có",
+    "mood": "Không có",
+    "traits": "Không có"
+  },
+  "relationships": {
+    "friends": "Không có",
+    "family": "Không có",
+    "colleagues": "Không có",
+    "significant_other": "Không có",
+    "interaction_notes": "Không có"
+  },
+  "interaction_history": {
+    "discussed_topics": "Không có",
+    "intimacy_level": "Không có",
+    "special_notes": "Không có"
+  },
+  "projects_and_goals": {
+    "current": "Không có",
+    "plans": "Không có"
+  }
+}'''
+        assert parser.is_template_summary(production_template) is True

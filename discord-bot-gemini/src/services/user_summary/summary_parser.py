@@ -211,24 +211,24 @@ class SummaryParser:
 
     def is_template_summary(self, summary: str) -> bool:
         """
-        Check if summary is a template (has '[Không có]' placeholder entries).
+        Check if summary is a template (has placeholder entries like 'Không có').
         Returns True if summary appears to be unfilled template.
         """
-        if not summary:
+        if not summary or not summary.strip():
             return True
         
-        # Check for template indicators in the raw string
-        template_indicators = [
-            "[Không có]",
-            "Chưa xác định",
-            "Không rõ",
-        ]
+        # Simple check: count "Không có" occurrences (covers all formats)
+        khong_co_count = summary.count("Không có")
         
-        # Count total occurrences of all template indicators
-        count = sum(summary.count(indicator) for indicator in template_indicators)
+        # Also check other template indicators
+        other_indicators = ["Chưa xác định", "Không rõ", "[Không có]"]
+        other_count = sum(summary.count(ind) for ind in other_indicators)
         
-        if count >= 2:
-            logger.debug(f"Template summary detected ({count} indicators)")
+        total_count = khong_co_count + other_count
+        
+        # If 2+ placeholders found, it's a template
+        if total_count >= 2:
+            logger.debug(f"Template summary detected ({total_count} placeholders)")
             return True
         
         return False

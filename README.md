@@ -111,58 +111,54 @@ flowchart TB
 ## Message Flow Sequence
 
 ```mermaid
-sequenceDiagram
-    participant U as Discord User
-    participant B as bot.py
-    participant L as LLMMessageService
-    participant M as MessageProcessor
-    participant C as ConversationManager
-    participant X as ContextBuilder
-    participant S as SummaryService
-    participant R as RelationshipService
-    participant AI as GeminiService
-    participant D as Discord
-
-    U->>B: Send message
-    B->>L: on_message event
+flowchart TD
+    START((User sends message)) --> BOT[bot.py receives event]
     
-    Note over L: Check message ID<br/>in processed set
-    alt Already processed
-        L-->>B: Skip (duplicate)
-    else New message
-        L->>M: Forward message
+    BOT --> DEDUP{LLMMessageService<br/>Already processed?}
+    DEDUP -->|Yes| SKIP[Skip duplicate]
+    DEDUP -->|No| SPAM{MessageProcessor<br/>Spam check}
+    
+    SPAM -->|Rate exceeded| WARN[Send spam warning]
+    SPAM -->|OK| LOCK{ConversationManager<br/>Acquire user lock}
+    
+    LOCK -->|User busy| QUEUE[Queue message]
+    LOCK -->|Lock acquired| CTX[ContextBuilder]
+    
+    CTX --> FETCH["Fetch parallel data"]
+    
+    subgraph DataFetch["Data Fetching"]
+        FETCH --> SUM[SummaryService<br/>Get user profile]
+        FETCH --> REL[RelationshipService<br/>Get relationships]
+        FETCH --> HIST[HistoryService<br/>Get conversation]
     end
     
-    Note over M: Check spam rate<br/>(5 msg/min limit)
-    alt Rate exceeded
-        M-->>U: Spam warning
-    else Within limit
-        M->>C: Forward message
-    end
+    SUM --> BUILD[Build enhanced prompt]
+    REL --> BUILD
+    HIST --> BUILD
     
-    Note over C: Acquire per-user lock<br/>(concurrent users OK)
-    C->>X: Build context
+    BUILD --> AI{Select AI Service}
+    AI -->|Primary| GEMINI[GeminiService]
+    AI -->|Backup| DEEPSEEK[DeepSeekService]
     
-    par Context Assembly
-        X->>S: Get user summary
-        S-->>X: User profile JSON
-    and
-        X->>R: Get relationships
-        R-->>X: Relationship data
-    end
+    GEMINI --> PROMPT[Load prompts from JSON]
+    DEEPSEEK --> PROMPT
     
-    X->>AI: Enhanced prompt + context
-    AI->>AI: Generate response
+    PROMPT --> GEN[Generate AI response]
+    GEN --> TYPING[Typing simulation<br/>Human-like delay]
     
-    loop Typing simulation
-        AI->>D: Show typing indicator
-        Note over AI,D: Delay based on<br/>response length
-    end
+    TYPING --> SEND[Send to Discord]
+    SEND --> UNLOCK[Release user lock]
+    UNLOCK --> UPDATE[Update user data]
     
-    AI->>D: Send response
-    D->>U: Display message
+    UPDATE --> SAVE_SUM[Save summary]
+    UPDATE --> SAVE_REL[Save relationships]
     
-    Note over C: Release user lock
+    SAVE_SUM --> DONE((Done))
+    SAVE_REL --> DONE
+    
+    SKIP --> DONE
+    WARN --> DONE
+    QUEUE --> DONE
 ```
 
 ## Design Patterns

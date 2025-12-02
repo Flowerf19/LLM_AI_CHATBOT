@@ -100,7 +100,7 @@ src/
 │       ├── summary_service.py      # Summary business logic
 │       ├── summary_data.py         # Repository for summaries
 │       └── summary_parser.py       # Text parsing utilities
-└── tests/                          # pytest test suite (67 tests)
+└── tests/                          # pytest test suite (146 tests)
 ```
 
 ## Quick Start
@@ -149,17 +149,25 @@ python src/bot.py
 
 ```bash
 python -m pytest src/tests -v
-# 67 passed in 0.72s
+# 146 passed in 0.98s
 ```
 
-| Test File | Coverage |
-|-----------|----------|
-| `test_summary_data.py` | SummaryDataManager repository |
-| `test_summary_parser.py` | SummaryParser transformations |
-| `test_relationship_data.py` | RelationshipDataManager repository |
-| `test_queue_commands.py` | QueueCommands Cog |
-| `test_typing_commands.py` | TypingCommands Cog |
-| `test_prompts.py` | Prompt file validation |
+| Test File | Tests | Coverage |
+|-----------|-------|----------|
+| `test_integration.py` | 15 | Core integration flows |
+| `test_summary_generation.py` | 5 | Summary creation flow |
+| `test_message_processing.py` | 12 | Dedup, spam, locking |
+| `test_error_handling.py` | 8 | Error recovery |
+| `test_config.py` | 8 | Prompts, typing config |
+| `test_summary_parser.py` | 21 | Parser transformations |
+| `test_summary_data.py` | 7 | SummaryDataManager |
+| `test_prompts.py` | 21 | Prompt file validation |
+| `test_relationship_data.py` | 3 | RelationshipDataManager |
+| `test_relationship_service.py` | 13 | RelationshipService |
+| `test_gemini_service.py` | 15 | GeminiService AI |
+| `test_channel_service.py` | 9 | ChannelService |
+| `test_queue_commands.py` | 5 | QueueCommands Cog |
+| `test_typing_commands.py` | 4 | TypingCommands Cog |
 
 ## Security
 

@@ -155,11 +155,11 @@ class SummaryService:
             # Build prompt for AI
             prompt = self._build_summary_prompt(current_summary, history)
             
-            # Generate new summary via AI
-            new_summary_text = await ai_service.generate_summary(prompt)
+            # Generate new summary via AI (use generate_response method)
+            new_summary_text = await ai_service.generate_response(prompt)
             
-            if not new_summary_text:
-                logger.warning(f"AI returned empty summary for {user_id}")
+            if not new_summary_text or new_summary_text.startswith("Error"):
+                logger.warning(f"AI returned empty or error summary for {user_id}")
                 return None
             
             # Merge with existing summary (preserves old data)

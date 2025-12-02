@@ -982,3 +982,35 @@ client_session: <aiohttp.client.ClientSession object at 0x000002BD01C81BD0>
 2025-12-02 10:32:55 - ERROR - asyncio - Unclosed connector
 connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000002BD020EE330>, 318164.5686722)])']
 connector: <aiohttp.connector.TCPConnector object at 0x000002BD01F6F250>
+2025-12-02 10:35:17 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 10:35:17 - INFO - discord.client - logging in using static token
+2025-12-02 10:35:18 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 10:35:19 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 10:35:19 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 10:35:19 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 10:35:19 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 10:35:19 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 10:35:19 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 10:35:19 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 10:35:19 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 10:35:20 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: f00f509159512d75689aebf5e63c6a99).
+2025-12-02 10:35:22 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 10:35:26 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:35:39 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:35:39 - ERROR - services.user_summary.summary_service - Error updating summary for 726302130318868500: 'GeminiService' object has no attribute 'generate_summary'
+2025-12-02 10:35:39 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:35:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:36:12 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:36:12 - ERROR - services.user_summary.summary_service - Error updating summary for 726302130318868500: 'GeminiService' object has no attribute 'generate_summary'
+2025-12-02 10:36:12 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:36:26 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:36:43 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:36:43 - ERROR - services.user_summary.summary_service - Error updating summary for 726302130318868500: 'GeminiService' object has no attribute 'generate_summary'
+2025-12-02 10:36:43 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:37:46 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D49CA2EFD0>

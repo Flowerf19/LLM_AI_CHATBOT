@@ -217,15 +217,15 @@ class SummaryParser:
         if not summary:
             return True
         
+        # Check for template indicators in the raw string
         template_indicators = [
             "[Không có]",
-            "Tên: [Không có]",
-            "Tuổi: [Không có]",
-            "Sở thích: [Không có]",
+            "Chưa xác định",
+            "Không rõ",
         ]
         
-        # Count template indicators
-        count = sum(1 for indicator in template_indicators if indicator in summary)
+        # Count total occurrences of all template indicators
+        count = sum(summary.count(indicator) for indicator in template_indicators)
         
         if count >= 2:
             logger.debug(f"Template summary detected ({count} indicators)")

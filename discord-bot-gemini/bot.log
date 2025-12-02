@@ -947,3 +947,38 @@ client_session: <aiohttp.client.ClientSession object at 0x0000021B26121BD0>
 2025-12-01 16:28:45 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
 2025-12-01 16:29:32 - ERROR - asyncio - Unclosed client session
 client_session: <aiohttp.client.ClientSession object at 0x0000026DB27E7390>
+2025-12-02 10:30:47 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 10:30:47 - INFO - discord.client - logging in using static token
+2025-12-02 10:30:48 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 10:30:48 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 10:30:48 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 10:30:48 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 10:30:48 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 10:30:48 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 10:30:48 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 10:30:48 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 10:30:48 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 10:30:50 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 79bbd92db12464a6c37a72494621909e).
+2025-12-02 10:30:52 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 10:31:22 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:31:31 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:31:31 - ERROR - discord_bot.LLMMessageService - ❌ Error processing AI response: SummaryService.should_update_summary() takes from 2 to 3 positional arguments but 4 were given
+2025-12-02 10:31:32 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:31:34 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:31:55 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:31:55 - ERROR - discord_bot.LLMMessageService - ❌ Error processing AI response: SummaryService.should_update_summary() takes from 2 to 3 positional arguments but 4 were given
+2025-12-02 10:31:55 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:32:41 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 10:32:51 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 10:32:51 - ERROR - discord_bot.LLMMessageService - ❌ Error processing AI response: SummaryService.should_update_summary() takes from 2 to 3 positional arguments but 4 were given
+2025-12-02 10:32:51 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 10:32:55 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002BD01C81BD0>
+2025-12-02 10:32:55 - ERROR - asyncio - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000002BD020EE330>, 318164.5686722)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000002BD01F6F250>

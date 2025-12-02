@@ -63,6 +63,7 @@ class LLMMessageService(commands.Cog):
         await self._process_ai_response(message, content, user_id)
 
     async def _process_ai_response(self, message, content: str, user_id: str):
+        response_sent = False
         try:
             self.queue_manager.set_conversation_lock(user_id)
             context = self.queue_manager.get_conversation_context(user_id)
@@ -73,18 +74,22 @@ class LLMMessageService(commands.Cog):
                 response = await self.gemini_service.generate_response(content, user_id, enhanced_context)
                 if response and len(response.strip()) > 0:
                     await self.send_response_in_parts(message, response, user_id)
+                    response_sent = True
                     self.queue_manager.add_to_history(user_id, content, response)
                     self.queue_manager.save_to_persistent_history(user_id, content, response)
-                    if self.summary_service.should_update_summary(user_id, content, user_summary):
+                    self.summary_service.increment_message_count(user_id)
+                    if self.summary_service.should_update_summary(user_id):
                         try:
-                            await self.summary_service.update_summary_smart(user_id)
+                            await self.summary_service.update_summary_smart(user_id, self.gemini_service)
                         except Exception as e:
                             logger.error(f"❌ Error updating summary for {user_id}: {e}")
                 else:
                     await message.reply("Xin lỗi, tôi không thể tạo phản hồi cho tin nhắn này.")
+                    response_sent = True
         except Exception as e:
             logger.error(f"❌ Error processing AI response: {e}")
-            await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
+            if not response_sent:
+                await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
         finally:
             self.queue_manager.release_conversation_lock(user_id)
 

@@ -1,382 +1,287 @@
 # Discord LLM AI Chatbot
 
-A sophisticated Discord bot powered by Google's Gemini and DeepSeek AI models, featuring intelligent conversation management, relationship tracking, user summaries, and anti-spam protection.
+Discord bot powered by Google Gemini and DeepSeek AI with conversation management, relationship tracking, and user profiling.
 
-## ✨ Features
-
-### 🤖 AI-Powered Conversations
-
-- **Multi-Model Support**: Integrates Gemini 1.5 Flash and DeepSeek AI for diverse response capabilities
-- **Contextual Responses**: Maintains conversation history and user summaries for personalized interactions
-- **Typing Simulation**: Realistic typing delays to mimic human-like responses
-
-### 🔗 Intelligent Relationship System
-
-- **Automatic Detection**: Tracks mentions, tags, and relationship statements in conversations
-- **Smart Recognition**: Identifies relationships from natural language (e.g., "John and Jane are dating")
-- **User Profiling**: Stores real names, usernames, and interaction patterns
-- **Conversation Summaries**: AI-generated summaries of user interactions
-
-### 🛡️ Advanced Conversation Management
-
-- **Anti-Spam Protection**: Prevents message flooding with cooldowns
-- **Conversation Locking**: Ensures sequential responses per user
-- **Message Queuing**: Handles multiple users gracefully
-- **Channel Management**: Admin-configurable bot channels
-
-### 📊 User Analytics
-
-- **Personal Summaries**: AI-generated user profiles and conversation summaries
-- **Interaction Tracking**: Detailed logs of user engagements
-- **Relationship Mapping**: Visual representation of server relationships
-
-## 🏗️ Project Structure
-
-```text
-
-discord-bot-gemini/
-├── src/
-│   ├── bot.py                    # Main bot entry point with dynamic service loading
-│   ├── config/
-│   │   ├── settings.py           # Centralized configuration management
-│   │   └── logging_config.py     # Logging configuration
-│   ├── data/
-│   │   ├── prompts/              # AI prompt templates
-│   │   │   ├── personality.txt
-│   │   │   ├── conversation_prompt.txt
-│   │   │   └── server_relationships_prompt.txt
-│   │   └── relationships/        # JSON data storage for relationships
-│   ├── models/
-│   │   ├── user.py              # User data models
-│   │   ├── channel.py           # Channel management models
-│   │   └── conversation.py      # Conversation data models
-│   ├── services/
-│   │   ├── ai/
-│   │   │   ├── gemini_service.py    # Gemini AI integration
-│   │   │   └── deepseek_service.py  # DeepSeek AI integration
-│   │   ├── channel/
-│   │   │   ├── admin_channels_service.py
-│   │   │   └── channel_service.py
-│   │   ├── conversation/
-│   │   │   ├── conversation_manager.py
-│   │   │   ├── history_service.py
-│   │   │   ├── message_processor.py
-│   │   │   └── anti_spam_service.py
-│   │   ├── messeger/
-│   │   │   ├── llm_message_service.py
-│   │   │   ├── context_builder.py
-│   │   │   └── message_queue.py
-│   │   ├── relationship/
-│   │   │   ├── relationship_service.py
-│   │   │   └── relationship_data.py
-│   │   ├── user/
-│   │   │   └── user_commands.py
-│   │   └── user_summary/
-│   │       ├── summary_service.py
-│   │       ├── summary_data.py
-│   │       └── summary_update.py
-│   └── utils/
-│       └── helpers.py
-├── requirements-npu.txt         # NPU support requirements
-├── requirements-all.txt         # All requirements combined
-├── scripts/
-│   └── clean_pycache.py         # Cache cleaning utility
-└── README.md                    # This file
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.8 or higher
-- Discord Bot Token
-- Gemini API Key (optional, for enhanced AI)
-- DeepSeek API Key (optional, for alternative AI)
-
-### Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone <repository-url>
-   cd discord-bot-gemini
-   ```
-
-2. **Create virtual environment:**
-
-   ```bash
-   python -m venv venv
-   # On Windows:
-   venv\Scripts\activate
-   # On macOS/Linux:
-   source venv/bin/activate
-   ```
-
-   Or use the automated setup script with hardware detection:
-
-   ```bash
-   python scripts/setup.py --auto
-   ```
-
-3. **Install core dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure environment variables:**
-   Create a `.env` file in the root directory:
-
-   ```env
-   DISCORD_LLM_BOT_TOKEN=your_discord_bot_token_here
-   DISCORD_BOT_CLIENT_ID=your_bot_client_id_here
-   GEMINI_API_KEY=your_gemini_api_key_here
-   DEEPSEEK_API_KEY=your_deepseek_api_key_here
-
-   # Optional configurations
-   LLM_MODEL=gemini-1.5-flash
-   ENABLE_TYPING_SIMULATION=1
-   TYPING_SPEED_WPM=250
-   SYNC_COMMANDS=0
-   ```
-
-5. **Run the bot:**
-
-   ```bash
-   python src/bot.py
-   ```
-
-### Optional Hardware Acceleration
-
-For GPU/NPU support, install additional requirements based on your hardware:
-
-#### NVIDIA CUDA (GPU)
-
-```bash
-pip install -r requirements-gpu-cuda.txt
-# Requires: CUDA Toolkit installed
-```
-
-#### AMD ROCm (GPU)
-
-```bash
-pip install -r requirements-gpu-rocm.txt
-# Requires: AMD ROCm drivers installed
-# Use specific PyTorch wheel for your ROCm version
-```
-
-#### Intel GPU
-
-```bash
-pip install -r requirements-gpu-intel.txt
-# Requires: Intel GPU drivers and oneAPI
-```
-
-#### Neural Processing Units (NPU)
-
-```bash
-pip install -r requirements-npu.txt
-# Supports various NPU implementations via OpenVINO
-```
-
-#### Install Everything
-
-```bash
-pip install -r requirements-all.txt
-# Includes all core + optional dependencies
-```
-
-## 📖 Usage
-
-### Bot Commands
-
-| Command | Description | Example |
-|---------|-------------|---------|
-| `!ping` | Test bot responsiveness | `!ping` |
-| `!status` | Check bot status and user info | `!status` |
-| `!relationships [user]` | View user relationships | `!relationships @user` |
-| `!conversation user1 user2` | Get conversation summary | `!conversation @user1 @user2` |
-| `!analysis [user]` | AI relationship analysis | `!analysis @user` |
-| `!search_relations keyword` | Search relationships | `!search_relations friend` |
-| `!mentions user1 user2` | View mention history | `!mentions @user1 @user2` |
-| `!all_users` | Admin: View all users summary | `!all_users` |
-
-### How It Works
-
-1. **Message Processing**: Bot listens for messages in configured channels or DMs
-2. **Context Building**: Gathers user history, relationships, and conversation context
-3. **AI Generation**: Sends enhanced prompt to Gemini/DeepSeek API
-4. **Response Delivery**: Simulates typing and sends response in parts if needed
-5. **Data Updates**: Updates user summaries and relationship data
-
-### Configuration Options
-
-- **Bot Channels**: Configure specific channels where bot responds without mentions
-- **AI Models**: Switch between Gemini and DeepSeek based on availability
-- **Typing Simulation**: Adjust typing speed and delays for realism
-- **Anti-Spam**: Configure cooldown periods and message limits
-
-## 🔧 Development
-
-### Adding New Services
-
-1. Create a new service file in `src/services/`
-2. Implement `async def setup(bot)` function
-3. The bot will automatically load it on startup
-
-### Testing
-
-```bash
-# Run unit tests (if available)
-pytest
-
-# Test relationship service offline
-python test_relationship_service.py
-```
-
-### Development Utilities
-
-#### Project Setup Script
-
-```bash
-# Automated setup (venv + requirements)
-python scripts/setup.py
-
-# Custom setup options
-python scripts/setup.py --venv myenv --req requirements-all.txt
-python scripts/setup.py --skip-venv  # Only install requirements
-```
-
-#### Clean Python Cache
-
-```bash
-# Clean __pycache__ directories and .pyc files
-python scripts/clean_pycache.py
-
-# Clean specific directory
-python scripts/clean_pycache.py /path/to/directory
-
-# Dry run (show what would be cleaned)
-python scripts/clean_pycache.py --dry-run
-```
-
-### Environment Variables Reference
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `DISCORD_LLM_BOT_TOKEN` | Discord bot token | Required |
-| `GEMINI_API_KEY` | Google Gemini API key | Optional |
-| `DEEPSEEK_API_KEY` | DeepSeek API key | Optional |
-| `LLM_MODEL` | AI model to use | `gemini-1.5-flash` |
-| `ENABLE_TYPING_SIMULATION` | Enable typing delays | `1` |
-| `TYPING_SPEED_WPM` | Words per minute for typing | `250` |
-| `SYNC_COMMANDS` | Sync slash commands on startup | `0` |
-
-## 📚 Documentation
-
-- **[BOT_USAGE_GUIDE.md](BOT_USAGE_GUIDE.md)** - User guide for bot interactions
-- **[BOT_CHANNELS_GUIDE.md](BOT_CHANNELS_GUIDE.md)** - Channel configuration guide
-- **[RELATIONSHIP_GUIDE.md](RELATIONSHIP_GUIDE.md)** - Relationship system user guide
-- **[RELATIONSHIP_TECHNICAL_DOCS.md](RELATIONSHIP_TECHNICAL_DOCS.md)** - Technical documentation
-- **[TYPING_SIMULATION_GUIDE.md](TYPING_SIMULATION_GUIDE.md)** - Typing simulation details
-- **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - Detailed project structure
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- Google Gemini API for AI capabilities
-- DeepSeek for alternative AI model
-- Discord.py for the Discord bot framework
-
-## 🗺️ Architecture & Workflow
-
-### High-level Architecture
+## High-Level Architecture
 
 ```mermaid
-flowchart LR
-    DG["Discord Gateway"] --> BotCore["Bot Core<br/>(bot.py)"]
-    BotCore --> LLM["LLM Service<br/>(Gemini/DeepSeek)"]
-    BotCore --> MQ["Message Queue"]
-    BotCore --> CB["Context Builder"]
-    CB --> DB[("JSON Database")]
-    MQ --> CB
-    LLM --> CB
-    CB --> BotCore
+flowchart TB
+    subgraph External["External Systems"]
+        DISCORD[("Discord API")]
+        GEMINI_API[("Gemini API")]
+        DEEPSEEK_API[("DeepSeek API")]
+    end
+
+    subgraph Application["Discord Bot Application"]
+        subgraph EntryPoint["Entry Point"]
+            BOT["bot.py<br/>Discord.py Client<br/>Auto-discovers Cogs"]
+        end
+
+        subgraph MessagePipeline["Message Processing Pipeline"]
+            LLM_MSG["LLMMessageService<br/>─────────────────<br/>• Message deduplication<br/>• Processed ID tracking"]
+            MSG_PROC["MessageProcessor<br/>─────────────────<br/>• Anti-spam (5 msg/min)<br/>• Rate limiting"]
+            CONV_MGR["ConversationManager<br/>─────────────────<br/>• Per-user locking<br/>• Concurrent user support"]
+        end
+
+        subgraph ContextLayer["Context Assembly Layer"]
+            CTX_BUILD["ContextBuilder<br/>─────────────────<br/>• Builds enhanced prompts<br/>• Aggregates user data"]
+            HIST_SVC["HistoryService<br/>─────────────────<br/>• Conversation history<br/>• Message formatting"]
+        end
+
+        subgraph BusinessServices["Business Services Layer"]
+            SUM_SVC["SummaryService<br/>─────────────────<br/>• User profile management<br/>• Smart update triggers<br/>• AI summary generation"]
+            REL_SVC["RelationshipService<br/>─────────────────<br/>• User relationships<br/>• Interaction tracking<br/>• Server summaries"]
+        end
+
+        subgraph RepositoryLayer["Repository Layer (Data Access)"]
+            SUM_DATA["SummaryDataManager<br/>─────────────────<br/>• User summary I/O<br/>• History file access"]
+            REL_DATA["RelationshipDataManager<br/>─────────────────<br/>• Relationships I/O<br/>• Interactions I/O<br/>• User names mapping"]
+            SUM_PARSE["SummaryParser<br/>─────────────────<br/>• Text cleaning<br/>• JSON parsing<br/>• Field merging"]
+        end
+
+        subgraph AIServices["AI Integration Layer"]
+            GEMINI_SVC["GeminiService<br/>─────────────────<br/>• Prompt building<br/>• API communication<br/>• Response splitting"]
+            DEEPSEEK_SVC["DeepSeekService<br/>─────────────────<br/>• Alternative AI<br/>• Backup provider"]
+            TYPING["TypingSimulation<br/>─────────────────<br/>• Human-like delays<br/>• WPM calculation"]
+        end
+
+        subgraph CommandsCogs["Discord Commands (Cogs)"]
+            QUEUE_CMD["QueueCommands<br/>• !queue_status<br/>• !clear_queue"]
+            TYPING_CMD["TypingCommands<br/>• !test_typing<br/>• !typing_settings"]
+            USER_CMD["UserCommands<br/>• !status<br/>• !relationships"]
+        end
+
+        subgraph DataStorage["JSON Data Storage"]
+            PROMPTS[("prompts/<br/>─────────<br/>personality.json<br/>conversation_prompt.json<br/>summary_prompt.json<br/>summary_format.json<br/>task_instruction.json")]
+            SUMMARIES[("user_summaries/<br/>─────────<br/>{user_id}_summary.json<br/>{user_id}_history.json")]
+            RELATIONS[("relationships/<br/>─────────<br/>relationships.json<br/>interactions.json<br/>user_names.json")]
+        end
+    end
+
+    %% External connections
+    DISCORD <--> BOT
+    GEMINI_SVC --> GEMINI_API
+    DEEPSEEK_SVC --> DEEPSEEK_API
+
+    %% Message pipeline flow
+    BOT --> LLM_MSG
+    LLM_MSG --> MSG_PROC
+    MSG_PROC --> CONV_MGR
+    CONV_MGR --> CTX_BUILD
+
+    %% Context building
+    CTX_BUILD --> SUM_SVC
+    CTX_BUILD --> REL_SVC
+    CTX_BUILD --> HIST_SVC
+
+    %% Business to Repository
+    SUM_SVC --> SUM_DATA
+    SUM_SVC --> SUM_PARSE
+    REL_SVC --> REL_DATA
+
+    %% Repository to Storage
+    SUM_DATA --> SUMMARIES
+    REL_DATA --> RELATIONS
+
+    %% AI flow
+    CTX_BUILD --> GEMINI_SVC
+    CTX_BUILD --> DEEPSEEK_SVC
+    GEMINI_SVC --> PROMPTS
+    DEEPSEEK_SVC --> PROMPTS
+    GEMINI_SVC --> TYPING
+    DEEPSEEK_SVC --> TYPING
+    TYPING --> DISCORD
+
+    %% Commands
+    BOT --> QUEUE_CMD
+    BOT --> TYPING_CMD
+    BOT --> USER_CMD
+
+    %% Styling
+    style External fill:#1a1a2e,color:#fff
+    style MessagePipeline fill:#16213e,color:#fff
+    style ContextLayer fill:#0f3460,color:#fff
+    style BusinessServices fill:#533483,color:#fff
+    style RepositoryLayer fill:#e94560,color:#fff
+    style AIServices fill:#0d7377,color:#fff
+    style DataStorage fill:#14274e,color:#fff
+    style CommandsCogs fill:#394867,color:#fff
+```
+
+## Message Flow Sequence
+
+```mermaid
+sequenceDiagram
+    participant U as Discord User
+    participant B as bot.py
+    participant L as LLMMessageService
+    participant M as MessageProcessor
+    participant C as ConversationManager
+    participant X as ContextBuilder
+    participant S as SummaryService
+    participant R as RelationshipService
+    participant AI as GeminiService
+    participant D as Discord
+
+    U->>B: Send message
+    B->>L: on_message event
     
-    style DG fill:#f9f,stroke:#333
-    style DB fill:#f9f,stroke:#333
+    Note over L: Check message ID<br/>in processed set
+    alt Already processed
+        L-->>B: Skip (duplicate)
+    else New message
+        L->>M: Forward message
+    end
+    
+    Note over M: Check spam rate<br/>(5 msg/min limit)
+    alt Rate exceeded
+        M-->>U: Spam warning
+    else Within limit
+        M->>C: Forward message
+    end
+    
+    Note over C: Acquire per-user lock<br/>(concurrent users OK)
+    C->>X: Build context
+    
+    par Context Assembly
+        X->>S: Get user summary
+        S-->>X: User profile JSON
+    and
+        X->>R: Get relationships
+        R-->>X: Relationship data
+    end
+    
+    X->>AI: Enhanced prompt + context
+    AI->>AI: Generate response
+    
+    loop Typing simulation
+        AI->>D: Show typing indicator
+        Note over AI,D: Delay based on<br/>response length
+    end
+    
+    AI->>D: Send response
+    D->>U: Display message
+    
+    Note over C: Release user lock
 ```
 
-### Security & Preventing Secret Leaks
+## Design Patterns
 
-1. NEVER commit `.env` or real API keys to git. Use `.env.example` to store variable names only.
-1. `.gitignore` has been updated to include `.env`, logs, venv and user data directories.
-1. There is a pre-commit hook in `.githooks/` that scans staged files for common secret patterns. To enable it locally:
+| Pattern | Implementation | Purpose |
+|---------|----------------|---------|
+| Repository | `SummaryDataManager`, `RelationshipDataManager` | Abstract JSON file I/O operations |
+| Service Layer | `SummaryService`, `RelationshipService` | Business logic and orchestration |
+| Parser | `SummaryParser` | Pure text transformation without I/O |
+| Command (Cog) | `QueueCommands`, `TypingCommands` | Modular Discord commands |
+| Pipeline | Message processing chain | Sequential message handling |
+| Singleton | `Config` | Centralized configuration |
 
-```bash
-git config core.hooksPath .githooks
+## Project Structure
+
+```
+src/
+├── bot.py                          # Entry point, Cog auto-discovery
+├── config/
+│   ├── settings.py                 # Config class with pathlib paths
+│   └── logging_config.py           # Logging setup
+├── data/
+│   ├── prompts/                    # AI prompt templates (JSON)
+│   ├── user_summaries/             # User profiles (gitignored)
+│   └── relationships/              # Relationship data (gitignored)
+├── services/
+│   ├── ai/
+│   │   ├── gemini_service.py       # Gemini API integration
+│   │   └── deepseek_service.py     # DeepSeek API integration
+│   ├── commands/
+│   │   ├── queue_commands.py       # Queue management commands
+│   │   └── typing_commands.py      # Typing simulation commands
+│   ├── conversation/
+│   │   ├── conversation_manager.py # Per-user locking
+│   │   ├── message_processor.py    # Anti-spam
+│   │   └── anti_spam_service.py    # Rate limiting
+│   ├── messeger/
+│   │   ├── llm_message_service.py  # Message deduplication
+│   │   ├── context_builder.py      # Context assembly
+│   │   └── message_queue.py        # Message queuing
+│   ├── relationship/
+│   │   ├── relationship_service.py # Relationship business logic
+│   │   └── relationship_data.py    # Repository for relationships
+│   └── user_summary/
+│       ├── summary_service.py      # Summary business logic
+│       ├── summary_data.py         # Repository for summaries
+│       └── summary_parser.py       # Text parsing utilities
+└── tests/                          # pytest test suite (67 tests)
 ```
 
-1. If a secret is committed accidentally:
+## Quick Start
 
 ```bash
-# Remove it from the index
-git rm --cached .env
-git commit -m "chore: remove .env from repo"
-git push origin main
+# Clone and setup
+git clone <repository-url>
+cd discord-bot-gemini
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # macOS/Linux
 
-# To purge from history (dangerous):
-# bfg --delete-files .env
-# git reflog expire --expire=now --all && git gc --prune=now --aggressive
-# git push --force
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your API keys
+
+# Run
+python src/bot.py
 ```
 
-1. Rotate compromised keys immediately.
+## Environment Variables
 
-### Quick checks & automation
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DISCORD_LLM_BOT_TOKEN` | Yes | Discord bot token |
+| `GEMINI_API_KEY` | Yes | Google Gemini API key |
+| `DEEPSEEK_API_KEY` | No | DeepSeek API key (backup) |
+| `LLM_MODEL` | No | Model name (default: gemini-2.0-flash) |
+| `ENABLE_TYPING_SIMULATION` | No | Enable typing delays (default: 1) |
+| `TYPING_SPEED_WPM` | No | Words per minute (default: 250) |
 
-Run a quick check to see if any sensitive files are tracked by git:
+## Bot Commands
 
-#
+| Command | Description |
+|---------|-------------|
+| `!ping` | Test bot responsiveness |
+| `!status` | Check bot status and user info |
+| `!relationships [user]` | View user relationships |
+| `!queue_status` | Show message queue status |
+| `!test_typing` | Test typing simulation |
+
+## Testing
+
 ```bash
-# Linux / macOS
-bash scripts/check_tracked_sensitive_files.sh
-
-# Windows (PowerShell)
-powershell -ExecutionPolicy Bypass -File scripts\check_tracked_sensitive_files.ps1
+python -m pytest src/tests -v
+# 67 passed in 0.72s
 ```
 
-## ✅ Enable Git Hooks and Secret Protection (Recommended)
+| Test File | Coverage |
+|-----------|----------|
+| `test_summary_data.py` | SummaryDataManager repository |
+| `test_summary_parser.py` | SummaryParser transformations |
+| `test_relationship_data.py` | RelationshipDataManager repository |
+| `test_queue_commands.py` | QueueCommands Cog |
+| `test_typing_commands.py` | TypingCommands Cog |
+| `test_prompts.py` | Prompt file validation |
 
-To enable the included pre-commit hooks that scan for secrets, run one of the following:
+## Security
+
+- `.env` is gitignored - never commit API keys
+- Pre-commit hooks scan for secrets
+- User data directories are gitignored
 
 ```bash
-# Linux / macOS
-bash scripts/enable_git_hooks.sh
-
-# Windows (PowerShell)
+# Enable git hooks
 powershell -ExecutionPolicy Bypass -File scripts\enable_git_hooks.ps1
 ```
 
-To remove accidentally committed `.env` from the index and commit the removal (safe, local only):
+## License
 
-```bash
-# Linux / macOS
-bash scripts/remove_sensitive_files.sh
-
-# Windows (PowerShell)
-powershell -ExecutionPolicy Bypass -File scripts\remove_sensitive_files.ps1
-```
-
-
+MIT License - see LICENSE file for details.

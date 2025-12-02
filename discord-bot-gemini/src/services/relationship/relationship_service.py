@@ -1,11 +1,11 @@
 import os
-import json
 import logging
 import aiofiles
 from typing import Dict, List, Optional
 from datetime import datetime, timedelta
 from collections import Counter
 from config.settings import Config
+from services.relationship.relationship_data import RelationshipDataManager
 
 logger = logging.getLogger(__name__)
 
@@ -13,21 +13,18 @@ class RelationshipService:
     def __init__(self, llm_service):
         self.llm_service = llm_service
         
+        # Use RelationshipDataManager for I/O operations (Repository Pattern)
+        self.data_manager = RelationshipDataManager()
+        
         self.data_dir = Config.DATA_DIR
         self.relationships_dir = self.data_dir / 'relationships'
         self.relationships_dir.mkdir(parents=True, exist_ok=True)
         
-        # Files để lưu data
-        self.relationships_file = self.relationships_dir / 'relationships.json'
-        self.user_names_file = self.relationships_dir / 'user_names.json'
-        self.interactions_file = self.relationships_dir / 'interactions.json'
-        self.conversation_history_file = self.relationships_dir / 'conversation_history.json'
-        
-        # Load existing data
-        self.relationships = self._load_relationships()
-        self.user_names = self._load_user_names()
-        self.interactions = self._load_interactions()
-        self.conversation_history = self._load_conversation_history()
+        # Load existing data using data_manager
+        self.relationships = self.data_manager.load_relationships()
+        self.user_names = self.data_manager.load_user_names()
+        self.interactions = self.data_manager.load_interactions()
+        self.conversation_history = self.data_manager.load_conversation_history()
         logger.info(f"🔗 RelationshipService initialized with {len(self.relationships)} relationships")
     
     async def update_server_relationships_summary(self):
@@ -69,25 +66,9 @@ class RelationshipService:
         """Call this after any relationship/interactions update to keep server_relationships.txt fresh."""
         await self.update_server_relationships_summary()
     
-    def _load_relationships(self) -> Dict:
-        """Load relationship data from file"""
-        if not os.path.exists(self.relationships_file):
-            return {}
-        
-        try:
-            with open(self.relationships_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            logger.error(f"Error loading relationships: {e}")
-            return {}
-    
     def _save_relationships(self):
-        """Save relationship data to file"""
-        try:
-            with open(self.relationships_file, 'w', encoding='utf-8') as f:
-                json.dump(self.relationships, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            logger.error(f"Error saving relationships: {e}")
+        """Save relationship data to file - delegates to RelationshipDataManager."""
+        self.data_manager.save_relationships(self.relationships)
         # Trigger server summary update (fire and forget)
         try:
             import asyncio
@@ -95,46 +76,14 @@ class RelationshipService:
                 asyncio.create_task(self.auto_update_server_summary_on_change())
         except Exception as e:
             logger.error(f"Error scheduling server summary update: {e}")
-    
-    def _load_user_names(self) -> Dict:
-        """Load user names mapping from file"""
-        if not os.path.exists(self.user_names_file):
-            return {}
-        
-        try:
-            with open(self.user_names_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            logger.error(f"Error loading user names: {e}")
-            return {}
     
     def _save_user_names(self):
-        """Save user names mapping to file"""
-        try:
-            with open(self.user_names_file, 'w', encoding='utf-8') as f:
-                json.dump(self.user_names, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            logger.error(f"Error saving user names: {e}")
-    
-    def _load_interactions(self) -> Dict:
-        """Load interaction data from file"""
-        if not os.path.exists(self.interactions_file):
-            return {}
-        
-        try:
-            with open(self.interactions_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            logger.error(f"Error loading interactions: {e}")
-            return {}
+        """Save user names mapping to file - delegates to RelationshipDataManager."""
+        self.data_manager.save_user_names(self.user_names)
     
     def _save_interactions(self):
-        """Save interaction data to file"""
-        try:
-            with open(self.interactions_file, 'w', encoding='utf-8') as f:
-                json.dump(self.interactions, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            logger.error(f"Error saving interactions: {e}")
+        """Save interaction data to file - delegates to RelationshipDataManager."""
+        self.data_manager.save_interactions(self.interactions)
         # Trigger server summary update (fire and forget)
         try:
             import asyncio
@@ -143,25 +92,9 @@ class RelationshipService:
         except Exception as e:
             logger.error(f"Error scheduling server summary update: {e}")
     
-    def _load_conversation_history(self) -> Dict:
-        """Load conversation history between users"""
-        if not os.path.exists(self.conversation_history_file):
-            return {}
-        
-        try:
-            with open(self.conversation_history_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            logger.error(f"Error loading conversation history: {e}")
-            return {}
-    
     def _save_conversation_history(self):
-        """Save conversation history"""
-        try:
-            with open(self.conversation_history_file, 'w', encoding='utf-8') as f:
-                json.dump(self.conversation_history, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            logger.error(f"Error saving conversation history: {e}")
+        """Save conversation history - delegates to RelationshipDataManager."""
+        self.data_manager.save_conversation_history(self.conversation_history)
         # Trigger server summary update (fire and forget)
         try:
             import asyncio

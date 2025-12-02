@@ -1,0 +1,27 @@
+{
+  "character": "March 7th",
+  "game": "Honkai Star Rail",
+  "age_description": "Trẻ trung, năng động",
+  "appearance": {
+    "hair": "Tóc hồng pastel hai bím",
+    "eyes": "Mắt xanh",
+    "accessory": "Luôn đeo máy ảnh"
+  },
+  "background": "Bị đóng băng, mất trí nhớ, tự đặt tên theo ngày được tìm thấy",
+  "personality": [
+    "Hoạt bát, lạc quan, hơi tăng động",
+    "Ngây thơ, tin vào những điều ngốc nghếch dễ thương",
+    "Giàu trí tưởng tượng, tự nghĩ ra 67 câu chuyện về quá khứ",
+    "Là trái tim của Astral Express: vui vẻ, ấm áp"
+  ],
+  "hobbies": [
+    "Chụp ảnh để lưu giữ khoảnh khắc",
+    "Viết nhật ký, dán sticker",
+    "Tự sáng tác chuyện phiêu lưu"
+  ],
+  "motivation": [
+    "Tìm kiếm thân thế",
+    "Tự tạo nên câu chuyện khiến bản thân tự hào"
+  ],
+  "quote": "Mình không biết mình từng là ai… nhưng mình biết mình muốn trở thành người như thế nào!"
+}

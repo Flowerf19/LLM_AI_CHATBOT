@@ -35,31 +35,135 @@ src/
 ├── tests/                        # Test suite
 └── requirements.txt              # Python dependencies
 ```
+
 ## 🗺️ Architecture
 
 ```mermaid
-flowchart LR
-    DG["Discord Gateway"] --> BotCore["Bot Core<br/>(bot.py)"]
-    BotCore --> LLM["LLM Service<br/>(Gemini/DeepSeek)"]
-    BotCore --> MQ["Message Queue"]
-    BotCore --> CB["Context Builder"]
-    CB --> DB[("JSON Database")]
-    MQ --> CB
-    LLM --> CB
-    CB --> BotCore
-    
-    style DG fill:#f9f,stroke:#333
-    style DB fill:#f9f,stroke:#333
+flowchart TB
+    subgraph Discord["🎮 Discord"]
+        DG[Discord Gateway]
+        DC[Discord Channels]
+    end
+
+    subgraph Core["🤖 Bot Core"]
+        BOT[bot.py<br/>Entry Point]
+        LLM_SVC[LLMMessageService<br/>Deduplication]
+        MSG_PROC[MessageProcessor<br/>Anti-Spam]
+        CONV_MGR[ConversationManager<br/>Per-User Lock]
+    end
+
+    subgraph Context["📋 Context Building"]
+        CTX[ContextBuilder]
+        HIST[HistoryService]
+    end
+
+    subgraph Services["⚙️ Business Services"]
+        SUM_SVC[SummaryService]
+        REL_SVC[RelationshipService]
+    end
+
+    subgraph Repository["💾 Repository Layer"]
+        SUM_DATA[SummaryDataManager]
+        REL_DATA[RelationshipDataManager]
+        SUM_PARSE[SummaryParser]
+    end
+
+    subgraph AI["🧠 AI Services"]
+        GEMINI[GeminiService]
+        DEEPSEEK[DeepSeekService]
+    end
+
+    subgraph Data["📁 JSON Storage"]
+        PROMPTS[(prompts/)]
+        SUMMARIES[(user_summaries/)]
+        RELATIONS[(relationships/)]
+    end
+
+    DG --> BOT
+    BOT --> LLM_SVC
+    LLM_SVC --> MSG_PROC
+    MSG_PROC --> CONV_MGR
+    CONV_MGR --> CTX
+
+    CTX --> SUM_SVC
+    CTX --> REL_SVC
+    CTX --> HIST
+
+    SUM_SVC --> SUM_DATA
+    SUM_SVC --> SUM_PARSE
+    REL_SVC --> REL_DATA
+
+    SUM_DATA --> SUMMARIES
+    REL_DATA --> RELATIONS
+
+    CTX --> GEMINI
+    CTX --> DEEPSEEK
+    GEMINI --> PROMPTS
+    DEEPSEEK --> PROMPTS
+
+    GEMINI --> DC
+    DEEPSEEK --> DC
+
+    style Discord fill:#5865F2,color:#fff
+    style AI fill:#10a37f,color:#fff
+    style Repository fill:#f59e0b,color:#fff
+    style Data fill:#6366f1,color:#fff
 ```
 
 ### Message Flow
 
-1. **Message Reception**: Bot listens for messages in configured channels
-2. **Deduplication**: `MessageProcessor` prevents duplicate processing
-3. **Context Building**: Gathers user history, relationships, and conversation context
-4. **AI Processing**: Sends enhanced prompt to Gemini/DeepSeek API
-5. **Response Generation**: Streams response with optional typing simulation
-6. **Data Updates**: Updates user summaries and relationship data (JSON format)
+```text
+┌─────────────────┐
+│  Discord User   │
+│  sends message  │
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│    bot.py       │ ◄── Entry point, auto-discovers Cogs
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│ LLMMessageService│ ◄── Deduplication check
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│ MessageProcessor│ ◄── Anti-spam (5 msg/min)
+└────────┬────────┘
+         ▼
+┌─────────────────────┐
+│ ConversationManager │ ◄── Per-user lock (concurrent users OK)
+└────────┬────────────┘
+         ▼
+┌─────────────────┐
+│  ContextBuilder │ ◄── Assembles context from:
+│                 │     • User Summary (SummaryService)
+│                 │     • Relationships (RelationshipService)
+│                 │     • Conversation History
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│   AI Service    │ ◄── Gemini / DeepSeek
+│  (Generation)   │     Loads prompts from JSON
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│ Typing Simulation│ ◄── Human-like delays
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│ Discord Response│
+└─────────────────┘
+```
+
+### Design Patterns
+
+| Pattern | Implementation | Purpose |
+|---------|---------------|---------|
+| **Repository** | `SummaryDataManager`, `RelationshipDataManager` | JSON I/O abstraction |
+| **Service Layer** | `SummaryService`, `RelationshipService` | Business logic |
+| **Parser** | `SummaryParser` | Pure text transformation |
+| **Command (Cog)** | `QueueCommands`, `TypingCommands` | Discord commands |
+| **Singleton** | `Config` | Centralized configuration |
 
 ## 🚀 Quick Start
 
@@ -152,18 +256,21 @@ pip install -r requirements-all.txt
 ### Running Tests
 
 ```bash
-pytest -q
+python -m pytest src/tests -v
 ```
 
-### Test Suite Coverage
+### Test Suite (67 tests)
 
-- **test_summary_update.py** - Verifies LLM JSON responses are preserved and fields updated
-- **test_duplicate_messages.py** - Confirms duplicate message prevention works
-- **test_concurrency.py** - Validates concurrent message handling (60+ messages)
-- **test_stress.py** - 200+ message throughput test
-- **test_error_handling.py** - Verifies graceful LLM error recovery
+| Test File | Coverage |
+|-----------|----------|
+| `test_summary_data.py` | SummaryDataManager - JSON I/O for user summaries |
+| `test_summary_parser.py` | SummaryParser - Text cleaning, parsing, merging |
+| `test_relationship_data.py` | RelationshipDataManager - Relationship JSON I/O |
+| `test_queue_commands.py` | QueueCommands Cog - Queue status, clear commands |
+| `test_typing_commands.py` | TypingCommands Cog - Typing simulation commands |
+| `test_prompts.py` | Prompt files - JSON validation, required fields |
 
-All tests passing: `6 passed in 0.49s`
+All tests passing: `67 passed in 0.72s`
 
 ## 🔐 Security & Secret Protection
 

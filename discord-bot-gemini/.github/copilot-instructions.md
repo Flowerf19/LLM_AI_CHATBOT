@@ -1,81 +1,156 @@
-# Discord LLM Chatbot - AI Coding Guidelines
+﻿# Discord LLM Chatbot - AI Coding Guidelines
 
 ## Architecture Overview
-This is a modular Discord bot built with `discord.py`, featuring AI-powered conversations using Gemini and DeepSeek APIs. The bot manages user relationships, conversation history, and summaries through a service-oriented architecture.
+Modular Discord bot with AI-powered conversations (Gemini/DeepSeek). Uses **Repository Pattern** for data access and **Single Responsibility Principle** throughout.
 
-**Key Components:**
-- `src/bot.py`: Main entry point that dynamically loads services as extensions
-- `src/services/`: Modular services (AI, conversation, relationship, user commands)
-- `src/data/prompts/`: Text files containing AI prompts (e.g., `personality.txt`, `conversation_prompt.txt`)
-- `src/data/relationships/`: JSON storage for relationship data
-- `src/models/`: Data models for users, channels, conversations
+### Design Patterns Applied
+- **Repository Pattern**: `SummaryDataManager`, `RelationshipDataManager` handle JSON I/O
+- **Service Layer**: Business logic separated from data access
+- **Command Pattern**: `QueueCommands`, `TypingCommands` as separate Cog modules
+- **Parser Pattern**: `SummaryParser` for text transformation (no I/O)
 
-**Data Flow:**
-Messages → `LLMMessageService` → `ContextBuilder` → `GeminiService` → Response with typing simulation
+### Message Flow
+```
+Discord Gateway
+    ↓
+bot.py (entry point, auto-discovers Cogs)
+    ↓
+LLMMessageService (deduplication)
+    ↓
+MessageProcessor (anti-spam check)
+    ↓
+ConversationManager (per-user lock)
+    ↓
+ContextBuilder (assembles context)
+    ├── SummaryService → SummaryDataManager (JSON)
+    ├── RelationshipService → RelationshipDataManager (JSON)
+    └── HistoryService (conversation history)
+    ↓
+GeminiService / DeepSeekService (AI generation)
+    ↓
+Typing simulation → Discord response
+```
 
-## Service Pattern
-All services follow the extension pattern with `async def setup(bot)` for dynamic loading. Services are cogs that interact via `bot.get_cog()`.
+**Key Directories:**
+- `src/bot.py`: Entry point, auto-discovers services via `rglob('*.py')` in `src/services/`
+- `src/services/`: Discord.py Cogs with `async def setup(bot)` for dynamic loading
+- `src/config/settings.py`: Centralized config using `pathlib.Path`
+- `src/data/prompts/`: JSON prompt templates (personality, summary, task instructions)
+- `src/data/user_summaries/`: User profile JSON files
+- `src/data/relationships/`: Relationship tracking JSON files
 
-**Example Service Structure:**
+## Service Pattern (CRITICAL)
+Every service file MUST have a module-level `setup()` function:
 ```python
 from discord.ext import commands
 
-class ExampleService(commands.Cog):
+class MyService(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        # Initialize dependencies
-    
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        # Handle messages
-    
-    async def setup(bot):
-        await bot.add_cog(ExampleService(bot))
+
+async def setup(bot):  # Required for dynamic loading
+    await bot.add_cog(MyService(bot))
 ```
 
-## Configuration & Environment
-Use `src/config/settings.py` for centralized config loaded from environment variables. Never hardcode API keys.
-
-**Key Settings:**
-- `GEMINI_API_KEY`, `LLM_MODEL`: AI service config
-- `ENABLE_TYPING_SIMULATION`: Controls realistic typing delays
-- `DISCORD_LLM_BOT_TOKEN`: Bot authentication
-
-## AI Integration
-AI responses are generated via `GeminiService` or `DeepSeekService`, enhanced with context from `ContextBuilder` including user summaries and relationship data.
-
-**Prompt Loading Pattern:**
+**Inter-service communication:** `self.bot.get_cog('ServiceName')` with None fallback:
 ```python
-def _load_prompt(self, filename: str) -> str:
-    prompts_dir = os.path.join(src_dir, 'data', 'prompts')
-    filepath = os.path.join(prompts_dir, filename)
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return f.read().strip()
+admin_service = self.bot.get_cog('AdminChannelsService')
+is_bot_channel = admin_service.is_bot_channel(guild_id, channel_id) if admin_service else True
 ```
 
-## Data Persistence
-Use JSON files in `src/data/` for persistence. Relationship data, user summaries, and conversation history are stored as JSON.
+## Repository Pattern (Data Access)
+All JSON I/O goes through data manager classes:
+```python
+# SummaryDataManager - user summaries
+data_manager = SummaryDataManager()
+summary = data_manager.get_user_summary(user_id)
+data_manager.save_user_summary(user_id, summary)
 
-**Path Resolution:**
-Always resolve paths relative to `src/` directory to ensure correct loading across environments.
+# RelationshipDataManager - relationships & interactions
+data_manager = RelationshipDataManager(data_dir)
+relationships = data_manager.load_relationships()
+data_manager.save_relationships(relationships)
+```
 
-## Commands & Interactions
-Commands use `!` prefix, implemented as `@commands.command` in cog classes. Bot responds to mentions or in designated channels.
+**Parser classes are pure transformations (no I/O):**
+```python
+# SummaryParser - text parsing only
+parser = SummaryParser()
+cleaned = parser.clean_text(raw_text)
+fields = parser.parse_to_dict(cleaned)
+json_str = parser.format_to_json(fields)
+```
 
-**Anti-Spam & Locking:**
-- `ConversationManager` prevents concurrent responses per user
-- Messages queued during locks
-- Cooldowns enforced via timestamps
+## Path Resolution
+Use `Config` paths from `settings.py` (never hardcode):
+```python
+from config.settings import Config
+filepath = Config.PROMPTS_DIR / "personality.json"  # src/data/prompts/
+history_file = Config.USER_SUMMARIES_DIR / f"{user_id}_history.json"
+```
 
-## Development Workflow
-1. Install dependencies: `pip install -r requirements.txt`
-2. Set environment variables in `.env`
-3. Run bot: `python src/bot.py`
-4. Sync slash commands: Set `SYNC_COMMANDS=1` in env
+## Prompt Management
+All prompts stored as JSON in `src/data/prompts/`:
+- `personality.json` - Bot character/personality
+- `conversation_prompt.json` - Conversation guidelines
+- `summary_prompt.json` - User summary generation
+- `summary_format.json` - Summary JSON schema
+- `task_instruction.json` - Task instructions for AI
+- `server_relationships_prompt.json` - Relationship analysis
 
-## Key Files for Reference
-- `src/services/messeger/llm_message_service.py`: Main message handling logic
-- `src/services/relationship/relationship_service.py`: Relationship tracking and AI summaries
-- `src/services/conversation/conversation_manager.py`: Conversation locking and queuing
-- `src/config/settings.py`: Configuration management</content>
-<parameter name="filePath">.github/copilot-instructions.md
+**Loading prompts (must raise FileNotFoundError if missing):**
+```python
+prompt_path = Config.PROMPTS_DIR / 'summary_prompt.json'
+if not prompt_path.exists():
+    raise FileNotFoundError(f"Prompt not found: {prompt_path}")
+with open(prompt_path, 'r', encoding='utf-8') as f:
+    prompt_content = f.read()
+```
+
+## Concurrency Patterns
+- **Per-user locking** (not global): `ConversationManager.active_users: Set[str]` allows concurrent users
+- **Message deduplication:** `_processed_message_ids = set()` prevents reprocessing
+- **Anti-spam:** 5 messages/minute limit with 30s cooldown
+
+## Context Building
+`ContextBuilder.build_enhanced_context()` assembles: user summary → relationships → mentioned users → conversation history. Prompts use Vietnamese section headers (`=== NGƯỜI ĐANG NÓI CHUYỆN ===`).
+
+## Data Storage
+JSON files in `src/data/`. Naming: `{user_id}_history.json`, `{user_id}_summary.json`
+
+## Environment Variables
+Required: `DISCORD_LLM_BOT_TOKEN`, `GEMINI_API_KEY`
+Optional: `DEEPSEEK_API_KEY`, `LLM_MODEL`, `ENABLE_TYPING_SIMULATION`, `TYPING_SPEED_WPM`
+
+## Development & Testing
+```powershell
+python -m venv venv; venv\Scripts\activate
+pip install -r requirements.txt
+# Create .env, then: python src/bot.py
+
+# Run tests
+python -m pytest src/tests -v
+```
+
+### Test Files
+- `test_summary_data.py` - SummaryDataManager repository tests
+- `test_summary_parser.py` - SummaryParser transformation tests
+- `test_relationship_data.py` - RelationshipDataManager repository tests
+- `test_queue_commands.py` - QueueCommands Cog tests
+- `test_typing_commands.py` - TypingCommands Cog tests
+- `test_prompts.py` - Prompt file validation tests
+
+GPU options: `requirements-gpu-cuda.txt`, `requirements-gpu-rocm.txt`, `requirements-gpu-intel.txt`
+
+## Key Conventions
+- **Logging:** `logger = logging.getLogger('discord_bot.ServiceName')` with emoji prefixes (✅❌⚠️🔒)
+- **Commands:** `!` prefix, implemented as `@commands.command()` in Cogs
+- **Bot mentions:** Check `self.bot.user.mentioned_in(message)`, clean with `<@{bot_id}>` removal
+- **Channel filtering:** `AdminChannelsService.is_bot_channel()` for response gating
+- **All I/O is async:** Use `await` for file/network operations
+- **No hardcoded prompts:** All prompts loaded from JSON files
+
+## Scripts
+- `scripts/clean_pycache.py`: Remove cache
+- `scripts/validate_jsons.py`: Validate data files
+- `scripts/setup.py`: Environment setup

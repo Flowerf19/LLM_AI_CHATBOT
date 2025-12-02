@@ -5,6 +5,7 @@ __pycache__/
 .env
 bot.log
 src/data/user_summaries/
+src/data/relationships/
 src/data/*_history.json
 .vscode/
 /.venv
@@ -17,3 +18,4 @@ coverage/
 dist/
 build/
 pytest_cache/
+.pytest_cache/

@@ -1,0 +1,33 @@
+{
+  "basic_info": {
+    "name": "{Tên}",
+    "age": "{Tuổi}",
+    "birthday": "{Sinh nhật}"
+  },
+  "hobbies_and_passion": {
+    "tech": "{Công nghệ}",
+    "entertainment": "{Giải trí}",
+    "other": "{Khác}"
+  },
+  "personality_and_style": {
+    "communication": "{Giao tiếp}",
+    "mood": "{Tâm trạng}",
+    "traits": "{Đặc điểm}"
+  },
+  "relationships": {
+    "friends": "{Bạn bè}",
+    "family": "{Gia đình}",
+    "colleagues": "{Đồng nghiệp}",
+    "significant_other": "{Người quan trọng}",
+    "interaction_notes": "{Ghi chú về tương tác}"
+  },
+  "interaction_history": {
+    "discussed_topics": "{Chủ đề đã thảo luận}",
+    "intimacy_level": "{Mức độ thân thiết}",
+    "special_notes": "{Ghi chú đặc biệt}"
+  },
+  "projects_and_goals": {
+    "current": "{Hiện tại}",
+    "plans": "{Kế hoạch}"
+  }
+}

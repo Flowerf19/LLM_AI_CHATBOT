@@ -87,14 +87,34 @@ class SummaryParser:
         except Exception:
             pass
         
-        # Remove code block markdown
-        text = re.sub(r"```[\s\S]*?```", "", text)
+        # Extract JSON from markdown code blocks (```json ... ``` or ``` ... ```)
+        code_block_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
+        if code_block_match:
+            extracted = code_block_match.group(1).strip()
+            # Check if extracted content is valid JSON
+            try:
+                json.loads(extracted)
+                return extracted
+            except Exception:
+                pass
+        
+        # If no code block or invalid JSON inside, try to find raw JSON
+        json_match = re.search(r'\{[\s\S]*\}', text)
+        if json_match:
+            potential_json = json_match.group(0)
+            try:
+                json.loads(potential_json)
+                return potential_json
+            except Exception:
+                pass
+        
+        # Fall back to text cleaning for non-JSON format
+        # Remove code block markers only (keep content)
+        text = re.sub(r"```(?:json)?", "", text)
         # Remove extra quotes (not for JSON)
         text = text.replace('"', "")
         # Remove escape sequences
         text = text.replace('\\n', '\n').replace('\\', '')
-        # Remove JSON-like syntax if not valid JSON
-        text = re.sub(r'\{.*?\}', '', text, flags=re.DOTALL)
         # Normalize whitespace
         text = re.sub(r'\n+', '\n', text)
         text = text.strip()

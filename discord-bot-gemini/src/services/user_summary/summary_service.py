@@ -73,7 +73,7 @@ class SummaryService:
         Determine if a summary update should be triggered.
         
         Returns True if:
-            - Message threshold reached
+            - Message threshold reached (based on history file)
             - Time threshold reached
             - Summary is a template (unfilled)
             - No summary exists yet
@@ -85,17 +85,21 @@ class SummaryService:
             logger.debug(f"No summary for {user_id}, should update")
             return True
         
+        # Get message count from persistent history (not in-memory counter)
+        history = self.get_user_history(user_id)
+        # Count only user messages in history
+        user_msg_count = len([m for m in history if m.get("role") == "user"]) if history else 0
+        
         # Template summary - update faster
         if self.parser.is_template_summary(current_summary):
-            msg_count = self._message_count_since_update.get(user_id, 0)
-            if msg_count >= self.TEMPLATE_MESSAGE_THRESHOLD:
-                logger.debug(f"Template summary for {user_id}, msg_count={msg_count}")
+            if user_msg_count >= self.TEMPLATE_MESSAGE_THRESHOLD:
+                logger.debug(f"Template summary for {user_id}, user_msg_count={user_msg_count}")
                 return True
         
-        # Check message threshold
-        msg_count = self._message_count_since_update.get(user_id, 0)
-        if msg_count >= self.MESSAGE_THRESHOLD:
-            logger.debug(f"Message threshold reached for {user_id}: {msg_count}")
+        # Check message threshold (using in-memory counter for session tracking)
+        session_msg_count = self._message_count_since_update.get(user_id, 0)
+        if session_msg_count >= self.MESSAGE_THRESHOLD:
+            logger.debug(f"Session message threshold reached for {user_id}: {session_msg_count}")
             return True
         
         # Check time threshold
@@ -155,16 +159,24 @@ class SummaryService:
             # Build prompt for AI
             prompt = self._build_summary_prompt(current_summary, history)
             
-            # Generate new summary via AI (use generate_response method)
-            new_summary_text = await ai_service.generate_response(prompt)
+            # Generate new summary via AI (use generate_summary method for raw prompt)
+            # Check if ai_service has generate_summary method, otherwise fall back to generate_response
+            if hasattr(ai_service, 'generate_summary'):
+                new_summary_text = await ai_service.generate_summary(prompt)
+            else:
+                new_summary_text = await ai_service.generate_response(prompt)
+            
+            logger.debug(f"AI response for {user_id}: {new_summary_text[:500] if new_summary_text else 'None'}...")
             
             if not new_summary_text or new_summary_text.startswith("Error"):
-                logger.warning(f"AI returned empty or error summary for {user_id}")
+                logger.warning(f"AI returned empty or error summary for {user_id}: {new_summary_text}")
                 return None
             
             # Merge with existing summary (preserves old data)
             if current_summary:
+                logger.debug(f"Merging summary for {user_id}")
                 merged_summary = self.parser.merge_fields(current_summary, new_summary_text)
+                logger.debug(f"Merged result for {user_id}: {merged_summary[:500] if merged_summary else 'None'}...")
             else:
                 # Clean and format new summary
                 cleaned = self.parser.clean_text(new_summary_text)

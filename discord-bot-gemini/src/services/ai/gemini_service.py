@@ -124,6 +124,62 @@ class GeminiService:
         if self.session:
             await self.session.close()
 
+    async def generate_summary(self, prompt: str) -> str:
+        """
+        Generate a summary using the AI API without personality/conversation prompts.
+        This is used for user summary generation, not chat responses.
+        """
+        if not self.api_key:
+            self.logger.error("Gemini API key not found")
+            return "Error: API key not configured."
+
+        session = await self._get_session()
+        
+        # Construct the full API URL for generateContent
+        full_url = f"{self.api_url}/{self.model}:generateContent?key={self.api_key}"
+        
+        payload = {
+            "contents": [{
+                "parts": [{
+                    "text": prompt
+                }]
+            }],
+            "generationConfig": {
+                "temperature": 0.5,  # Lower for more consistent output
+                "maxOutputTokens": 2000,  # Higher for detailed summaries
+                "topP": 0.9,
+                "topK": 40
+            }
+        }
+
+        try:
+            self.logger.debug(f"Generating summary with prompt: {prompt[:100]}...")
+            async with session.post(full_url, json=payload, headers={
+                'Content-Type': 'application/json'
+            }) as response:
+                if response.status != 200:
+                    error_text = await response.text()
+                    self.logger.error(f"Gemini API error for summary: {error_text}")
+                    return "Error generating summary."
+                
+                response_data = await response.json()
+                
+                # Extract the text from the response
+                if 'candidates' in response_data and len(response_data['candidates']) > 0:
+                    candidate = response_data['candidates'][0]
+                    if 'content' in candidate and 'parts' in candidate['content']:
+                        parts = candidate['content']['parts']
+                        if len(parts) > 0 and 'text' in parts[0]:
+                            self.logger.info("✅ Summary generated successfully")
+                            return parts[0]['text']
+                
+                self.logger.error(f"Unexpected response format for summary: {response_data}")
+                return "Error: Unexpected response format."
+                
+        except Exception as e:
+            self.logger.error(f"Error generating summary: {e}")
+            return "Error generating summary."
+
     def split_response_into_parts(self, response: str) -> List[str]:
         """Split response into multiple natural parts for sequential sending"""
         import re

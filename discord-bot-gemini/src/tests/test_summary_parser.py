@@ -30,12 +30,24 @@ class TestSummaryParserCleanText:
         result = parser.clean_text(valid_json)
         assert result == valid_json
     
-    def test_clean_text_removes_code_blocks(self, parser):
-        """Code block markdown should be removed."""
+    def test_clean_text_removes_code_block_markers(self, parser):
+        """Code block markers (```) should be removed, content preserved for non-JSON."""
         text_with_code = "Hello ```python\nprint('test')``` world"
         result = parser.clean_text(text_with_code)
+        # Markers should be removed
         assert "```" not in result
-        assert "python" not in result
+        # Content is preserved (no longer removed since it might be useful)
+        # The function now focuses on extracting JSON, not removing all code
+    
+    def test_clean_text_extracts_json_from_code_blocks(self, parser):
+        """JSON inside code blocks should be extracted correctly."""
+        json_in_code_block = '```json\n{"name": "test"}\n```'
+        result = parser.clean_text(json_in_code_block)
+        assert result == '{"name": "test"}'
+        # Should be valid JSON
+        import json
+        parsed = json.loads(result)
+        assert parsed["name"] == "test"
     
     def test_clean_text_removes_escape_sequences(self, parser):
         """Escape sequences like \\n should be converted."""

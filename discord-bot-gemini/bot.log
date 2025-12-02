@@ -1014,3 +1014,208 @@ connector: <aiohttp.connector.TCPConnector object at 0x000002BD01F6F250>
 2025-12-02 10:36:43 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
 2025-12-02 10:37:46 - ERROR - asyncio - Unclosed client session
 client_session: <aiohttp.client.ClientSession object at 0x000001D49CA2EFD0>
+2025-12-02 11:04:52 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 11:04:52 - INFO - discord.client - logging in using static token
+2025-12-02 11:04:54 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 11:04:54 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 11:04:54 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 11:04:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 11:04:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 11:04:54 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 11:04:54 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 11:04:54 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 11:04:54 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 11:04:55 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a9a5d31661961f3c509e04fdd822b344).
+2025-12-02 11:04:57 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 11:05:16 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:05:27 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:05:29 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:05:29 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:05:29 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:05:49 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:05:58 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:05:58 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:05:58 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-02 11:06:06 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:06:21 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:06:21 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:06:35 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:06:52 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:06:52 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:07:12 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:07:35 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:07:35 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:07:47 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:08:03 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:08:03 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:13:55 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 638747875471261726
+2025-12-02 11:14:10 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 638747875471261726
+2025-12-02 11:14:11 - INFO - services.user_summary.summary_data - Summary saved for user 638747875471261726
+2025-12-02 11:14:11 - INFO - services.user_summary.summary_service - Summary updated for 638747875471261726
+2025-12-02 11:14:11 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 638747875471261726
+2025-12-02 11:16:24 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 11:16:24 - INFO - discord.client - logging in using static token
+2025-12-02 11:16:26 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 11:16:26 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 11:16:26 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 11:16:26 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 11:16:26 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 11:16:26 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 11:16:26 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 11:16:26 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 11:16:26 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 11:16:27 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 0f755c2503cd95ac570ff1c41b10ef75).
+2025-12-02 11:16:29 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 11:17:02 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:17:12 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:17:13 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:17:13 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:17:13 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:17:13 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:17:29 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:17:29 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:17:39 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:17:43 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-02 11:17:49 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:17:49 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:18:10 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:18:20 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:18:23 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:18:23 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:18:23 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:18:31 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:18:42 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:18:42 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:19:02 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:19:13 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:19:13 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:19:16 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:19:28 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:19:30 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:19:30 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:19:30 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:23:23 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 11:23:23 - INFO - discord.client - logging in using static token
+2025-12-02 11:23:25 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 11:23:25 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 11:23:25 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 11:23:25 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 11:23:25 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 11:23:25 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 11:23:25 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 11:23:25 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 11:23:25 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 11:23:26 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 0ffc5ce83a89e12fac907c2662525a07).
+2025-12-02 11:23:28 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 11:23:40 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:23:40 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:23:49 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:23:49 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:23:53 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:23:55 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:23:55 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:23:55 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:24:11 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:24:11 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:24:25 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:24:25 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:24:29 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:24:31 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:24:31 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:24:31 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:25:00 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000021092ECAFD0>
+2025-12-02 11:25:03 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 11:25:03 - INFO - discord.client - logging in using static token
+2025-12-02 11:25:04 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 11:25:04 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 11:25:04 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 11:25:04 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 11:25:04 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 11:25:04 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 11:25:04 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 11:25:04 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 11:25:04 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 11:25:05 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a41db4c11d935eae7cc55c1f103dc5c6).
+2025-12-02 11:25:07 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 11:25:13 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:25:24 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:25:25 - INFO - services.relationship.relationship_service - 📝 Real name updated for 726302130318868500: Hoà
+2025-12-02 11:25:26 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-02 11:25:26 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:25:26 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:25:26 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:25:33 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:25:44 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:25:46 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:25:46 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:25:46 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:25:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:26:17 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:26:19 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:26:19 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:26:19 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:26:30 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:26:45 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:26:48 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:26:48 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:26:48 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:28:20 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002797C04AFD0>
+2025-12-02 11:35:25 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2025-12-02 11:35:25 - INFO - discord.client - logging in using static token
+2025-12-02 11:35:27 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2025-12-02 11:35:27 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2025-12-02 11:35:27 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2025-12-02 11:35:27 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2025-12-02 11:35:27 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2025-12-02 11:35:27 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 0 relationships
+2025-12-02 11:35:27 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with modular services including RelationshipService
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2025-12-02 11:35:27 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2025-12-02 11:35:27 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2025-12-02 11:35:28 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: e6dccdcd0ef270c859e51c8f6695ac6d).
+2025-12-02 11:35:30 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2025-12-02 11:35:43 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:35:54 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:35:57 - INFO - discord_bot.GeminiService - ✅ Summary generated successfully
+2025-12-02 11:35:57 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:35:57 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:35:57 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:36:25 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:36:35 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:36:37 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2025-12-02 11:36:38 - INFO - discord_bot.GeminiService - ✅ Summary generated successfully
+2025-12-02 11:36:38 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:36:38 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:36:38 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2025-12-02 11:37:03 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2025-12-02 11:37:26 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2025-12-02 11:37:29 - INFO - discord_bot.GeminiService - ✅ Summary generated successfully
+2025-12-02 11:37:29 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2025-12-02 11:37:29 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2025-12-02 11:37:29 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500

@@ -41,9 +41,12 @@ class TestSummaryGenerationFlow:
         service = SummaryService()
         user_id = "test_ai_summary_user"
         
-        # Create mock AI service
+        # Create mock AI service with generate_summary method (used by update_summary_smart)
         mock_ai = AsyncMock()
-        mock_ai.generate_response = AsyncMock(return_value="Tên: AI Test User\nTuổi: 30\nCông nghệ: Python, FastAPI")
+        # Mock generate_summary which is the preferred method for summary generation
+        mock_ai.generate_summary = AsyncMock(return_value='{"basic_info": {"name": "AI Test User", "age": "30"}}')
+        # Also mock generate_response as fallback
+        mock_ai.generate_response = AsyncMock(return_value='{"basic_info": {"name": "AI Test User", "age": "30"}}')
         
         # Prepare some history
         test_history = [
@@ -61,8 +64,8 @@ class TestSummaryGenerationFlow:
             force=True
         )
         
-        # Verify AI was called
-        assert mock_ai.generate_response.called
+        # Verify AI was called (generate_summary is preferred)
+        assert mock_ai.generate_summary.called or mock_ai.generate_response.called
         
         # Verify result is valid JSON
         if result:
@@ -100,6 +103,7 @@ class TestSummaryGenerationFlow:
     async def test_template_summary_updates_faster(self):
         """Test template summaries update with lower threshold (3 messages)"""
         from services.user_summary.summary_service import SummaryService
+        import os
         
         service = SummaryService()
         user_id = "test_template_user"
@@ -114,9 +118,20 @@ class TestSummaryGenerationFlow:
         
         service.data_manager.save_user_summary(user_id, template_summary)
         
-        # Only 3 messages - at TEMPLATE_MESSAGE_THRESHOLD
-        for _ in range(3):
-            service.increment_message_count(user_id)
+        # Create a mock history with 3 user messages (at TEMPLATE_MESSAGE_THRESHOLD)
+        mock_history = [
+            {"role": "user", "content": "msg1", "timestamp": "2025-01-01T00:00:00"},
+            {"role": "assistant", "content": "reply1", "timestamp": "2025-01-01T00:00:01"},
+            {"role": "user", "content": "msg2", "timestamp": "2025-01-01T00:00:02"},
+            {"role": "assistant", "content": "reply2", "timestamp": "2025-01-01T00:00:03"},
+            {"role": "user", "content": "msg3", "timestamp": "2025-01-01T00:00:04"},
+            {"role": "assistant", "content": "reply3", "timestamp": "2025-01-01T00:00:05"},
+        ]
+        
+        # Save mock history using data_manager's directory
+        history_path = os.path.join(service.data_manager.summaries_dir, f"{user_id}_history.json")
+        with open(history_path, 'w', encoding='utf-8') as f:
+            json.dump(mock_history, f, ensure_ascii=False)
         
         should_update = service.should_update_summary(user_id)
         assert should_update, "Template summary should update at TEMPLATE_MESSAGE_THRESHOLD (3)"

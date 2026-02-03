@@ -1,6 +1,7 @@
 import logging
 from discord.ext import commands
 from services.ai.gemini_service import GeminiService
+from services.ai.ollama_service import OllamaService
 from services.messeger.message_queue import MessageQueueManager
 from services.messeger.context_builder import ContextBuilder
 from services.relationship.relationship_service import RelationshipService
@@ -13,14 +14,22 @@ logger = logging.getLogger('discord_bot.LLMMessageService')
 class LLMMessageService(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.gemini_service = GeminiService()
         
-        self.summary_service = SummaryService(self.gemini_service)
-        self.relationship_service = RelationshipService(self.gemini_service)
+        # Initialize AI services
+        self.ollama_service = OllamaService()
+        self.gemini_service = GeminiService() if Config.USE_OLLAMA_BACKUP else None
+        
+        # Use Ollama as primary service for summaries/relationships
+        self.summary_service = SummaryService(self.ollama_service)
+        self.relationship_service = RelationshipService(self.ollama_service)
         self.queue_manager = MessageQueueManager()
         self.context_builder = ContextBuilder(bot, self.summary_service, self.relationship_service)
         self._processed_message_ids = set()  # Dùng set để lưu các message đã xử lý
-        logger.info("🤖 LLMMessageService initialized with modular services including RelationshipService")
+        
+        if self.gemini_service:
+            logger.info("🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)")
+        else:
+            logger.info("🤖 LLMMessageService initialized with Ollama only")
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -30,9 +39,9 @@ class LLMMessageService(commands.Cog):
         if message.id in self._processed_message_ids:
             return
         self._processed_message_ids.add(message.id)
-        # Nếu là lệnh command (! hoặc /), chỉ gọi process_commands và return ngay
+        # Nếu là lệnh command (! hoặc /), bỏ qua - discord.py tự động xử lý commands
         if message.content and (message.content.startswith('!') or message.content.startswith('/')):
-            await self.bot.process_commands(message)
+            # KHÔNG gọi process_commands() ở đây - discord.py đã tự động gọi rồi
             return
         # Nếu không phải lệnh, chỉ xử lý AI nếu should_process_message
         if not await self.queue_manager.message_processor.should_process_message(message):
@@ -70,8 +79,21 @@ class LLMMessageService(commands.Cog):
             user_summary = self.summary_service.get_user_summary(user_id)
             mentioned_users_info = self.context_builder.get_mentioned_users_info(content, message)
             enhanced_context = self.context_builder.build_enhanced_context(user_id, user_summary, mentioned_users_info, context)
+            
             async with message.channel.typing():
-                response = await self.gemini_service.generate_response(content, user_id, enhanced_context)
+                # Try Ollama first, fallback to Gemini if enabled
+                response = None
+                try:
+                    response = await self.ollama_service.generate_response(content, user_id, enhanced_context)
+                except Exception as ollama_error:
+                    logger.warning(f"⚠️ Ollama error: {ollama_error}")
+                    if self.gemini_service:
+                        logger.info("✨ Falling back to Gemini...")
+                        try:
+                            response = await self.gemini_service.generate_response(content, user_id, enhanced_context)
+                        except Exception as gemini_error:
+                            logger.error(f"❌ Gemini also failed: {gemini_error}")
+                
                 if response and len(response.strip()) > 0:
                     await self.send_response_in_parts(message, response, user_id)
                     response_sent = True
@@ -80,7 +102,7 @@ class LLMMessageService(commands.Cog):
                     self.summary_service.increment_message_count(user_id)
                     if self.summary_service.should_update_summary(user_id):
                         try:
-                            await self.summary_service.update_summary_smart(user_id, self.gemini_service)
+                            await self.summary_service.update_summary_smart(user_id, self.ollama_service)
                         except Exception as e:
                             logger.error(f"❌ Error updating summary for {user_id}: {e}")
                 else:

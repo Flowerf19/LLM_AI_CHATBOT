@@ -4,63 +4,42 @@
 {
   "description": "Prompt để tổng hợp và phân tích các mối quan hệ trong server Discord",
   "placeholders": {
-    "overview": "TỔNG NGƯỜI DÙNG: 9
-TỔNG MỐI QUAN HỆ: 0
-TỔNG TƯƠNG TÁC: 0
+    "overview": "TỔNG NGƯỜI DÙNG: 5
+TỔNG MỐI QUAN HỆ: 3
+TỔNG TƯƠNG TÁC: 4
 ",
-    "details": "- User ID: 726302130318868500: 0 mối quan hệ, 0 tương tác
-- User ID: test_user_12345: 0 mối quan hệ, 0 tương tác
-- User ID: test_user_67890: 0 mối quan hệ, 0 tương tác
-- User ID: test_user_real: 0 mối quan hệ, 0 tương tác
-- User ID: priority_user: 0 mối quan hệ, 0 tương tác
-- User ID: msg_author_123: 0 mối quan hệ, 0 tương tác
-- User ID: user_conv: 0 mối quan hệ, 0 tương tác
-- User ID: summary_user: 0 mối quan hệ, 0 tương tác
-- User ID: 638747875471261726: 0 mối quan hệ, 0 tương tác
+    "details": "- User ID: 111111111111111111: 0 mối quan hệ, 3 tương tác
+- User ID: 222222222222222222: 0 mối quan hệ, 3 tương tác
+- User ID: 333333333333333333: 0 mối quan hệ, 2 tương tác
+- User ID: 726302130318868500: 0 mối quan hệ, 0 tương tác
+- User ID: 1392176240156344440: 0 mối quan hệ, 0 tương tác
 
 DỮ LIỆU CHI TIẾT:
 
+=== User ID: 111111111111111111 ===
+Tên thật: Alice Johnson
+Số mối quan hệ: 0
+Tổng tương tác: 3
+Liên lạc thường xuyên: User ID: 222222222222222222 (1)
+
+=== User ID: 222222222222222222 ===
+Tên thật: Bob Smith
+Số mối quan hệ: 0
+Tổng tương tác: 3
+Liên lạc thường xuyên: User ID: 111111111111111111 (1)
+
+=== User ID: 333333333333333333 ===
+Tên thật: Charlie Brown
+Số mối quan hệ: 0
+Tổng tương tác: 2
+Liên lạc thường xuyên: User ID: 111111111111111111 (1), User ID: 222222222222222222 (1)
+
 === User ID: 726302130318868500 ===
-Tên thật: Hoà
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: test_user_12345 ===
 Tên thật: None
 Số mối quan hệ: 0
 Tổng tương tác: 0
 
-=== User ID: test_user_67890 ===
-Tên thật: None
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: test_user_real ===
-Tên thật: Nguyễn Văn A
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: priority_user ===
-Tên thật: Real Name
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: msg_author_123 ===
-Tên thật: None
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: user_conv ===
-Tên thật: None
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: summary_user ===
-Tên thật: None
-Số mối quan hệ: 0
-Tổng tương tác: 0
-
-=== User ID: 638747875471261726 ===
+=== User ID: 1392176240156344440 ===
 Tên thật: None
 Số mối quan hệ: 0
 Tổng tương tác: 0"

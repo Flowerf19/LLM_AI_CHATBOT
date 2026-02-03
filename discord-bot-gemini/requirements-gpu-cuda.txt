@@ -1,8 +1,0 @@
-# GPU Support - NVIDIA CUDA
-# Install with: pip install -r requirements-gpu-cuda.txt
-torch>=2.0.0
-torchvision>=0.15.0
-torchaudio>=2.0.0
-
-# Note: Requires CUDA toolkit installed on system
-# Download from: https://developer.nvidia.com/cuda-downloads

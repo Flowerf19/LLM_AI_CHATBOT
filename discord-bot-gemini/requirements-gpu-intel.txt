@@ -1,7 +1,0 @@
-# GPU Support - Intel
-# Install with: pip install -r requirements-gpu-intel.txt
-intel-extension-for-pytorch>=2.0.0
-oneccl-bind-pt>=2.0.0
-
-# Note: Requires Intel GPU drivers and oneAPI Base Toolkit
-# Download from: https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html

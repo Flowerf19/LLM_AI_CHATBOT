@@ -37,9 +37,15 @@ class Config:
     # =========================================================================
     # AI CONFIGURATION
     # =========================================================================
+    # Gemini (Primary)
     GEMINI_API_KEY: str | None = os.getenv('GEMINI_API_KEY')
     GEMINI_API_URL: str = os.getenv('GEMINI_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models')
     LLM_MODEL = os.getenv('LLM_MODEL', 'gemini-2.0-flash')
+    
+    # Ollama (Backup/Local)
+    OLLAMA_API_URL: str = os.getenv('OLLAMA_API_URL', 'http://localhost:11434')
+    OLLAMA_MODEL: str = os.getenv('OLLAMA_MODEL', 'qwen3:1.7b')
+    USE_OLLAMA_BACKUP: bool = os.getenv('USE_OLLAMA_BACKUP', '1') == '1'  # Use Ollama as backup
 
     # =========================================================================
     # TYPING SIMULATION
@@ -55,5 +61,5 @@ class Config:
         """Validate critical configuration"""
         if not cls.DISCORD_BOT_TOKEN:
             raise ValueError("Missing DISCORD_LLM_BOT_TOKEN in environment variables")
-        if not cls.GEMINI_API_KEY:
-            raise ValueError("Missing GEMINI_API_KEY in environment variables")
+        if not cls.GEMINI_API_KEY and not cls.USE_OLLAMA_BACKUP:
+            raise ValueError("Missing GEMINI_API_KEY and Ollama backup is disabled")

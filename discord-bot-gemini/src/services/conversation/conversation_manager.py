@@ -16,7 +16,7 @@ class ConversationManager:
         
         self.pending_messages: List[Dict] = []
         self.conversation_history = {}
-        self.max_history_length = 10
+        self.max_history_length = Config.MAX_HISTORY_LENGTH
     
     def set_conversation_lock(self, user_id: str):
         """Lock conversation for a specific user"""

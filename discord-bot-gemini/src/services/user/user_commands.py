@@ -33,160 +33,33 @@ class UserCommandsCog(commands.Cog):
         else:
             embed.add_field(name="Loại kênh", value="📩 DM", inline=True)
         
-        # User stats
+        # User stats - Simplified without summary service
         user_id = str(ctx.author.id)
-        history = llm_service.summary_service.get_user_history(user_id)
-        summary = llm_service.summary_service.get_user_summary(user_id)
         
-        embed.add_field(name="Lịch sử", value=f"{len(history)} tin nhắn", inline=True)
-        embed.add_field(name="Tóm tắt", value="✅ Có" if summary else "❌ Chưa có", inline=True)
+        embed.add_field(name="User ID", value=user_id, inline=True)
+        embed.add_field(name="Status", value="✅ Bot hoạt động", inline=True)
         
         await ctx.reply(embed=embed)
 
     @commands.command(name='relationships', aliases=['mq', 'relation'])
     async def relationships_command(self, ctx, target_user: Optional[str] = None):
-        """Xem mối quan hệ của người dùng"""
-        llm_service = self.bot.get_cog('LLMMessageService')
-        if not llm_service or not hasattr(llm_service, 'relationship_service'):
-            await ctx.reply("❌ Relationship service không khả dụng")
-            return
-        
-        # Xác định user để xem
-        if target_user:
-            # Admin hoặc user được quyền có thể xem của người khác
-            user_id = llm_service.relationship_service._resolve_user_identifier(target_user)
-            if not user_id:
-                await ctx.reply(f"❌ Không tìm thấy người dùng: {target_user}")
-                return
-        else:
-            user_id = str(ctx.author.id)
-        
-        user_display_name = llm_service.relationship_service.get_user_display_name(user_id)
-        relationships = llm_service.relationship_service.get_user_relationships(user_id)
-        interaction_stats = llm_service.relationship_service.get_interaction_stats(user_id)
-        
-        embed = discord.Embed(
-            title=f"🔗 Mối quan hệ của {user_display_name}",
-            color=discord.Color.blue()
-        )
-        
-        # Relationships
-        if relationships:
-            rel_text = ""
-            for rel in relationships[:10]:  # Top 10
-                rel_text += f"• **{rel['other_person']}**: {rel['relationship_type']}\n"
-            embed.add_field(name="Mối quan hệ", value=rel_text, inline=False)
-        
-        # Interaction stats
-        if interaction_stats.get('total_interactions', 0) > 0:
-            stats_text = f"Mentions gửi: {interaction_stats.get('mentions_sent', 0)}\n"
-            stats_text += f"Mentions nhận: {interaction_stats.get('mentions_received', 0)}\n"
-            stats_text += f"Tổng tương tác: {interaction_stats.get('total_interactions', 0)}"
-            embed.add_field(name="Thống kê tương tác", value=stats_text, inline=True)
-        
-        # Top contacts
-        if interaction_stats.get('top_contacts'):
-            contacts_text = ""
-            for contact in interaction_stats['top_contacts'][:5]:
-                contacts_text += f"• {contact['name']}: {contact['interaction_count']} lần\n"
-            embed.add_field(name="Liên lạc thường xuyên", value=contacts_text, inline=True)
-        
-        if not relationships and not interaction_stats.get('total_interactions', 0):
-            embed.description = "Chưa có thông tin mối quan hệ nào được ghi nhận."
-        
-        await ctx.reply(embed=embed)
+        """Xem mối quan hệ của người dùng - TÍNH NĂNG TẠM THỜI KHÔNG KHẢ DỤNG"""
+        await ctx.reply("❌ Tính năng relationship tracking tạm thời không khả dụng")
 
     @commands.command(name='conversation', aliases=['cv', 'convo'])
     async def conversation_command(self, ctx, user1: str, user2: Optional[str] = None, days: int = 7):
-        """Xem tóm tắt cuộc trò chuyện giữa hai người"""
-        llm_service = self.bot.get_cog('LLMMessageService')
-        if not llm_service or not hasattr(llm_service, 'relationship_service'):
-            await ctx.reply("❌ Relationship service không khả dụng")
-            return
-        
-        if not user2:
-            # Nếu chỉ có 1 user, xem cuộc trò chuyện với chính mình
-            user2 = str(ctx.author.id)
-        
-        try:
-            summary = llm_service.relationship_service.get_conversation_summary(user1, user2, days)
-            
-            embed = discord.Embed(
-                title=f"💬 Cuộc trò chuyện ({days} ngày qua)",
-                description=summary,
-                color=discord.Color.green()
-            )
-            
-            await ctx.reply(embed=embed)
-            
-        except Exception as e:
-            await ctx.reply(f"❌ Lỗi khi lấy cuộc trò chuyện: {str(e)}")
+        """Xem tóm tắt cuộc trò chuyện giữa hai người - TÍNH NĂNG TẠM THỜI KHÔNG KHẢ DỤNG"""
+        await ctx.reply("❌ Tính năng conversation tracking tạm thời không khả dụng")
 
     @commands.command(name='analysis', aliases=['analyze', 'phântích'])
     async def analysis_command(self, ctx, target_user: Optional[str] = None):
-        """Phân tích mối quan hệ bằng AI"""
-        llm_service = self.bot.get_cog('LLMMessageService')
-        if not llm_service or not hasattr(llm_service, 'relationship_service'):
-            await ctx.reply("❌ Relationship service không khả dụng")
-            return
-        
-        # Xác định user để phân tích
-        if target_user:
-            user_identifier = target_user
-        else:
-            user_identifier = str(ctx.author.id)
-        
-        try:
-            async with ctx.typing():
-                analysis = await llm_service.relationship_service.generate_relationship_analysis(user_identifier)
-            
-            # Split long analysis into multiple messages if needed
-            if len(analysis) > 2000:
-                parts = [analysis[i:i+2000] for i in range(0, len(analysis), 2000)]
-                for i, part in enumerate(parts):
-                    if i == 0:
-                        await ctx.reply(part)
-                    else:
-                        await ctx.send(part)
-            else:
-                await ctx.reply(analysis)
-                
-        except Exception as e:
-            await ctx.reply(f"❌ Lỗi khi tạo phân tích: {str(e)}")
+        """Phân tích mối quan hệ bằng AI - TÍNH NĂNG TẠM THỜI KHÔNG KHẢ DỤNG"""
+        await ctx.reply("❌ Tính năng relationship analysis tạm thời không khả dụng")
 
     @commands.command(name='search_relations', aliases=['sr', 'tìm'])
     async def search_relations_command(self, ctx, *, keyword: str):
-        """Tìm kiếm mối quan hệ theo từ khóa"""
-        llm_service = self.bot.get_cog('LLMMessageService')
-        if not llm_service or not hasattr(llm_service, 'relationship_service'):
-            await ctx.reply("❌ Relationship service không khả dụng")
-            return
-        
-        try:
-            results = llm_service.relationship_service.search_relationships_by_keyword(keyword)
-            
-            if not results:
-                await ctx.reply(f"❌ Không tìm thấy mối quan hệ nào với từ khóa: '{keyword}'")
-                return
-            
-            embed = discord.Embed(
-                title=f"🔍 Kết quả tìm kiếm: '{keyword}'",
-                color=discord.Color.orange()
-            )
-            
-            for i, result in enumerate(results[:5], 1):  # Top 5 results
-                embed.add_field(
-                    name=f"{i}. {result['person1']} ↔ {result['person2']}",
-                    value=f"**{result['relationship_type']}**\n"
-                          f"Context: {result['context'][:100]}...\n"
-                          f"Reported by: {result['reported_by']}",
-                    inline=False
-                )
-            
-            await ctx.reply(embed=embed)
-            
-        except Exception as e:
-            await ctx.reply(f"❌ Lỗi khi tìm kiếm: {str(e)}")
+        """Tìm kiếm mối quan hệ theo từ khóa - TÍNH NĂNG TẠM THỜI KHÔNG KHẢ DỤNG"""
+        await ctx.reply("❌ Tính năng search relationships tạm thời không khả dụng")
 
     @commands.command(name='mentions', aliases=['tag'])
     async def mentions_command(self, ctx, user1: str, user2: str):

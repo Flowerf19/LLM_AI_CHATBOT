@@ -6,8 +6,8 @@ logger = logging.getLogger('discord_bot.ContextBuilder')
 class ContextBuilder:
     def __init__(self, bot, summary_service, relationship_service):
         self.bot = bot
-        self.summary_service = summary_service
-        self.relationship_service = relationship_service
+        self.summary_service = summary_service  # Can be None now
+        self.relationship_service = relationship_service  # Can be None now
 
     def should_respond_to_message(self, message) -> bool:
         """Determine if bot should respond to message"""
@@ -33,23 +33,8 @@ class ContextBuilder:
         enhanced_context = ""
         if user_summary:
             enhanced_context += f"=== NGƯỜI ĐANG NÓI CHUYỆN (USER ID: {user_id}) ===\n{user_summary}\n\n"
-        try:
-            user_display_name = self.relationship_service.get_user_display_name(user_id)
-            user_relationships = self.relationship_service.get_user_relationships(user_id)
-            interaction_stats = self.relationship_service.get_interaction_stats(user_id)
-            if user_relationships or interaction_stats.get('total_interactions', 0) > 0:
-                enhanced_context += f"=== MỐI QUAN HỆ VÀ TƯƠNG TÁC CỦA {user_display_name} ===\n"
-                if user_relationships:
-                    enhanced_context += "Mối quan hệ:\n"
-                    for rel in user_relationships[:5]:
-                        enhanced_context += f"- {rel['other_person']}: {rel['relationship_type']}\n"
-                if interaction_stats.get('top_contacts'):
-                    enhanced_context += "\nNgười liên lạc thường xuyên:\n"
-                    for contact in interaction_stats['top_contacts'][:3]:
-                        enhanced_context += f"- {contact['name']}: {contact['interaction_count']} lần tương tác\n"
-                enhanced_context += "\n"
-        except Exception as e:
-            logger.error(f"Error getting relationship context: {e}")
+        
+        # Simplified without relationship service
         if mentioned_users_info:
             enhanced_context += f"=== THÔNG TIN VỀ NGƯỜI ĐƯỢC NHẮC ĐẾN ===\n{mentioned_users_info}\n\n"
         if context:
@@ -71,16 +56,19 @@ class ContextBuilder:
                 mention_name_map[str(m.id)] = display
         for mentioned_user_id in user_mentions:
             display_name = mention_name_map.get(mentioned_user_id)
-            if not display_name and hasattr(self, "relationship_service"):
+            if not display_name and self.relationship_service:
                 display_name = self.relationship_service.get_user_display_name(mentioned_user_id)
             if not display_name:
                 display_name = mentioned_user_id
             try:
-                mentioned_user_summary = self.summary_service.get_user_summary(mentioned_user_id)
-                if mentioned_user_summary:
-                    mentioned_info_parts.append(f"{display_name} (ID: {mentioned_user_id}):\n{mentioned_user_summary}")
+                if self.summary_service:
+                    mentioned_user_summary = self.summary_service.get_user_summary(mentioned_user_id)
+                    if mentioned_user_summary:
+                        mentioned_info_parts.append(f"{display_name} (ID: {mentioned_user_id}):\n{mentioned_user_summary}")
+                    else:
+                        mentioned_info_parts.append(f"{display_name} (ID: {mentioned_user_id}): Chưa có thông tin")
                 else:
-                    mentioned_info_parts.append(f"{display_name} (ID: {mentioned_user_id}): Chưa có thông tin")
+                    mentioned_info_parts.append(f"{display_name} (ID: {mentioned_user_id}): Thông tin không khả dụng")
             except Exception as e:
                 logger.error(f"Error getting info for mentioned user {mentioned_user_id}: {e}")
         return "\n\n".join(mentioned_info_parts) if mentioned_info_parts else "" 

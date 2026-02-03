@@ -4,8 +4,6 @@ from services.ai.gemini_service import GeminiService
 from services.ai.ollama_service import OllamaService
 from services.messeger.message_queue import MessageQueueManager
 from services.messeger.context_builder import ContextBuilder
-from services.relationship.relationship_service import RelationshipService
-from services.user_summary.summary_service import SummaryService
 from config.settings import Config
 import re
 
@@ -19,11 +17,9 @@ class LLMMessageService(commands.Cog):
         self.ollama_service = OllamaService()
         self.gemini_service = GeminiService() if Config.USE_OLLAMA_BACKUP else None
         
-        # Use Ollama as primary service for summaries/relationships
-        self.summary_service = SummaryService(self.ollama_service)
-        self.relationship_service = RelationshipService(self.ollama_service)
+        # Simplified without relationship service
         self.queue_manager = MessageQueueManager()
-        self.context_builder = ContextBuilder(bot, self.summary_service, self.relationship_service)
+        self.context_builder = ContextBuilder(bot, None, None)
         self._processed_message_ids = set()  # Dùng set để lưu các message đã xử lý
         
         if self.gemini_service:
@@ -57,7 +53,6 @@ class LLMMessageService(commands.Cog):
         if not content.strip():
             return
         user_id = str(message.author.id)
-        await self._process_relationship_data(message, content, user_id)
         is_spam, cooldown_remaining = self.queue_manager.is_spam(user_id)
         if is_spam:
             spam_msg = f"🚫 **Anti-Spam**: Bạn đang gửi tin nhắn quá nhanh! Vui lòng đợi {cooldown_remaining}s."
@@ -76,7 +71,7 @@ class LLMMessageService(commands.Cog):
         try:
             self.queue_manager.set_conversation_lock(user_id)
             context = self.queue_manager.get_conversation_context(user_id)
-            user_summary = self.summary_service.get_user_summary(user_id)
+            user_summary = ""  # No summary service for now
             mentioned_users_info = self.context_builder.get_mentioned_users_info(content, message)
             enhanced_context = self.context_builder.build_enhanced_context(user_id, user_summary, mentioned_users_info, context)
             
@@ -99,12 +94,6 @@ class LLMMessageService(commands.Cog):
                     response_sent = True
                     self.queue_manager.add_to_history(user_id, content, response)
                     self.queue_manager.save_to_persistent_history(user_id, content, response)
-                    self.summary_service.increment_message_count(user_id)
-                    if self.summary_service.should_update_summary(user_id):
-                        try:
-                            await self.summary_service.update_summary_smart(user_id, self.ollama_service)
-                        except Exception as e:
-                            logger.error(f"❌ Error updating summary for {user_id}: {e}")
                 else:
                     await message.reply("Xin lỗi, tôi không thể tạo phản hồi cho tin nhắn này.")
                     response_sent = True
@@ -216,72 +205,6 @@ class LLMMessageService(commands.Cog):
         
         # Ensure delay is within configured bounds
         return max(Config.MIN_TYPING_DELAY, min(Config.MAX_TYPING_DELAY, total_delay))
-
-    async def _process_relationship_data(self, message, content: str, user_id: str):
-        """Process relationship data from message"""
-        try:
-            # Get author info
-            author_username = message.author.display_name or message.author.name
-            message.author.global_name if hasattr(message.author, 'global_name') else None
-            
-            # Extract mentioned users
-            mentioned_user_ids = []
-            for mention in message.mentions:
-                mentioned_user_ids.append(str(mention.id))
-                # Update mentioned user's name info too
-                self.relationship_service.update_user_name(
-                    str(mention.id), 
-                    mention.display_name or mention.name,
-                    mention.display_name if mention.display_name != mention.name else None,
-                    mention.global_name if hasattr(mention, 'global_name') else None
-                )
-            
-            # Extract real names from message content if user mentions them
-            # Pattern để detect khi user nói về tên thật của ai đó
-            name_patterns = [
-                r'tên\s+(tôi|mình|em)\s+(?:là\s+)?(\w+)',  # "tên tôi là X"
-                r'(?:tôi|mình|em)\s+tên\s+(?:là\s+)?(\w+)',  # "tôi tên X"
-                r'(?:gọi|call)\s+(?:tôi|mình|em)\s+(?:là\s+)?(\w+)',  # "gọi tôi là X"
-                r'(\w+)\s+tên\s+(?:thật\s+)?(?:là\s+)?(\w+)',  # "A tên thật là B"
-            ]
-            
-            for pattern in name_patterns:
-                matches = re.finditer(pattern, content.lower())
-                for match in matches:
-                    if len(match.groups()) == 2:
-                        # Case: "A tên là B"
-                        person_ref, real_name = match.groups()
-                        if person_ref in ['tôi', 'mình', 'em']:
-                            # User talking about themselves
-                            self.relationship_service.update_user_name(
-                                user_id, 
-                                author_username, 
-                                author_username,
-                                real_name.title()
-                            )
-                    elif len(match.groups()) == 1:
-                        # Case: "tôi tên X"
-                        real_name = match.groups()[0]
-                        self.relationship_service.update_user_name(
-                            user_id, 
-                            author_username, 
-                            author_username,
-                            real_name.title()
-                        )
-            
-            # Process the message through relationship service
-            self.relationship_service.process_message(
-                user_id,
-                author_username,
-                content,
-                mentioned_user_ids,
-                str(message.channel.id) if message.channel else None
-            )
-            
-            logger.debug(f"🔗 Processed relationship data for {author_username} (ID: {user_id})")
-            
-        except Exception as e:
-            logger.error(f"❌ Error processing relationship data: {e}")
 
 
 async def setup(bot):

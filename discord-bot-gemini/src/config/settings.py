@@ -56,6 +56,11 @@ class Config:
     MAX_TYPING_DELAY: float = float(os.getenv('MAX_TYPING_DELAY', '8.0'))
     PART_BREAK_DELAY: float = float(os.getenv('PART_BREAK_DELAY', '0.6'))
 
+    # =========================================================================
+    # CONVERSATION CONFIGURATION
+    # =========================================================================
+    MAX_HISTORY_LENGTH: int = int(os.getenv('MAX_HISTORY_LENGTH', '50'))
+
     @classmethod
     def validate(cls):
         """Validate critical configuration"""

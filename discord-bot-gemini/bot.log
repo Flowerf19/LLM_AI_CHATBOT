@@ -1518,3 +1518,21 @@ client_session: <aiohttp.client.ClientSession object at 0x7f187addfd70>
 2026-02-03 22:37:55 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
 2026-02-03 22:37:55 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
 2026-02-03 22:37:55 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-03 23:07:37 - INFO - discord.gateway - Shard ID None has successfully RESUMED session d2c165b2177728a15b277a46424914b1.
+2026-02-03 23:20:09 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-03 23:20:29 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-03 23:20:50 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2026-02-03 23:20:50 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2026-02-03 23:20:50 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 00:39:34 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 00:39:54 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 00:40:19 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2026-02-04 00:40:19 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2026-02-04 00:40:19 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 00:40:22 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 00:40:38 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 00:40:59 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2026-02-04 00:40:59 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2026-02-04 00:40:59 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 00:58:06 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fbafac0bf50>

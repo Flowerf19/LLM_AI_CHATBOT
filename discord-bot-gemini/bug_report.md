@@ -11,13 +11,14 @@
 
 **Issue:** Commands (!ping, !status, !relationships) phản hồi 2 lần
 
-**Root Cause:** 
+**Root Cause:**
 
 - File: `src/services/messeger/llm_message_service.py:44`
 - Gọi `await self.bot.process_commands(message)` thủ công trong khi discord.py đã tự động xử lý commands
 
 **Fix:**
 ```python
+
 # ❌ BEFORE
 await self.bot.process_commands(message)  # Gây duplicate
 return

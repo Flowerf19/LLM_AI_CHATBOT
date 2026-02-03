@@ -1462,3 +1462,59 @@ client_session: <aiohttp.client.ClientSession object at 0x7fc8750f1f40>
 2026-02-03 22:24:03 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
 2026-02-03 22:24:03 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
 2026-02-03 22:24:03 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-03 22:32:38 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fe3ea70e900>
+2026-02-03 22:32:40 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-03 22:32:40 - INFO - discord.client - logging in using static token
+2026-02-03 22:32:41 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2026-02-03 22:32:41 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-03 22:32:41 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-03 22:32:41 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-03 22:32:41 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-03 22:32:41 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3:4b-instruct
+2026-02-03 22:32:41 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-03 22:32:41 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-03 22:32:41 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 3 relationships
+2026-02-03 22:32:41 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-03 22:32:41 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-03 22:32:41 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2026-02-03 22:32:43 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 894f87d84baea37aa4b3c8a253c6a233).
+2026-02-03 22:32:45 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-03 22:32:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-03 22:33:27 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-03 22:34:06 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2026-02-03 22:34:06 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2026-02-03 22:34:06 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-03 22:37:18 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f187addfd70>
+2026-02-03 22:37:20 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-03 22:37:20 - INFO - discord.client - logging in using static token
+2026-02-03 22:37:21 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.channel.server_relationships
+2026-02-03 22:37:21 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-03 22:37:21 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-03 22:37:21 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-03 22:37:21 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-03 22:37:21 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3:4b-instruct
+2026-02-03 22:37:21 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-03 22:37:21 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-03 22:37:21 - INFO - services.relationship.relationship_service - 🔗 RelationshipService initialized with 3 relationships
+2026-02-03 22:37:21 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-03 22:37:21 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-03 22:37:21 - INFO - DiscordBot - ✨ Successfully loaded 6 services
+2026-02-03 22:37:22 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: d2c165b2177728a15b277a46424914b1).
+2026-02-03 22:37:24 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-03 22:37:24 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-03 22:37:40 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-03 22:37:55 - INFO - services.user_summary.summary_data - Summary saved for user 726302130318868500
+2026-02-03 22:37:55 - INFO - services.user_summary.summary_service - Summary updated for 726302130318868500
+2026-02-03 22:37:55 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500

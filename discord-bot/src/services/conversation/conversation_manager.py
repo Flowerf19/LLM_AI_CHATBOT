@@ -2,6 +2,7 @@ import logging
 from datetime import datetime
 from typing import List, Dict, Set
 import json
+from pathlib import Path
 from src.config.settings import Config
 
 logger = logging.getLogger('discord_bot.ConversationManager')
@@ -95,7 +96,6 @@ class ConversationManager:
             user_profile_dir.mkdir(parents=True, exist_ok=True)
             history_file = user_profile_dir / "history.json"
             
-            history_dir.mkdir(parents=True, exist_ok=True)
             timestamp = datetime.utcnow().isoformat()
             
             # Load existing history

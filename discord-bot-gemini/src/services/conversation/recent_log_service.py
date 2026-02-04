@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from typing import List, Tuple
+from pathlib import Path
 
 from src.models.v2.recent_log import RecentLog, Activity
 from src.data.data_manager import data_manager
@@ -7,7 +8,9 @@ from src.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
-RECENT_LOG_PATH = "data/recent_log.json"
+# Use absolute path relative to project root
+PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
+RECENT_LOG_PATH = str(PROJECT_ROOT / "data" / "recent_log.json")
 BATCH_SIZE_TRIGGER = 10
 TIME_FLUSH_MINUTES = 30
 

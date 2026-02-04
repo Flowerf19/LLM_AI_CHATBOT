@@ -72,7 +72,7 @@ class OllamaService:
         try:
             self.logger.debug(f"Sending request to Ollama API with prompt: {full_prompt[:100]}...")
             
-            async with session.post(api_endpoint, json=payload, timeout=aiohttp.ClientTimeout(total=60)) as response:
+            async with session.post(api_endpoint, json=payload, timeout=aiohttp.ClientTimeout(total=120)) as response:
                 if response.status != 200:
                     error_text = await response.text()
                     self.logger.error(f"Ollama API error ({response.status}): {error_text}")

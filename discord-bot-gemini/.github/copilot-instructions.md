@@ -1,46 +1,54 @@
 ﻿# Discord LLM Chatbot - AI Coding Guidelines
 
-## Architecture Overview
-Modular Discord bot with AI-powered conversations (Gemini/DeepSeek). Uses **Repository Pattern** for data access and **Single Responsibility Principle** throughout.
+## Project Context
+V2.1 event-driven Discord bot optimized for small communities (~30 users). Uses real-time batch processing with Gemini/Ollama LLMs for context-aware conversations. NO scheduled jobs - fully reactive architecture.
 
-### Design Patterns Applied
-- **Repository Pattern**: `SummaryDataManager`, `RelationshipDataManager` handle JSON I/O
-- **Service Layer**: Business logic separated from data access
-- **Command Pattern**: `QueueCommands`, `TypingCommands` as separate Cog modules
-- **Parser Pattern**: `SummaryParser` for text transformation (no I/O)
+## Architecture: V2.1 Batch Processing System
 
-### Message Flow
+### Core Philosophy
+**Real-time event-driven architecture** - triggers on activity, not schedules. Optimized for "dead server" scenarios (no wasted polling/cron jobs).
+
+### Message Flow (V2.1)
 ```
-Discord Gateway
+Discord Message
     ↓
-bot.py (entry point, auto-discovers Cogs)
-    ↓
-LLMMessageService (deduplication)
-    ↓
-MessageProcessor (anti-spam check)
-    ↓
-ConversationManager (per-user lock)
-    ↓
-ContextBuilder (assembles context)
-    ├── SummaryService → SummaryDataManager (JSON)
-    ├── RelationshipService → RelationshipDataManager (JSON)
-    └── HistoryService (conversation history)
-    ↓
-GeminiService / DeepSeekService (AI generation)
-    ↓
-Typing simulation → Discord response
+MessageProcessor.process_message()
+    ├─→ Lazy Sync: Apply pending updates for returning user
+    ├─→ RecentLog: Append to sliding window (max 100)
+    ├─→ Hybrid Trigger: Check if 10 msgs OR 30 min timeout
+    │   └─→ YES: BatchProcessor.process_batch() [background task]
+    │       ├─→ Get batch + 5 context messages (Context Overlap)
+    │       ├─→ Send to LLM for analysis
+    │       ├─→ Extract critical events
+    │       └─→ Update UserSummary + create PendingUpdates for affected users
+    └─→ Reply to user (immediate, parallel to batch processing)
 ```
 
-**Key Directories:**
-- `src/bot.py`: Entry point, auto-discovers services via `rglob('*.py')` in `src/services/`
-- `src/services/`: Discord.py Cogs with `async def setup(bot)` for dynamic loading
-- `src/config/settings.py`: Centralized config using `pathlib.Path`
-- `src/data/prompts/`: JSON prompt templates (personality, summary, task instructions)
-- `src/data/user_summaries/`: User profile JSON files
-- `src/data/relationships/`: Relationship tracking JSON files
+**Key Components:**
+- **RecentLog** ([recent_log.py](src/models/v2/recent_log.py)): Single JSON file, sliding window of last 100 messages. No daily rotation.
+- **BatchProcessor** ([batch_processor.py](src/services/conversation/batch_processor.py)): Every 10 messages → LLM summarization. Uses Context Overlap (5 previous messages for continuity).
+- **PendingUpdateService** ([pending_update_service.py](src/services/conversation/pending_update_service.py)): Lazy Sync Queue - stores relationship updates for offline users.
+- **MessageProcessor** ([message_processor.py](src/services/conversation/message_processor.py)): Entry point orchestrating the V2.1 flow.
 
-## Service Pattern (CRITICAL)
-Every service file MUST have a module-level `setup()` function:
+### Data Models (Pydantic V2)
+All models in `src/models/v2/`:
+- `RecentLog`: Sliding window buffer with `BatchTracking` (batch size, timers)
+- `BatchSummary`: LLM output with critical events detection
+- `UserSummary`: Per-user profiles with `CriticalEventHistory`
+- `SyncQueue`: Pending updates for lazy synchronization
+
+### Thread Safety
+`JsonDataManager` ([data_manager.py](src/data/data_manager.py)) provides AsyncIO locks per file path:
+```python
+from src.data.data_manager import data_manager
+
+# All file I/O goes through data_manager for automatic locking
+await data_manager.save_model(file_path, pydantic_model)
+model = await data_manager.load_model(file_path, ModelClass, default_factory)
+```
+
+## Discord.py Service Pattern (CRITICAL)
+Every service MUST export `async def setup(bot)` for dynamic loading:
 ```python
 from discord.ext import commands
 
@@ -48,109 +56,133 @@ class MyService(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-async def setup(bot):  # Required for dynamic loading
+async def setup(bot):  # Required - bot.py auto-discovers via rglob
     await bot.add_cog(MyService(bot))
 ```
 
-**Inter-service communication:** `self.bot.get_cog('ServiceName')` with None fallback:
+**Inter-service communication:**
 ```python
 admin_service = self.bot.get_cog('AdminChannelsService')
-is_bot_channel = admin_service.is_bot_channel(guild_id, channel_id) if admin_service else True
-```
-
-## Repository Pattern (Data Access)
-All JSON I/O goes through data manager classes:
-```python
-# SummaryDataManager - user summaries
-data_manager = SummaryDataManager()
-summary = data_manager.get_user_summary(user_id)
-data_manager.save_user_summary(user_id, summary)
-
-# RelationshipDataManager - relationships & interactions
-data_manager = RelationshipDataManager(data_dir)
-relationships = data_manager.load_relationships()
-data_manager.save_relationships(relationships)
-```
-
-**Parser classes are pure transformations (no I/O):**
-```python
-# SummaryParser - text parsing only
-parser = SummaryParser()
-cleaned = parser.clean_text(raw_text)
-fields = parser.parse_to_dict(cleaned)
-json_str = parser.format_to_json(fields)
+if admin_service:
+    admin_service.is_bot_channel(guild_id, channel_id)
 ```
 
 ## Path Resolution
-Use `Config` paths from `settings.py` (never hardcode):
+Use `Config` from [settings.py](src/config/settings.py) (never hardcode):
 ```python
-from config.settings import Config
-filepath = Config.PROMPTS_DIR / "personality.json"  # src/data/prompts/
-history_file = Config.USER_SUMMARIES_DIR / f"{user_id}_history.json"
+from src.config.settings import Config
+
+prompt_path = Config.PROMPTS_DIR / "batch_summary_prompt.json"
+
+# V2.1: User data now centralized in user_profiles
+user_profile_dir = Path("data/user_profiles") / user_id
+user_summary = user_profile_dir / "summary.json"
+user_history = user_profile_dir / "history.json"
 ```
+
+**Important:** All imports use `src.` prefix. Bot root is `discord-bot-gemini/`.
 
 ## Prompt Management
-All prompts stored as JSON in `src/data/prompts/`:
-- `personality.json` - Bot character/personality
+JSON prompts in `src/data/prompts/`:
+- `batch_summary_prompt.json` - V2.1 batch analysis with context overlap format
+- `personality.json` - Bot character (supports Vietnamese responses)
 - `conversation_prompt.json` - Conversation guidelines
-- `summary_prompt.json` - User summary generation
-- `summary_format.json` - Summary JSON schema
-- `task_instruction.json` - Task instructions for AI
-- `server_relationships_prompt.json` - Relationship analysis
 
-**Loading prompts (must raise FileNotFoundError if missing):**
+Load with validation:
 ```python
-prompt_path = Config.PROMPTS_DIR / 'summary_prompt.json'
 if not prompt_path.exists():
     raise FileNotFoundError(f"Prompt not found: {prompt_path}")
-with open(prompt_path, 'r', encoding='utf-8') as f:
-    prompt_content = f.read()
 ```
 
-## Concurrency Patterns
-- **Per-user locking** (not global): `ConversationManager.active_users: Set[str]` allows concurrent users
-- **Message deduplication:** `_processed_message_ids = set()` prevents reprocessing
-- **Anti-spam:** 5 messages/minute limit with 30s cooldown
+## Testing (pytest + asyncio)
+[pytest.ini](pytest.ini) configured for async tests:
+```bash
+# Run V2.1 unit tests
+pytest tests/test_v2_1_unit.py -v
 
-## Context Building
-`ContextBuilder.build_enhanced_context()` assembles: user summary → relationships → mentioned users → conversation history. Prompts use Vietnamese section headers (`=== NGƯỜI ĐANG NÓI CHUYỆN ===`).
+# All tests auto-cleanup with fixtures
+# Tests use test_data/ directory (auto-cleaned)
+```
 
-## Data Storage
-JSON files in `src/data/`. Naming: `{user_id}_history.json`, `{user_id}_summary.json`
+Test structure:
+- `@pytest.fixture(autouse=True)` for data cleanup
+- Override service file paths to `test_data/` in fixtures
+- Mark async tests with `@pytest.mark.asyncio`
 
-## Environment Variables
-Required: `DISCORD_LLM_BOT_TOKEN`, `GEMINI_API_KEY`
-Optional: `DEEPSEEK_API_KEY`, `LLM_MODEL`, `ENABLE_TYPING_SIMULATION`, `TYPING_SPEED_WPM`
-
-## Development & Testing
-```powershell
-python -m venv venv; venv\Scripts\activate
+## Development Workflow
+```bash
+# Setup
+conda activate /path/to/.conda
 pip install -r requirements.txt
-# Create .env, then: python src/bot.py
 
-# Run tests
-python -m pytest src/tests -v
+# Required .env variables
+DISCORD_LLM_BOT_TOKEN=...
+GEMINI_API_KEY=...
+OLLAMA_API_URL=http://localhost:11434  # Optional fallback
+
+# Run bot
+python src/bot.py
+
+# Expected startup logs
+✅ Loaded service: services.conversation.message_processor
+✅ Synced X slash commands
+🚀 V2.1 Features: Lazy Sync ✅ | Context Overlap ✅ | Hybrid Trigger ✅
 ```
 
-### Test Files
-- `test_summary_data.py` - SummaryDataManager repository tests
-- `test_summary_parser.py` - SummaryParser transformation tests
-- `test_relationship_data.py` - RelationshipDataManager repository tests
-- `test_queue_commands.py` - QueueCommands Cog tests
-- `test_typing_commands.py` - TypingCommands Cog tests
-- `test_prompts.py` - Prompt file validation tests
+## V2.1 Critical Patterns
 
-GPU options: `requirements-gpu-cuda.txt`, `requirements-gpu-rocm.txt`, `requirements-gpu-intel.txt`
+### 1. Context Overlap (Batch Processing)
+Retrieve 5 previous messages before current batch for LLM context:
+```python
+active_batch, context_msgs = await recent_log_service.get_batch_for_processing()
+# context_msgs have is_context_only=True flag
+```
+
+### 2. Hybrid Trigger (10 msgs OR 30 min)
+```python
+# In RecentLogService.add_activity()
+batch = log.batch_tracking
+if batch.current_batch_size >= 10:  # Batch Full
+    return True
+elif batch.first_msg_in_batch_at and (now - batch.first_msg_in_batch_at) > 30min:  # Time Flush
+    return True
+```
+
+### 3. Lazy Sync Queue
+When User A's event affects offline User B:
+```python
+await pending_update_service.add_pending_update(
+    target_user_id="user_B",
+    update_type="relationship_sync",
+    data={"relationship": "became_friends"}
+)
+
+# When User B returns and sends message
+if await pending_update_service.has_pending_updates(user_id):
+    updates = await pending_update_service.get_pending_updates(user_id)
+    # Apply updates to UserSummary
+    await pending_update_service.clear_pending_updates(user_id)
+```
+
+### 4. Background Task Pattern
+Don't block user replies:
+```python
+if should_trigger_batch:
+    asyncio.create_task(self._run_batch_processing(server_id))  # Fire and forget
+await self._handle_bot_response(message)  # Reply immediately
+```
 
 ## Key Conventions
-- **Logging:** `logger = logging.getLogger('discord_bot.ServiceName')` with emoji prefixes (✅❌⚠️🔒)
-- **Commands:** `!` prefix, implemented as `@commands.command()` in Cogs
-- **Bot mentions:** Check `self.bot.user.mentioned_in(message)`, clean with `<@{bot_id}>` removal
-- **Channel filtering:** `AdminChannelsService.is_bot_channel()` for response gating
-- **All I/O is async:** Use `await` for file/network operations
-- **No hardcoded prompts:** All prompts loaded from JSON files
+- **Logging:** Use `from src.utils.helpers import get_logger` with emoji prefixes (✅❌⚠️⚡🔒)
+- **Async everywhere:** All file/network I/O requires `await`
+- **No hardcoded paths:** Always use `Config.*_DIR` constants
+- **Pydantic validation:** Parse all JSON through Pydantic models (v2 syntax: `model_validate_json()`, `model_dump_json()`)
+- **Documentation:** Vietnamese comments accepted in code (multilingual team)
 
-## Scripts
-- `scripts/clean_pycache.py`: Remove cache
-- `scripts/validate_jsons.py`: Validate data files
-- `scripts/setup.py`: Environment setup
+## Architecture Decisions (Read docs/ for details)
+- **Why no daily archives?** Small server - sliding window sufficient. Critical info extracted by LLM and stored in UserSummary.
+- **Why event-driven?** Dead server friendly - no wasted CPU on scheduled tasks when inactive.
+- **Why Lazy Sync?** Per-user optimization - only load/update affected users, not all 30 users per batch.
+- **Why Context Overlap?** Ensures LLM understands conversation continuity across batch boundaries.
+
+See [V2_DESIGN.md](docs/V2_DESIGN.md), [V2.1_IMPLEMENTATION.md](docs/V2.1_IMPLEMENTATION.md) for full architecture rationale.

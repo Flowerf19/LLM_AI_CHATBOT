@@ -5,6 +5,7 @@ V2.1: Tích hợp Context Overlap để đảm bảo tính liên tục giữa c�
 import json
 from datetime import datetime
 from typing import List
+from pathlib import Path
 
 from src.utils.helpers import get_logger
 from src.data.data_manager import data_manager
@@ -20,7 +21,9 @@ from src.models.v2.user_summary import UserSummary, CriticalEventHistory
 
 logger = get_logger(__name__)
 
-USER_PROFILE_DIR = "data/user_profiles"
+# Use absolute path relative to project root
+PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
+USER_PROFILE_DIR = str(PROJECT_ROOT / "data" / "user_profiles")
 PROMPT_PATH = Config.PROMPTS_DIR / "batch_summary_prompt.json"
 
 
@@ -82,6 +85,10 @@ class BatchProcessor:
             clean_json = self._extract_json(raw_response)
             parsed_data = json.loads(clean_json)
             
+            # Debug: Log AI response
+            logger.debug(f"🤖 AI Response: {parsed_data.get('summary', 'N/A')}")
+            logger.debug(f"🔍 Detected Events: {len(parsed_data.get('critical_events', []))}")
+            
             # Validate bằng Pydantic
             batch_summary = BatchSummary(
                 batch_id=f"batch_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -98,6 +105,9 @@ class BatchProcessor:
             )
             
             logger.info(f"✅ AI Analysis complete. Critical Events: {len(batch_summary.critical_events)}")
+            if batch_summary.critical_events:
+                for evt in batch_summary.critical_events:
+                    logger.info(f"  📌 {evt.event_type}: {evt.summary} (confidence: {evt.confidence})")
 
             # 4. Xử lý Critical Events với Lazy Sync (V2.1)
             if batch_summary.has_critical_events:

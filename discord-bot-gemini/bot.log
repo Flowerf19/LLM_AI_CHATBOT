@@ -2456,3 +2456,47 @@ client_session: <aiohttp.client.ClientSession object at 0x7fc0b6d4d430>
 2026-02-04 17:46:04 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
 2026-02-04 17:46:58 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
 2026-02-04 17:46:58 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 17:53:54 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:53:54 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:53:54 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:53:54 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:53:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:53:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:53:54 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:53:54 - INFO - discord.client - logging in using static token
+2026-02-04 17:53:55 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:53:55 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:53:55 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:53:55 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:53:55 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:53:55 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:53:55 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:53:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:53:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:53:55 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:53:55 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:53:55 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:53:55 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:53:55 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:53:56 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 01ba0116f4fca4c77970caeb6d98896a).
+2026-02-04 17:53:58 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:54:56 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:55:45 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:55:45 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 17:56:49 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:57:18 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:57:18 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 17:57:39 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:57:39 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (10)
+2026-02-04 17:57:39 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 17:57:39 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 17:57:39 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 10 messages + 5 context
+2026-02-04 17:57:51 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 17:57:51 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 17:58:59 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:58:59 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500

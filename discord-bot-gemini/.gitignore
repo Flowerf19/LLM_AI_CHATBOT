@@ -4,9 +4,17 @@ __pycache__/
 .DS_Store
 .env
 bot.log
+
+# V2.1 Data directories
+data/user_profiles/
+data/recent_log.json
+data/system/pending_updates.json
+
+# Old data structure (deprecated)
 src/data/user_summaries/
 src/data/relationships/
 src/data/*_history.json
+
 .vscode/
 /.venv
 env/
@@ -19,3 +27,7 @@ dist/
 build/
 pytest_cache/
 .pytest_cache/
+
+# Test data
+test_data/
+/tmp/

@@ -1,5 +1,5 @@
 {
-  "instruction": "You are analyzing a batch of Discord messages to detect important events and summarize conversations. Focus on:\n1. Relationship changes (new friendships, conflicts, collaborations)\n2. Important life events (job changes, projects, achievements)\n3. Community events (server-wide activities, announcements)\n\nProvide your analysis in JSON format.",
+  "instruction": "You are analyzing Discord messages to detect ANY noteworthy information about users. Be LIBERAL in detection - even small personal details matter. Focus on:\n1. Personal information (name, age, location, occupation, interests, hobbies)\n2. Relationships (interactions, mentions, collaborations, friendships)\n3. Life events (projects, achievements, activities, plans)\n4. Emotional states or significant conversations\n\nIMPORTANT: Detect even casual mentions of personal info. Examples:\n- 'T tên Hòa' → fact_learned (name)\n- 'có nhiều người yêu server' → community_event\n- 'đang làm project X' → life_event\n- First time chatting with someone → relationship_change\n\nProvide your analysis in JSON format.",
   
   "format_example": {
     "summary": "Brief summary of the conversation in this batch",
@@ -8,62 +8,92 @@
       {
         "user_id": "123456789",
         "username": "ExampleUser",
-        "event_type": "relationship_change",
-        "summary": "User became friends with another user",
-        "confidence": 0.8,
-        "affected_users": ["987654321"],
+        "event_type": "fact_learned",
+        "summary": "User revealed their name is X",
+        "confidence": 0.9,
+        "affected_users": [],
         "timestamp": "2026-02-04T10:30:00"
       }
     ]
   },
   
   "event_types": {
-    "relationship_change": "New friendship, partnership, or conflict between users",
-    "life_event": "Personal milestone, job change, achievement, major life update",
-    "community_event": "Server-wide activity, announcement, or group event"
+    "fact_learned": "ANY personal information revealed (name, age, interests, location, etc.)",
+    "relationship_change": "New friendship, interaction, mention, collaboration, or conflict",
+    "life_event": "Projects, achievements, activities, plans, or personal updates",
+    "community_event": "Server observations, group dynamics, or community discussions"
   },
   
   "confidence_guide": {
-    "0.9-1.0": "Explicit statement (e.g., 'We're now friends!')",
-    "0.7-0.9": "Strong implication from context",
-    "0.5-0.7": "Moderate indication",
-    "below_0.5": "Weak signal, don't report"
+    "0.9-1.0": "Explicit statement (e.g., 'Tên tôi là Hòa', 'I'm 25')",
+    "0.7-0.9": "Clear implication (e.g., 'có nhiều người yêu server')",
+    "0.5-0.7": "Moderate indication (e.g., repeated interactions)",
+    "0.3-0.5": "Weak but worth tracking for context"
   },
   
   "examples": [
     {
-      "scenario": "Users collaborating on a project",
+      "scenario": "User reveals name",
       "messages": [
-        "UserA: Hey UserB, want to work on this project together?",
-        "UserB: Sure! Let's do it",
-        "UserA: Awesome, I'll start the repository"
+        "UserA: alo",
+        "Bot: Bạn là ai vậy?",
+        "UserA: T tên Hòa nhá"
       ],
       "output": {
-        "summary": "UserA and UserB agreed to collaborate on a project",
+        "summary": "User introduced themselves, revealed name is Hòa",
+        "has_critical_events": true,
+        "critical_events": [
+          {
+            "user_id": "userA_id",
+            "username": "UserA",
+            "event_type": "fact_learned",
+            "summary": "User's name is Hòa",
+            "confidence": 0.95,
+            "affected_users": []
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "Community observation",
+      "messages": [
+        "UserA: có nhiều người yêu nhất cái server này",
+        "Bot: Server này có gì mà đáng yêu thế nhỉ?"
+      ],
+      "output": {
+        "summary": "User expressed positive sentiment about server community",
+        "has_critical_events": true,
+        "critical_events": [
+          {
+            "user_id": "userA_id",
+            "username": "UserA",
+            "event_type": "community_event",
+            "summary": "User appreciates the server community",
+            "confidence": 0.8,
+            "affected_users": []
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "Project collaboration",
+      "messages": [
+        "UserA: Hey UserB, want to work on this project together?",
+        "UserB: Sure! Let's do it"
+      ],
+      "output": {
+        "summary": "UserA and UserB agreed to collaborate",
         "has_critical_events": true,
         "critical_events": [
           {
             "user_id": "userA_id",
             "username": "UserA",
             "event_type": "relationship_change",
-            "summary": "Started collaboration with UserB on a project",
-            "confidence": 0.85,
+            "summary": "Started collaboration with UserB",
+            "confidence": 0.9,
             "affected_users": ["userB_id"]
           }
         ]
-      }
-    },
-    {
-      "scenario": "Casual conversation",
-      "messages": [
-        "UserA: Good morning!",
-        "UserB: Morning! How are you?",
-        "UserA: Pretty good, just working on some code"
-      ],
-      "output": {
-        "summary": "Casual morning greetings and small talk about coding",
-        "has_critical_events": false,
-        "critical_events": []
       }
     }
   ]

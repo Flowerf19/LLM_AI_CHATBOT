@@ -90,8 +90,10 @@ class ConversationManager:
     def save_to_persistent_history(self, user_id: str, user_message: str, bot_response: str):
         """Save conversation to persistent file storage"""
         try:
-            history_dir = Config.USER_SUMMARIES_DIR
-            history_file = history_dir / f"{user_id}_history.json"
+            # V2.1: Store history alongside UserSummary in user_profiles
+            user_profile_dir = Path("data/user_profiles") / user_id
+            user_profile_dir.mkdir(parents=True, exist_ok=True)
+            history_file = user_profile_dir / "history.json"
             
             history_dir.mkdir(parents=True, exist_ok=True)
             timestamp = datetime.utcnow().isoformat()

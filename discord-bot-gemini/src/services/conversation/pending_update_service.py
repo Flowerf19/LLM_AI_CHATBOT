@@ -4,6 +4,7 @@ Xử lý việc đồng bộ relationship giữa các user khi có user offline
 """
 from typing import List
 from datetime import datetime
+from pathlib import Path
 
 from src.models.v2.sync import SyncQueue, PendingUpdate
 from src.data.data_manager import data_manager
@@ -11,7 +12,9 @@ from src.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
-PENDING_UPDATES_PATH = "data/system/pending_updates.json"
+# Use absolute path relative to project root
+PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
+PENDING_UPDATES_PATH = str(PROJECT_ROOT / "data" / "system" / "pending_updates.json")
 
 
 class PendingUpdateService:

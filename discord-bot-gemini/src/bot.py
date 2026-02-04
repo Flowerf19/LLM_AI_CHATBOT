@@ -1,16 +1,17 @@
 import os
 import sys
-import discord
-from discord.ext import commands
-from config.settings import Config
-from config.logging_config import setup_logging
 
-# Add project root to path
+# Add project root to path FIRST (before any src imports)
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
+import discord
+from discord.ext import commands
+from src.config.settings import Config
+from src.config.logging_config import setup_logging
+
 # V2.1: Import MessageProcessor for batch processing
-from services.conversation.message_processor import MessageProcessor
+from src.services.conversation.message_processor import MessageProcessor
 
 # Configure logging
 logger = setup_logging()

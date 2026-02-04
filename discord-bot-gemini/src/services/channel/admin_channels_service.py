@@ -6,7 +6,7 @@ from discord import app_commands
 import json
 import logging
 from typing import Optional
-from config.settings import Config
+from src.config.settings import Config
 
 logger = logging.getLogger('discord_bot.AdminChannelsService')
 

@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 from typing import List, Dict, Set
 import json
-from config.settings import Config
+from src.config.settings import Config
 
 logger = logging.getLogger('discord_bot.ConversationManager')
 

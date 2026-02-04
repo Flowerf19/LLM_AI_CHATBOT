@@ -17,7 +17,7 @@ class MessageProcessor:
     def __init__(self, bot):
         self.bot = bot
         self.anti_spam = AntiSpamService()
-        self.llm_service = LLMMessageService()
+        self.llm_service = LLMMessageService(bot)
 
     async def process_message(self, message: discord.Message):
         """
@@ -41,8 +41,9 @@ class MessageProcessor:
         username = message.author.name
         
         # Check spam
-        if self.anti_spam.is_spam(user_id, message.content):
-            logger.warning(f"Spam detected from {username}")
+        is_spam, cooldown = self.anti_spam.check_spam(user_id)
+        if is_spam:
+            logger.warning(f"Spam detected from {username}, cooldown: {cooldown}s")
             return
 
         # 2. V2.1 - Lazy Sync: Check pending updates for this user

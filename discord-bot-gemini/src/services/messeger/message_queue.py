@@ -1,7 +1,6 @@
 import logging
-from services.conversation.conversation_manager import ConversationManager
-from services.conversation.anti_spam_service import AntiSpamService
-from services.conversation.message_processor import MessageProcessor
+from src.services.conversation.conversation_manager import ConversationManager
+from src.services.conversation.anti_spam_service import AntiSpamService
 
 logger = logging.getLogger('discord_bot.MessageQueue')
 
@@ -9,7 +8,6 @@ class MessageQueueManager:
     def __init__(self):
         self.conversation_manager = ConversationManager()
         self.anti_spam = AntiSpamService()
-        self.message_processor = MessageProcessor()
 
     def is_spam(self, user_id: str):
         return self.anti_spam.check_spam(user_id)

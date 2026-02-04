@@ -1,10 +1,10 @@
 import logging
 from discord.ext import commands
-from services.ai.gemini_service import GeminiService
-from services.ai.ollama_service import OllamaService
-from services.messeger.message_queue import MessageQueueManager
-from services.messeger.context_builder import ContextBuilder
-from config.settings import Config
+from src.services.ai.gemini_service import GeminiService
+from src.services.ai.ollama_service import OllamaService
+from src.services.messeger.message_queue import MessageQueueManager
+from src.services.messeger.context_builder import ContextBuilder
+from src.config.settings import Config
 import re
 
 logger = logging.getLogger('discord_bot.LLMMessageService')
@@ -39,10 +39,9 @@ class LLMMessageService(commands.Cog):
         if message.content and (message.content.startswith('!') or message.content.startswith('/')):
             # KHÔNG gọi process_commands() ở đây - discord.py đã tự động gọi rồi
             return
-        # Nếu không phải lệnh, chỉ xử lý AI nếu should_process_message
-        if not await self.queue_manager.message_processor.should_process_message(message):
-            return
-        await self.queue_manager.message_processor.process_with_lock(message, self._handle_message)
+        # Nếu không phải lệnh, xử lý với AI
+        # Note: MessageProcessor đã xử lý ở bot.py, đây là fallback cho old flow
+        await self._handle_message(message)
 
     async def _handle_message(self, message):
         if message.content.startswith('!') or message.content.startswith('/'):
@@ -100,9 +99,32 @@ class LLMMessageService(commands.Cog):
         except Exception as e:
             logger.error(f"❌ Error processing AI response: {e}")
             if not response_sent:
-                await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
+                try:
+                    await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
+                except:
+                    pass
         finally:
+            # CRITICAL: Always release lock to prevent queue deadlock
             self.queue_manager.release_conversation_lock(user_id)
+    
+    async def generate_response(self, user_message: str, context: str = "", user_id: str = None) -> str:
+        """Generate response using AI service - interface for message processor"""
+        try:
+            # Try Ollama first
+            response = await self.ollama_service.generate_response(user_message, user_id, context)
+            return response
+        except Exception as ollama_error:
+            logger.warning(f"⚠️ Ollama error: {ollama_error}")
+            if self.gemini_service:
+                logger.info("✨ Falling back to Gemini...")
+                try:
+                    response = await self.gemini_service.generate_response(user_message, user_id, context)
+                    return response
+                except Exception as gemini_error:
+                    logger.error(f"❌ Gemini also failed: {gemini_error}")
+                    return "Xin lỗi, tôi không thể tạo phản hồi cho tin nhắn này."
+            else:
+                return "Xin lỗi, tôi không thể tạo phản hồi cho tin nhắn này."
 
     async def send_response_in_parts(self, message, response: str, user_id: str):
         """Send response with realistic typing simulation"""

@@ -2,7 +2,7 @@ import os
 import aiohttp
 import logging
 from typing import Optional, List
-from config.settings import Config
+from src.config.settings import Config
 
 class GeminiService:
     def __init__(self):
@@ -246,3 +246,7 @@ class GeminiService:
         
         self.logger.debug(f"Split response into {len(final_parts)} parts")
         return final_parts
+
+    async def generate(self, prompt: str) -> str:
+        """Generate response for batch processing (alias for generate_response)"""
+        return await self.generate_response(prompt)

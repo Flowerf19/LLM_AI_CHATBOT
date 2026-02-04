@@ -2,7 +2,7 @@ import aiohttp
 import asyncio
 import logging
 from typing import Optional, List
-from config.settings import Config
+from src.config.settings import Config
 
 class OllamaService:
     """
@@ -127,6 +127,10 @@ class OllamaService:
         
         return "\n\n".join(prompt_parts)
 
+    async def generate(self, prompt: str) -> str:
+        """Generate response for batch processing (alias for generate_response)"""
+        return await self.generate_response(prompt)
+    
     async def generate_summary(self, prompt: str) -> str:
         """Generate user summary using Ollama"""
         return await self.generate_response(prompt)

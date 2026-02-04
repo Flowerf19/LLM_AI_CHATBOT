@@ -6,7 +6,7 @@ Responsibility: Provide commands to test and view typing simulation settings.
 import logging
 import discord
 from discord.ext import commands
-from config.settings import Config
+from src.config.settings import Config
 
 logger = logging.getLogger('discord_bot.TypingCommands')
 

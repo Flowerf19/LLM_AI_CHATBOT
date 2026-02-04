@@ -1,98 +1,8 @@
 {
-  "server_id": "test_server_123",
-  "last_updated": "2026-02-04T13:40:20.690204",
+  "server_id": "1067690340359880724",
+  "last_updated": "2026-02-04T17:29:39.745656",
   "max_messages": 100,
   "messages": [
-    {
-      "timestamp": "2026-02-04T13:40:20.635277",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 50",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.636021",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 51",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.636746",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 52",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.637436",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 53",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.638104",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 54",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.638775",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 55",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.639449",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 56",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.640142",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 57",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
-    {
-      "timestamp": "2026-02-04T13:40:20.640822",
-      "user_id": "user_a_123",
-      "username": "TestUser",
-      "action": "message",
-      "content": "Message 58",
-      "channel_id": "test_channel",
-      "mentioned_users": [],
-      "is_context_only": false
-    },
     {
       "timestamp": "2026-02-04T13:40:20.641518",
       "user_id": "user_a_123",
@@ -1002,13 +912,103 @@
       "channel_id": "test_channel",
       "mentioned_users": [],
       "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T15:20:23.001794",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": ":)",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:24:06.778681",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": ":))",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:24:08.261339",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": "dậy",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:25:30.710901",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": "khen ít thôi",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:25:49.123823",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": "???",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:26:35.840139",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": ">",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:28:37.284520",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": ".",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:29:30.020457",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": ".",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
+    },
+    {
+      "timestamp": "2026-02-04T17:29:39.745668",
+      "user_id": "726302130318868500",
+      "username": "flowerf",
+      "action": "message",
+      "content": "alo",
+      "channel_id": "1395103735725821982",
+      "mentioned_users": [],
+      "is_context_only": false
     }
   ],
   "batch_tracking": {
-    "current_batch_size": 150,
-    "last_summary_at": "2026-02-04T13:40:20.611499",
-    "total_batches_processed": 5,
+    "current_batch_size": 3,
+    "last_summary_at": "2026-02-04T17:26:40.152860",
+    "total_batches_processed": 7,
     "last_critical_at": null,
-    "first_msg_in_batch_at": "2026-02-04T13:40:20.612068"
+    "first_msg_in_batch_at": "2026-02-04T17:28:37.284544"
   }
 }

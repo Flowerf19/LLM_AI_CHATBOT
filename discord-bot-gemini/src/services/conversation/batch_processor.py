@@ -12,7 +12,7 @@ from src.services.conversation.recent_log_service import recent_log_service
 from src.services.conversation.pending_update_service import pending_update_service
 from src.services.ai.ollama_service import OllamaService 
 from src.services.ai.gemini_service import GeminiService
-from src.config.settings import settings
+from src.config.settings import Config
 
 from src.models.v2.recent_log import Activity
 from src.models.v2.batch_summary import BatchSummary, CriticalEvent
@@ -21,7 +21,7 @@ from src.models.v2.user_summary import UserSummary, CriticalEventHistory
 logger = get_logger(__name__)
 
 USER_PROFILE_DIR = "data/user_profiles"
-PROMPT_PATH = "src/data/prompts/batch_summary_prompt.json"
+PROMPT_PATH = Config.PROMPTS_DIR / "batch_summary_prompt.json"
 
 
 class BatchProcessor:
@@ -35,14 +35,14 @@ class BatchProcessor:
     
     def __init__(self):
         # Chọn AI service dựa vào config
-        ai_provider = getattr(settings, 'ai_provider', 'ollama').lower()
+        ai_provider = getattr(Config, 'ai_provider', 'ollama').lower()
         self.ai_service = GeminiService() if ai_provider == 'gemini' else OllamaService()
         self._prompt_template = None
 
     async def _load_prompt(self):
         if not self._prompt_template:
             try:
-                async with data_manager._get_lock(PROMPT_PATH):
+                async with data_manager._get_lock(str(PROMPT_PATH)):
                     with open(PROMPT_PATH, "r", encoding="utf-8") as f:
                         self._prompt_template = json.load(f)
             except Exception as e:

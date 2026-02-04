@@ -1,8 +1,0 @@
-{
-  "description": "Prompt để tổng hợp và phân tích các mối quan hệ trong server Discord",
-  "placeholders": {
-    "overview": "[TỔNG QUAN SỐ LIỆU SẼ ĐƯỢC CHÈN Ở ĐÂY]",
-    "details": "[DỮ LIỆU CHI TIẾT SẼ ĐƯỢC CHÈN Ở ĐÂY]"
-  },
-  "instructions": "Hãy phân tích các mối quan hệ, xu hướng tương tác, nhóm người dùng nổi bật, và đưa ra nhận xét tổng quan về cộng đồng server dựa trên dữ liệu trên. Nếu có điểm đặc biệt hoặc bất thường, hãy nêu rõ."
-}

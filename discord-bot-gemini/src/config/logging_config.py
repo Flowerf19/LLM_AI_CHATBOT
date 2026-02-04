@@ -1,6 +1,6 @@
 import logging
 import sys
-from config.settings import Config
+from src.config.settings import Config
 
 def setup_logging():
     """

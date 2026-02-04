@@ -1536,3 +1536,923 @@ client_session: <aiohttp.client.ClientSession object at 0x7f187addfd70>
 2026-02-04 00:40:59 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
 2026-02-04 00:58:06 - ERROR - asyncio - Unclosed client session
 client_session: <aiohttp.client.ClientSession object at 0x7fbafac0bf50>
+2026-02-04 13:56:39 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 13:56:39 - ERROR - DiscordBot - ❌ Fatal error: LLMMessageService.__init__() missing 1 required positional argument: 'bot'
+2026-02-04 13:56:46 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 13:56:46 - ERROR - DiscordBot - ❌ Fatal error: LLMMessageService.__init__() missing 1 required positional argument: 'bot'
+2026-02-04 13:57:14 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 13:57:14 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 13:57:14 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 13:57:14 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 13:57:14 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 13:57:14 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 13:57:14 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 13:57:14 - INFO - discord.client - logging in using static token
+2026-02-04 13:57:16 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 13:57:16 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 13:57:16 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 13:57:16 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 13:57:16 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 13:57:16 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 13:57:16 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 13:57:16 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 13:57:16 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 13:57:16 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 13:57:16 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 13:57:16 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 13:57:16 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 13:57:16 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 13:57:18 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 62ad4d780e9a2e063d074a7a20d3716b).
+2026-02-04 14:06:36 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 14:06:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:06:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:06:36 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:06:36 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:06:36 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:06:36 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:06:36 - INFO - discord.client - logging in using static token
+2026-02-04 14:06:39 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 14:06:39 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 14:06:39 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 14:06:39 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 14:06:39 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 14:06:39 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:06:39 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:06:39 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:06:39 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:06:39 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:06:39 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 14:06:39 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 14:06:39 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 14:06:39 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 14:06:41 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 6c6c3ab6124265ffca378fdc1e080a32).
+2026-02-04 14:06:43 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 14:07:03 - ERROR - DiscordBot - ❌ Error processing message: 'AntiSpamService' object has no attribute 'is_spam'
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/bot.py", line 117, in on_message
+    await self.message_processor.process_message(message)
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/message_processor.py", line 44, in process_message
+    if self.anti_spam.is_spam(user_id, message.content):
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AntiSpamService' object has no attribute 'is_spam'
+2026-02-04 14:07:03 - ERROR - DiscordBot - ❌ Unhandled error in on_message
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/messeger/llm_message_service.py", line 43, in on_message
+    if not await self.queue_manager.message_processor.should_process_message(message):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MessageQueueManager' object has no attribute 'message_processor'
+2026-02-04 14:10:10 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 14:10:10 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:10:10 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:10:10 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:10:10 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:10:10 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:10:10 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:10:10 - INFO - discord.client - logging in using static token
+2026-02-04 14:10:11 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 14:10:11 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 14:10:11 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 14:10:11 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 14:10:11 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 14:10:11 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:10:11 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:10:11 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:10:11 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:10:11 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:10:11 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 14:10:11 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 14:10:11 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 14:10:11 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 14:10:12 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 34285f864d9c939a9c06aec1d14676d7).
+2026-02-04 14:10:14 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 14:10:35 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 14:11:20 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 14:11:20 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 14:11:21 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 14:12:00 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 14:12:00 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 14:17:09 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 14:17:36 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 14:18:12 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 14:18:12 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 14:21:29 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 1378359549379084432
+2026-02-04 14:22:07 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 1378359549379084432
+2026-02-04 14:22:07 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 1378359549379084432
+2026-02-04 14:23:56 - ERROR - discord.ext.commands.bot - Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "help" is not found
+2026-02-04 14:24:05 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 14:24:05 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (10)
+2026-02-04 14:24:05 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 14:24:05 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 14:24:05 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 10 messages + 0 context
+2026-02-04 14:24:05 - ERROR - src.services.conversation.batch_processor - Failed to load prompt template: [Errno 2] No such file or directory: 'src/data/prompts/batch_summary_prompt.json'
+2026-02-04 14:24:05 - ERROR - src.services.conversation.batch_processor - ❌ Batch AI Error: 'OllamaService' object has no attribute 'generate'
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/batch_processor.py", line 79, in process_batch
+    raw_response = await self.ai_service.generate(full_prompt)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OllamaService' object has no attribute 'generate'
+2026-02-04 14:24:05 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 14:24:05 - ERROR - DiscordBot - ❌ Error processing message: 'LLMMessageService' object has no attribute 'generate_response'
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/bot.py", line 117, in on_message
+    await self.message_processor.process_message(message)
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/message_processor.py", line 72, in process_message
+    await self._handle_bot_response(message)
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/message_processor.py", line 130, in _handle_bot_response
+    response_text = await self.llm_service.generate_response(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'LLMMessageService' object has no attribute 'generate_response'
+2026-02-04 14:24:41 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 14:24:41 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 14:37:48 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 418621389449199616
+2026-02-04 14:37:48 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (10)
+2026-02-04 14:37:48 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 14:37:48 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 14:37:48 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 10 messages + 5 context
+2026-02-04 14:37:48 - ERROR - src.services.conversation.batch_processor - ❌ Batch AI Error: 'OllamaService' object has no attribute 'generate'
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/batch_processor.py", line 79, in process_batch
+    raw_response = await self.ai_service.generate(full_prompt)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OllamaService' object has no attribute 'generate'
+2026-02-04 14:37:48 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 14:37:53 - INFO - discord_bot.ConversationManager - ⏳ User 418621389449199616 added to pending queue
+2026-02-04 14:38:25 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 418621389449199616
+2026-02-04 14:38:25 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 418621389449199616
+2026-02-04 14:40:24 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f71a345aae0>
+2026-02-04 14:40:27 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 14:40:27 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:40:27 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:40:27 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:40:27 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:40:27 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:40:27 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:40:27 - INFO - discord.client - logging in using static token
+2026-02-04 14:40:28 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 14:40:28 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 14:40:28 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 14:40:28 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 14:40:28 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 14:40:28 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:40:28 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:40:28 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:40:28 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:40:28 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:40:28 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 14:40:28 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 14:40:28 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 14:40:28 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 14:40:29 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 3cd358bcad8ef8a9dfb553b5ffb1fbff).
+2026-02-04 14:40:31 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 14:42:43 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 14:42:43 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:42:43 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:42:43 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:42:43 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:42:43 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:42:43 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:42:43 - INFO - discord.client - logging in using static token
+2026-02-04 14:42:44 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 14:42:44 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 14:42:44 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 14:42:44 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 14:42:44 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 14:42:44 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:42:44 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 14:42:44 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 14:42:44 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 14:42:44 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 14:42:44 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 14:42:44 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 14:42:44 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 14:42:44 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 14:42:45 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: de16e6bf9fa9a904d2159d4b78c8a642).
+2026-02-04 14:42:47 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 14:43:11 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 1378359549379084432
+2026-02-04 14:43:27 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 14:43:57 - INFO - discord_bot.ConversationManager - ⏳ User 1378359549379084432 added to pending queue
+2026-02-04 14:44:02 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 14:44:22 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 1378359549379084432
+2026-02-04 15:14:53 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Time Flush (0:37:00.660063)
+2026-02-04 15:14:53 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 15:14:53 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 15:14:53 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 7 messages + 5 context
+2026-02-04 15:14:54 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 15:15:15 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 15:15:15 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 15:15:32 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 15:17:47 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 15:17:47 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:17:47 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:17:47 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:17:47 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 15:17:47 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:17:47 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 15:17:47 - INFO - discord.client - logging in using static token
+2026-02-04 15:17:48 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 15:17:48 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 15:17:48 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 15:17:48 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 15:17:48 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 15:17:48 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:17:48 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:17:48 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 15:17:48 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:17:48 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 15:17:48 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 15:17:48 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 15:17:48 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 15:17:48 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 15:17:49 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: c11050c1f3890c0c5fdddabc7385e0f0).
+2026-02-04 15:17:51 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 15:20:22 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 15:20:23 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (151)
+2026-02-04 15:20:23 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 15:20:23 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 15:20:23 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 100 messages + 49 context
+2026-02-04 15:20:38 - ERROR - discord_bot.OllamaService - Ollama API timeout
+2026-02-04 15:20:38 - ERROR - src.services.conversation.batch_processor - ❌ Batch AI Error: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/discord-bot-gemini/src/services/conversation/batch_processor.py", line 83, in process_batch
+    parsed_data = json.loads(clean_json)
+  File "/home/flowerf/miniconda3/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/flowerf/miniconda3/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/miniconda3/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-02-04 15:20:38 - ERROR - discord_bot.OllamaService - Ollama API timeout
+2026-02-04 15:20:38 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 15:20:42 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 15:21:40 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fa614373390>
+2026-02-04 15:21:40 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fa614372c10>
+2026-02-04 15:22:01 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 15:22:01 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:22:01 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:22:01 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:22:01 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 15:22:01 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:22:01 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 15:22:01 - INFO - discord.client - logging in using static token
+2026-02-04 15:22:02 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 15:22:02 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 15:22:02 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 15:22:02 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 15:22:02 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 15:22:02 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:22:02 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 15:22:02 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 15:22:02 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 15:22:02 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 15:22:02 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 15:22:02 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 15:22:02 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 15:22:02 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 15:22:03 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a2cb8baf6b357e69078c4116ebe7e9fa).
+2026-02-04 15:22:05 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 15:40:36 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 15:41:22 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 16:12:35 - ERROR - discord.client - Attempting a reconnect in 0.71s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:12:36 - ERROR - discord.client - Attempting a reconnect in 3.40s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:12:39 - ERROR - discord.client - Attempting a reconnect in 7.42s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:12:47 - ERROR - discord.client - Attempting a reconnect in 14.63s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:13:02 - ERROR - discord.client - Attempting a reconnect in 30.50s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:13:32 - ERROR - discord.client - Attempting a reconnect in 57.05s
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1562, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1178, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1209, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/client.py", line 724, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/gateway.py", line 383, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/discord/http.py", line 566, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 1076, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flowerf/Projects/LLM_AI_CHATBOT/.conda/lib/python3.12/site-packages/aiohttp/connector.py", line 1568, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+2026-02-04 16:14:30 - INFO - discord.gateway - Shard ID None session has been invalidated.
+2026-02-04 16:14:36 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 5e18815413582bc5e8fd5d9b29556b55).
+2026-02-04 16:14:38 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:15:03 - INFO - discord.gateway - Shard ID None session has been invalidated.
+2026-02-04 17:15:10 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a939c31baf551acca4553d4d113075ed).
+2026-02-04 17:15:12 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:17:47 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Time Flush (2:02:16.146852)
+2026-02-04 17:17:47 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 17:17:47 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 17:17:47 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 3 messages + 5 context
+2026-02-04 17:17:48 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:18:05 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Time Flush (2:02:34.198862)
+2026-02-04 17:18:05 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 17:18:05 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 17:18:05 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 4 messages + 5 context
+2026-02-04 17:18:06 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 17:18:06 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 17:18:06 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:18:10 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 17:18:10 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 17:19:32 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:22:55 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7ff36d9b3920>
+2026-02-04 17:22:55 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7ff35d2d5ac0>
+2026-02-04 17:23:23 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:23:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:23:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:23:23 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:23:23 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:23:23 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:23:23 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:23:23 - INFO - discord.client - logging in using static token
+2026-02-04 17:23:24 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:23:24 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:23:24 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:23:24 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:23:24 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:23:24 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:23:24 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:23:24 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:23:24 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:23:24 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:23:24 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:23:24 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:23:24 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:23:24 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:23:26 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 5ea35a1b94b4c4f1f5050bff035b24f5).
+2026-02-04 17:23:28 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:24:06 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:24:08 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:24:47 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:25:33 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:25:49 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:26:35 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (5)
+2026-02-04 17:26:35 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 17:26:35 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 17:26:35 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 5 messages + 5 context
+2026-02-04 17:26:36 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:26:40 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 17:26:40 - INFO - src.services.conversation.batch_processor - 🔄 Batch tracker reset successfully
+2026-02-04 17:26:40 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 17:28:37 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:28:55 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f66e030b4d0>
+2026-02-04 17:28:55 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f66e022c690>
+2026-02-04 17:29:21 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:29:21 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:29:21 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:29:21 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:29:21 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:29:21 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:29:21 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:29:21 - INFO - discord.client - logging in using static token
+2026-02-04 17:29:22 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:29:22 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:29:22 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:29:22 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:29:22 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:29:22 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:29:22 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:29:22 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:29:22 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:29:22 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:29:22 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:29:22 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:29:22 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:29:22 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:29:23 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 93f04e6c5423179fb069e88191ce03bf).
+2026-02-04 17:29:25 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:30:56 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:30:56 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:30:56 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:30:56 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:30:56 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:30:56 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:30:56 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:30:56 - INFO - discord.client - logging in using static token
+2026-02-04 17:30:57 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:30:57 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:30:57 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:30:57 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:30:57 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:30:57 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:30:57 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:30:57 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:30:57 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:30:57 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:30:57 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:30:57 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:30:57 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:30:57 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:30:58 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 59dab7698c16ad5e7b58bed367fe84b4).
+2026-02-04 17:31:00 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:31:02 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:31:16 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:31:34 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:31:52 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fb5aaae7050>
+2026-02-04 17:31:54 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:31:54 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:31:54 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:31:54 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:31:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:31:54 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:31:54 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:31:54 - INFO - discord.client - logging in using static token
+2026-02-04 17:31:55 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:31:55 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:31:55 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:31:55 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:31:55 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:31:55 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:31:55 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:31:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:31:55 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:31:55 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:31:55 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:31:55 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:31:55 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:31:55 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:31:56 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: f3c379a429e36a5040a844955730aa00).
+2026-02-04 17:31:58 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:31:58 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:32:15 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:32:26 - INFO - src.services.conversation.recent_log_service - Trigger Batch: Size Limit (5)
+2026-02-04 17:32:26 - INFO - src.services.conversation.message_processor - ⚡ Batch Trigger Activated (10 msgs or 30 min timeout)
+2026-02-04 17:32:26 - INFO - src.services.conversation.message_processor - 🔄 Starting Batch Processing...
+2026-02-04 17:32:26 - INFO - src.services.conversation.batch_processor - 🔄 Processing batch: 5 messages + 5 context
+2026-02-04 17:32:27 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:32:31 - INFO - src.services.conversation.batch_processor - ✅ AI Analysis complete. Critical Events: 0
+2026-02-04 17:32:31 - INFO - src.services.conversation.message_processor - ✅ Batch Processing Completed
+2026-02-04 17:32:31 - INFO - src.services.conversation.message_processor - 🔄 Batch tracker reset
+2026-02-04 17:33:20 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fba69812d80>
+2026-02-04 17:33:20 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fba69812ab0>
+2026-02-04 17:33:22 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:33:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:33:22 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:33:22 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:33:22 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:33:22 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:33:22 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:33:22 - INFO - discord.client - logging in using static token
+2026-02-04 17:33:23 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:33:23 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:33:23 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:33:23 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:33:23 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:33:23 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:33:23 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:33:23 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:33:23 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:33:23 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:33:23 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:33:23 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:33:23 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:33:23 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:33:24 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: cf1265d7f5e2ecd8291dbaf5e16649b3).
+2026-02-04 17:33:26 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:33:27 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:33:45 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:33:49 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:34:11 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:36:21 - INFO - discord_bot.ConversationManager - ⏳ User 726302130318868500 added to pending queue
+2026-02-04 17:38:11 - ERROR - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fc0b6d4d430>
+2026-02-04 17:38:35 - WARNING - discord.client - PyNaCl is not installed, voice will NOT be supported
+2026-02-04 17:38:35 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:38:35 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:38:35 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:38:35 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:38:35 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:38:35 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:38:35 - INFO - discord.client - logging in using static token
+2026-02-04 17:38:36 - INFO - DiscordBot - 🚀 Initializing Discord Bot...
+2026-02-04 17:38:36 - INFO - DiscordBot - ✅ Loaded service: services.channel.admin_channels_service
+2026-02-04 17:38:36 - INFO - discord_bot.QueueCommands - 📋 QueueCommands initialized
+2026-02-04 17:38:36 - INFO - DiscordBot - ✅ Loaded service: services.commands.queue_commands
+2026-02-04 17:38:36 - INFO - discord_bot.TypingCommands - ⌨️ TypingCommands initialized
+2026-02-04 17:38:36 - INFO - DiscordBot - ✅ Loaded service: services.commands.typing_commands
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: personality.json
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:38:36 - INFO - discord_bot.OllamaService - 🦙 Ollama service initialized with model: qwen3-coder:latest
+2026-02-04 17:38:36 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: personality.json
+2026-02-04 17:38:36 - INFO - discord_bot.GeminiService - ✅ Loaded prompt: conversation_prompt.json
+2026-02-04 17:38:36 - INFO - discord_bot.LLMMessageService - 🤖 LLMMessageService initialized with Ollama (primary) + Gemini (backup)
+2026-02-04 17:38:36 - INFO - DiscordBot - ✅ Loaded service: services.messeger.llm_message_service
+2026-02-04 17:38:36 - INFO - DiscordBot - ✅ Loaded service: services.user.user_commands
+2026-02-04 17:38:36 - INFO - DiscordBot - ✨ Successfully loaded 5 services
+2026-02-04 17:38:36 - INFO - DiscordBot - ✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled
+2026-02-04 17:38:37 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 7092e4135d704905a6ae46016cacb086).
+2026-02-04 17:38:39 - INFO - DiscordBot - 🚀 Bot started as Bé Bảy#2174 in 1 guilds
+2026-02-04 17:38:51 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:39:29 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:39:29 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 17:39:30 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:40:01 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:40:01 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500
+2026-02-04 17:46:04 - INFO - discord_bot.ConversationManager - 🔒 Conversation locked for user 726302130318868500
+2026-02-04 17:46:58 - INFO - discord_bot.ConversationManager - 💾 Saved conversation history for user 726302130318868500
+2026-02-04 17:46:58 - INFO - discord_bot.ConversationManager - 🔓 Conversation unlocked for user 726302130318868500

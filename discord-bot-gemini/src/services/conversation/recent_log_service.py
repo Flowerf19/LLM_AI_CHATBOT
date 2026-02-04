@@ -1,9 +1,8 @@
-import os
 from datetime import datetime, timedelta
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
-from src.models.v2 import RecentLog, Activity, BatchTracking
-from src.services.data.data_manager import data_manager
+from src.models.v2.recent_log import RecentLog, Activity
+from src.data.data_manager import data_manager
 from src.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -56,8 +55,7 @@ class RecentLogService:
         # Append & Sliding Window (Giữ 100 tin mới nhất)
         log.messages.append(new_activity)
         if len(log.messages) > log.max_messages:
-            log.messages = log.messages[-log.max_messages:] # Cắt bớt tin cũ
-            log.current_count = len(log.messages)
+            log.messages = log.messages[-log.max_messages:]  # Cắt bớt tin cũ
 
         # --- Batch Logic ---
         batch = log.batch_tracking

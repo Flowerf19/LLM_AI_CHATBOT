@@ -2,6 +2,23 @@
 
 Discord bot powered by Google Gemini and DeepSeek AI with conversation management, relationship tracking, and user profiling.
 
+## 🆕 V2.1 Features (Current)
+
+**Branch:** `v2.0-relationship-refactor`
+
+### Key Enhancements:
+- ✨ **Lazy Sync Queue**: Automatic relationship synchronization for offline users
+- ✨ **Context Overlap**: AI gets previous messages context for better understanding
+- ✨ **Hybrid Trigger**: Batch processing by size (10 msgs) OR time (30 min)
+- 🔒 **Thread Safety**: AsyncIO locks for concurrent message handling
+
+### Documentation:
+- 📖 [V2.1 Design](discord-bot-gemini/docs/V2_DESIGN.md)
+- 🚀 [Implementation Summary](discord-bot-gemini/docs/V2.1_IMPLEMENTATION.md)
+- 📝 [Migration Guide](discord-bot-gemini/docs/V2.1_MIGRATION.md)
+
+---
+
 ## Message Flow
 
 ```mermaid

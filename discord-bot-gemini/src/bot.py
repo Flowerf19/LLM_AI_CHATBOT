@@ -9,7 +9,8 @@ from config.logging_config import setup_logging
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
-
+# V2.1: Import MessageProcessor for batch processing
+from services.conversation.message_processor import MessageProcessor
 
 # Configure logging
 logger = setup_logging()
@@ -35,6 +36,9 @@ class DiscordBot(commands.Bot):
             strip_after_prefix=True,
             max_messages=500
         )
+        
+        # V2.1: Initialize MessageProcessor for batch processing
+        self.message_processor = MessageProcessor(self)
         
     async def setup_hook(self):
         """
@@ -96,6 +100,25 @@ class DiscordBot(commands.Bot):
         else:
             logger.info(f"✨ Successfully loaded {count} services")
 
+        logger.info("✨ V2.1 Features: Lazy Sync, Context Overlap, Hybrid Trigger enabled")
+    
+    async def on_message(self, message: discord.Message):
+        """
+        V2.1: Main message handler with batch processing
+        Integrates Lazy Sync and Hybrid Trigger
+        """
+        # Ignore bot messages
+        if message.author.bot:
+            return
+        
+        try:
+            # V2.1: Process message through MessageProcessor
+            await self.message_processor.process_message(message)
+        except Exception as e:
+            logger.error(f"❌ Error processing message: {e}", exc_info=True)
+        
+        # Process commands (keep existing command handling)
+        await self.process_commands(message)
     async def on_ready(self):
         """Called when the bot is ready"""
         logger.info(f'🚀 Bot started as {self.user} in {len(self.guilds)} guilds')

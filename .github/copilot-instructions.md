@@ -25,10 +25,10 @@ MessageProcessor.process_message()
 ```
 
 **Key Components:**
-- **RecentLog** ([recent_log.py](src/models/v2/recent_log.py)): Single JSON file, sliding window of last 100 messages. No daily rotation.
-- **BatchProcessor** ([batch_processor.py](src/services/conversation/batch_processor.py)): Every 10 messages → LLM summarization. Uses Context Overlap (5 previous messages for continuity).
-- **PendingUpdateService** ([pending_update_service.py](src/services/conversation/pending_update_service.py)): Lazy Sync Queue - stores relationship updates for offline users.
-- **MessageProcessor** ([message_processor.py](src/services/conversation/message_processor.py)): Entry point orchestrating the V2.1 flow.
+- **RecentLog** ([recent_log.py](../discord-bot/src/models/v2/recent_log.py)): Single JSON file, sliding window of last 100 messages. No daily rotation.
+- **BatchProcessor** ([batch_processor.py](../discord-bot/src/services/conversation/batch_processor.py)): Every 10 messages → LLM summarization. Uses Context Overlap (5 previous messages for continuity).
+- **PendingUpdateService** ([pending_update_service.py](../discord-bot/src/services/conversation/pending_update_service.py)): Lazy Sync Queue - stores relationship updates for offline users.
+- **MessageProcessor** ([message_processor.py](../discord-bot/src/services/conversation/message_processor.py)): Entry point orchestrating the V2.1 flow.
 
 ### Data Models (Pydantic V2)
 All models in `src/models/v2/`:
@@ -38,7 +38,7 @@ All models in `src/models/v2/`:
 - `SyncQueue`: Pending updates for lazy synchronization
 
 ### Thread Safety
-`JsonDataManager` ([data_manager.py](src/data/data_manager.py)) provides AsyncIO locks per file path:
+`JsonDataManager` ([data_manager.py](../discord-bot/src/data/data_manager.py)) provides AsyncIO locks per file path:
 ```python
 from src.data.data_manager import data_manager
 
@@ -68,7 +68,7 @@ if admin_service:
 ```
 
 ## Path Resolution
-Use `Config` from [settings.py](src/config/settings.py) (never hardcode):
+Use `Config` from [settings.py](../discord-bot/src/config/settings.py) (never hardcode):
 ```python
 from src.config.settings import Config
 
@@ -80,7 +80,7 @@ user_summary = user_profile_dir / "summary.json"
 user_history = user_profile_dir / "history.json"
 ```
 
-**Important:** All imports use `src.` prefix. Bot root is `discord-bot-gemini/`.
+**Important:** All imports use `src.` prefix. Bot root is `discord-bot/`.
 
 ## Prompt Management
 JSON prompts in `src/data/prompts/`:
@@ -95,7 +95,7 @@ if not prompt_path.exists():
 ```
 
 ## Testing (pytest + asyncio)
-[pytest.ini](pytest.ini) configured for async tests:
+[pytest.ini](../discord-bot/pytest.ini) configured for async tests:
 ```bash
 # Run V2.1 unit tests
 pytest tests/test_v2_1_unit.py -v
@@ -185,4 +185,4 @@ await self._handle_bot_response(message)  # Reply immediately
 - **Why Lazy Sync?** Per-user optimization - only load/update affected users, not all 30 users per batch.
 - **Why Context Overlap?** Ensures LLM understands conversation continuity across batch boundaries.
 
-See [V2_DESIGN.md](docs/V2_DESIGN.md), [V2.1_IMPLEMENTATION.md](docs/V2.1_IMPLEMENTATION.md) for full architecture rationale.
+See [V2_DESIGN.md](../discord-bot/docs/V2_DESIGN.md), [V2.1_IMPLEMENTATION.md](../discord-bot/docs/V2.1_IMPLEMENTATION.md) for full architecture rationale.

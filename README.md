@@ -1,6 +1,33 @@
 # Discord LLM AI Chatbot
 
-Discord bot powered by Google Gemini and DeepSeek AI with conversation management, relationship tracking, and user profiling.
+Discord bot powered by Google Gemini and OLLAMA with conversation management, relationship tracking, and user profiling.
+
+## ✨ Current Features
+
+### 🧠 Smart AI Personality & Roleplay
+
+- **Deep Roleplay Engine**: Fully immersive "March 7th" persona (from Honkai: Star Rail) with a distinct Gen Z voice, sassy attitude, and energetic tone. Uses slang and emojis naturally.
+- **Adaptive Memory**: The bot learns!. It automatically summarizes user details (name, hobbies, job) from conversations and updates a long-term memory profile.
+- **Contextual Awareness**: Understands conversation flow, references to previous messages, and mentioned users. It remembers what you said 5 minutes ago or yesterday.
+
+### 💬 Advanced Conversation Engine
+
+- **Human-like Typing Simulation**: Not just a static delay. The bot calculates reading time + typing speed (WPM) + thinking pauses based on message complexity (emojis, length) to simulate a real person typing.
+- **Smart Queue & Anti-Spam**: Intelligent message queuing filters duplicate messages and prevents spam, ensuring stability even in busy channels.
+- **Hybrid AI Core**: Seamlessly switches between **Ollama (Local LLM)** for cost-efficiency/privacy and **Google Gemini (Cloud LLM)** for complex reasoning and creative tasks.
+- **Smart Addressing**: Intelligently identifies users by their Discord display name if a real name isn't provided, making interactions feel personal and avoiding generic responses.
+
+### 🤝 Social Intelligence (Relationship System)
+
+- **Dynamic Relationship Tracking**: Quantifies relationships based on interaction frequency and sentiment. The bot knows if you are a "bestie" or just an acquaintance.
+- **Social Graph Awareness**: Understands the web of relationships in the server (who talks to whom).
+- **Sentiment Memory**: Remembers how you treated it in the past and adjusts its attitude accordingly.
+
+### 🛠️ Technical Highlights
+
+- **Modular Architecture**: Built with a clean Service-Repository pattern for easy maintenance, testing, and scalability.
+- **Asynchronous Core**: Fully async Python (`discord.py` + `aiohttp`) for high performance and responsiveness.
+- **Robust Error Handling**: Self-healing mechanisms for API failures and network issues.
 
 ## Message Flow
 
@@ -145,40 +172,47 @@ python src/bot.py
 | `!queue_status` | Show message queue status |
 | `!test_typing` | Test typing simulation |
 
-## Testing
+## 🚀 Future Updates & Roadmap
 
-```bash
-python -m pytest src/tests -v
-# 146 passed in 0.98s
-```
+This project is currently a **DEMO** version, showcasing the potential of LLM-powered Discord bots. The long-term vision is to build a comprehensive **AI Agent Platform** where users can deploy and customize their own agents.
 
-| Test File | Tests | Coverage |
-|-----------|-------|----------|
-| `test_integration.py` | 15 | Core integration flows |
-| `test_summary_generation.py` | 5 | Summary creation flow |
-| `test_message_processing.py` | 12 | Dedup, spam, locking |
-| `test_error_handling.py` | 8 | Error recovery |
-| `test_config.py` | 8 | Prompts, typing config |
-| `test_summary_parser.py` | 21 | Parser transformations |
-| `test_summary_data.py` | 7 | SummaryDataManager |
-| `test_prompts.py` | 21 | Prompt file validation |
-| `test_relationship_data.py` | 3 | RelationshipDataManager |
-| `test_relationship_service.py` | 13 | RelationshipService |
-| `test_gemini_service.py` | 15 | GeminiService AI |
-| `test_channel_service.py` | 9 | ChannelService |
-| `test_queue_commands.py` | 5 | QueueCommands Cog |
-| `test_typing_commands.py` | 4 | TypingCommands Cog |
+### Upcoming Features
 
-## Security
+#### 🎵 Natural Music Interaction
 
-- `.env` is gitignored - never commit API keys
-- Pre-commit hooks scan for secrets
-- User data directories are gitignored
+- **No more slash commands!** Just ask the bot naturally:
+  - "Ê bật bài Em Của Ngày Hôm Qua đi"
+  - "Thôi bài này chán quá, đổi bài khác sôi động hơn coi"
+  - "Tắt nhạc đi ngủ đây"
+- The bot will understand context and intent to control music playback.
 
-```bash
-# Enable git hooks
-powershell -ExecutionPolicy Bypass -File scripts\enable_git_hooks.ps1
-```
+#### 🛡️ Server Administration
+
+- Intelligent server management and moderation.
+- Automated rule enforcement and user support.
+
+#### 🎨 Creative Capabilities
+
+- **Image Generation**: "Vẽ cho tui con mèo đang code error đi" -> Generates image on the fly.
+- **Event Management**: "Tạo event tối nay 8h anh em vào chiến game nha" -> Bot automatically sets up Discord event, sends notifications, and manages RSVPs.
+
+### 🌟 The Big Picture: Custom Agent Platform
+
+The ultimate goal is to evolve this bot into a platform where:
+
+- Users can **custom their own Agents** via a Discord App.
+- **Prompt Engineering**: Users define their agent's personality, knowledge base, and rules.
+- **Configuration**: Set up specific capabilities/tools for each agent.
+- **Deployment**: Invite these custom agents to your own servers for specific purposes (Customer Support, Gaming Buddy, Moderator, etc.).
+
+## 🤝 Contribution
+
+We are looking for contributors to help build this vision! If you are interested in AI, Discord Bots, and building cool stuff, join us.
+
+**Contact:**
+
+- 📧 Email: <hoaf.n.v@gmail.com>
+- 📘 Facebook: [facebook.com/hoaf.n.v](https://facebook.com/hoaf.n.v)
 
 ## License
 

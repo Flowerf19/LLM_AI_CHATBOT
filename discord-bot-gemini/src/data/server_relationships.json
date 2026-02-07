@@ -1,0 +1,82 @@
+{
+  "statistics": {
+    "total_users": 5,
+    "total_relationships": 0,
+    "total_interactions": 0
+  },
+  "users": [
+    {
+      "user_id": "726302130318868500",
+      "display_name": "Flowerf",
+      "username": "Flowerf",
+      "real_name": null,
+      "first_seen": "2026-02-05T20:45:37.434529",
+      "relationship_count": 0,
+      "interaction_stats": {
+        "mentions_sent": 0,
+        "mentions_received": 0,
+        "total_interactions": 0,
+        "top_contacts": []
+      }
+    },
+    {
+      "user_id": "816129464915329034",
+      "display_name": "Chos Wang dau roi",
+      "username": "Chos Wang dau roi",
+      "real_name": null,
+      "first_seen": "2026-02-05T22:25:01.655761",
+      "relationship_count": 0,
+      "interaction_stats": {
+        "mentions_sent": 0,
+        "mentions_received": 0,
+        "total_interactions": 0,
+        "top_contacts": []
+      }
+    },
+    {
+      "user_id": "1378359549379084432",
+      "display_name": "Dương Ngô",
+      "username": "Dương Ngô",
+      "real_name": "Dương Ngô",
+      "first_seen": "2026-02-07T13:30:00.693566",
+      "relationship_count": 0,
+      "interaction_stats": {
+        "mentions_sent": 0,
+        "mentions_received": 0,
+        "total_interactions": 0,
+        "top_contacts": []
+      }
+    },
+    {
+      "user_id": "418621389449199616",
+      "display_name": "¿?",
+      "username": "Thành cát thư giãn đi",
+      "real_name": "¿?",
+      "first_seen": "2026-02-07T13:36:55.857212",
+      "relationship_count": 0,
+      "interaction_stats": {
+        "mentions_sent": 0,
+        "mentions_received": 0,
+        "total_interactions": 0,
+        "top_contacts": []
+      }
+    },
+    {
+      "user_id": "879938863391473725",
+      "display_name": "LeeWar",
+      "username": "LeeWar",
+      "real_name": "LeeWar",
+      "first_seen": "2026-02-07T14:52:09.578763",
+      "relationship_count": 0,
+      "interaction_stats": {
+        "mentions_sent": 0,
+        "mentions_received": 0,
+        "total_interactions": 0,
+        "top_contacts": []
+      }
+    }
+  ],
+  "relationships": [],
+  "interactions": {},
+  "generated_at": "2026-02-07T14:53:07.522888"
+}

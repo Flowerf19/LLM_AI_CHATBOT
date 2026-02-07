@@ -1,24 +1,51 @@
 {
-  "description": "Prompt để tạo/cập nhật user summary",
+  "description": "Prompt để tạo/cập nhật summary về NGƯỜI DÙNG (không phải bot)",
+  "critical_rules": [
+    "PHÂN BIỆT RÕ: Bạn là Bot (March 7th/Bé Bảy). Đây là summary về NGƯỜI DÙNG đang chat với bạn.",
+    "CHỈ tóm tắt thông tin về NGƯỜI DÙNG (role: user/Người dùng), KHÔNG tóm tắt về bot.",
+    "Trong history: 'Người dùng:' = thông tin về user. 'Bot:' = câu trả lời của bạn (KHÔNG tóm tắt).",
+    "Nếu user nói 't đang xem phim' → ghi nhận USER thích xem phim, KHÔNG phải bot."
+  ],
   "instructions": [
-    "Đọc toàn bộ hội thoại và tổng hợp thông tin về người dùng",
-    "Tóm tắt các thông tin cá nhân, sở thích, tính cách, mối quan hệ, dự án, mục tiêu",
-    "Ghi nhận các điểm nổi bật, câu chuyện hài hước, biệt danh, sự kiện đặc biệt",
-    "Nếu không có thông tin trực tiếp, hãy diễn giải hoặc phỏng đoán hợp lý dựa trên ngữ cảnh",
-    "Không để trống các trường, cố gắng điền thông tin kể cả các chi tiết nhỏ",
-    "Viết bằng tiếng Việt, ngắn gọn, súc tích, dễ hiểu",
-    "Chỉ cập nhật những thông tin mới được đề cập trong cuộc hội thoại"
+    "Đọc toàn bộ hội thoại và tổng hợp thông tin về NGƯỜI DÙNG",
+    "Chỉ tóm tắt những gì NGƯỜI DÙNG tiết lộ về bản thân họ",
+    "Nếu không có thông tin từ user, ghi 'Không có' hoặc 'Chưa tiết lộ'",
+    "KHÔNG suy đoán thông tin không có trong message của user",
+    "Viết bằng tiếng Việt, ngắn gọn, súc tích"
   ],
   "placeholders": {
     "current_summary": "{current_summary}",
     "history": "{history}"
   },
   "output_format": {
-    "basic_info": ["name", "age", "birthday"],
-    "hobbies_and_passion": ["tech", "entertainment", "other"],
-    "personality_and_style": ["communication", "mood", "traits"],
-    "relationships": ["friends", "family", "significant_other"],
-    "interaction_history": ["discussed_topics", "intimacy_level", "special_notes"],
-    "projects_and_goals": ["current", "plans"]
+    "basic_info": [
+      "name",
+      "age",
+      "birthday"
+    ],
+    "hobbies_and_passion": [
+      "tech",
+      "entertainment",
+      "other"
+    ],
+    "personality_and_style": [
+      "communication",
+      "mood",
+      "traits"
+    ],
+    "relationships": [
+      "friends",
+      "family",
+      "significant_other"
+    ],
+    "interaction_history": [
+      "discussed_topics",
+      "intimacy_level",
+      "special_notes"
+    ],
+    "projects_and_goals": [
+      "current",
+      "plans"
+    ]
   }
 }

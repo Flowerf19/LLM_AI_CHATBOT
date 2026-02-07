@@ -108,6 +108,7 @@ src/
 ├── services/
 │   ├── ai/
 │   │   ├── gemini_service.py       # Gemini API integration
+│   │   ├── ollama_service.py       # Ollama API integration
 │   │   └── deepseek_service.py     # DeepSeek API integration
 │   ├── commands/
 │   │   ├── queue_commands.py       # Queue management commands
@@ -123,11 +124,13 @@ src/
 │   ├── relationship/
 │   │   ├── relationship_service.py # Relationship business logic
 │   │   └── relationship_data.py    # Repository for relationships
+│   ├── user/
+│   │   └── user_commands.py        # User-facing commands
 │   └── user_summary/
 │       ├── summary_service.py      # Summary business logic
 │       ├── summary_data.py         # Repository for summaries
 │       └── summary_parser.py       # Text parsing utilities
-└── tests/                          # pytest test suite (146 tests)
+└── utils/                          # Utility functions
 ```
 
 ## Quick Start
@@ -164,13 +167,28 @@ python src/bot.py
 
 ## Bot Commands
 
-| Command | Description |
-|---------|-------------|
-| `!ping` | Test bot responsiveness |
-| `!status` | Check bot status and user info |
-| `!relationships [user]` | View user relationships |
-| `!queue_status` | Show message queue status |
-| `!test_typing` | Test typing simulation |
+### User Commands
+
+| Command | Alias | Description |
+|---------|-------|-------------|
+| `!ping` | | Test bot responsiveness |
+| `!status` | | Check bot status and user info |
+| `!relationships [user]` | `!mq`, `!relation` | View user relationships |
+| `!conversation <user1> [user2]` | `!cv`, `!convo` | View conversation summary |
+| `!analysis [user]` | `!analyze` | Generate AI analysis of relationships |
+| `!search_relations <keyword>` | `!sr`, `!tìm` | Search relationships by keyword |
+| `!mentions <user1> <user2>` | `!tag` | View mention history between users |
+
+### Admin & Debug Commands
+
+| Command | Permission | Description |
+|---------|------------|-------------|
+| `!all_users` | Manage Messages | View summary of all users |
+| `!queue_status` | - | Show message queue status |
+| `!clear_queue` | Manage Messages | Clear pending queue |
+| `!debug_duplicate` | - | Debug duplicate response issues |
+| `!test_typing` | - | Test typing simulation |
+| `!typing_settings` | Manage Messages | View typing configuration |
 
 ## 🚀 Future Updates & Roadmap
 

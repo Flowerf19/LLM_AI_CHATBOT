@@ -159,7 +159,8 @@ python src/bot.py
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `DISCORD_LLM_BOT_TOKEN` | Yes | Discord bot token |
-| `GEMINI_API_KEY` | Yes | Google Gemini API key |
+| `OLLAMA_URL` | Yes | Ollama server URL |
+| `GEMINI_API_KEY` | no | Google Gemini API key |
 | `DEEPSEEK_API_KEY` | No | DeepSeek API key (backup) |
 | `LLM_MODEL` | No | Model name (default: gemini-2.0-flash) |
 | `ENABLE_TYPING_SIMULATION` | No | Enable typing delays (default: 1) |

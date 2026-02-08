@@ -186,7 +186,9 @@ class OllamaService:
 
     async def generate_summary(self, prompt: str) -> str:
         """Generate user summary using Ollama"""
-        return await self.generate_response(prompt)
+        result = await self.generate_response(prompt)
+        # generate_response returns tuple (text, is_important), extract text only
+        return result[0] if isinstance(result, tuple) else result
 
     def _clean_response(self, text: str) -> str:
         """

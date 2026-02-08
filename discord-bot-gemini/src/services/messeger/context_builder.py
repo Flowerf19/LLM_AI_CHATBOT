@@ -9,6 +9,8 @@ class ContextBuilder:
         self.bot = bot
         self.summary_service = summary_service
         self.relationship_service = relationship_service
+        # Cache parsed summary JSON: {user_id: (parsed_dict, raw_summary)}
+        self._parsed_summary_cache: dict = {}
 
     def should_respond_to_message(self, message) -> bool:
         """Determine if bot should respond to message"""
@@ -37,8 +39,6 @@ class ContextBuilder:
         self, user_id: str, user_summary: str, mentioned_users_info: str, context: str
     ) -> str:
         """Build enhanced context for AI"""
-        import json
-
         enhanced_context = ""
 
         # Check if we know the user's real name
@@ -47,8 +47,10 @@ class ContextBuilder:
 
         if user_summary:
             enhanced_context += f"=== NGƯỜI ĐANG NÓI CHUYỆN (USER ID: {user_id}) ===\n{user_summary}\n\n"
-            try:
-                summary_data = json.loads(user_summary)
+
+            # Use cached parsed JSON or parse and cache
+            summary_data = self._get_parsed_summary(user_id, user_summary)
+            if summary_data:
                 basic_info = summary_data.get("basic_info", {})
                 name = basic_info.get("name", "Không có")
                 if name and name.lower() not in [
@@ -58,8 +60,6 @@ class ContextBuilder:
                     "chưa tiết lộ",
                 ]:
                     real_name_known = True
-            except Exception:
-                pass
 
         # If real name is unknown, instruct bot to use Discord display name
         if not real_name_known:
@@ -98,6 +98,24 @@ class ContextBuilder:
             )
         enhanced_context += f"=== QUAN TRỌNG ===\nBạn đang nói chuyện với USER ID {user_id}. Đừng nhầm lẫn với những người khác được nhắc đến trong tin nhắn."
         return enhanced_context
+
+    def _get_parsed_summary(self, user_id: str, user_summary: str) -> dict | None:
+        """Get parsed summary from cache or parse and cache it"""
+        import json
+
+        # Check cache - invalidate if raw summary changed
+        if user_id in self._parsed_summary_cache:
+            cached_data, cached_raw = self._parsed_summary_cache[user_id]
+            if cached_raw == user_summary:
+                return cached_data
+
+        # Parse and cache
+        try:
+            parsed = json.loads(user_summary)
+            self._parsed_summary_cache[user_id] = (parsed, user_summary)
+            return parsed
+        except Exception:
+            return None
 
     def get_mentioned_users_info(self, content: str, message=None) -> str:
         """Get information about mentioned users, prefer display name/nickname over ID"""

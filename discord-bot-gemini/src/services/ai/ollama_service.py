@@ -40,7 +40,7 @@ class OllamaService:
 
     async def generate_response(
         self, prompt: str, user_id: Optional[str] = None, conversation_context: str = ""
-    ) -> str:
+    ) -> tuple[str, bool]:
         """
         Generate response using Ollama API.
 
@@ -50,7 +50,7 @@ class OllamaService:
             conversation_context: Previous conversation context
 
         Returns:
-            Generated response text
+            Tuple of (generated response text, is_important_info flag)
         """
         session = await self._get_session()
 
@@ -86,7 +86,10 @@ class OllamaService:
                     self.logger.error(
                         f"Ollama API error ({response.status}): {error_text}"
                     )
-                    return "Error: Ollama API không phản hồi. Kiểm tra xem Ollama có đang chạy không (ollama serve)."
+                    return (
+                        "Error: Ollama API không phản hồi. Kiểm tra xem Ollama có đang chạy không (ollama serve).",
+                        False,
+                    )
 
                 response_data = await response.json()
 
@@ -94,28 +97,61 @@ class OllamaService:
                 if "response" in response_data:
                     generated_text = response_data["response"].strip()
                     if generated_text:
-                        # Clean response: remove prompt markers and Unicode emoji
-                        generated_text = self._clean_response(generated_text)
-                        self.logger.debug(
-                            f"✅ Ollama response: {generated_text[:50]}..."
+                        # Parse INFO tag and clean response
+                        cleaned_text, is_important = self._parse_info_tag(
+                            generated_text
                         )
-                        return generated_text
+                        cleaned_text = self._clean_response(cleaned_text)
+                        self.logger.debug(
+                            f"✅ Ollama response: {cleaned_text[:50]}... (important={is_important})"
+                        )
+                        return (cleaned_text, is_important)
                     else:
                         self.logger.warning("Empty response from Ollama")
-                        return "Xin lỗi, tôi không thể tạo phản hồi."
+                        return ("Xin lỗi, tôi không thể tạo phản hồi.", False)
 
                 self.logger.error(f"Unexpected Ollama response format: {response_data}")
-                return "Error: Unexpected response format from Ollama."
+                return ("Error: Unexpected response format from Ollama.", False)
 
         except aiohttp.ClientConnectorError as e:
             self.logger.error(f"Cannot connect to Ollama: {e}")
-            return "Error: Không thể kết nối đến Ollama. Đảm bảo Ollama đang chạy (ollama serve)."
+            return (
+                "Error: Không thể kết nối đến Ollama. Đảm bảo Ollama đang chạy (ollama serve).",
+                False,
+            )
         except asyncio.TimeoutError:
             self.logger.error("Ollama API timeout")
-            return "Error: Ollama response timeout (>60s)."
+            return ("Error: Ollama response timeout (>60s).", False)
         except Exception as e:
             self.logger.error(f"Error communicating with Ollama API: {e}")
-            return f"Error: {str(e)}"
+            return (f"Error: {str(e)}", False)
+
+    def _parse_info_tag(self, text: str) -> tuple[str, bool]:
+        """
+        Parse and remove INFO tag from response.
+
+        Returns:
+            Tuple of (cleaned text without tag, is_important flag)
+        """
+        import re
+
+        # Check for [INFO:important] tag
+        if re.search(r"\[INFO:important\]", text, re.IGNORECASE):
+            cleaned = re.sub(
+                r"\s*\[INFO:important\]\s*", "", text, flags=re.IGNORECASE
+            ).strip()
+            self.logger.debug("📌 Detected important info in message")
+            return (cleaned, True)
+
+        # Check for [INFO:normal] tag
+        if re.search(r"\[INFO:normal\]", text, re.IGNORECASE):
+            cleaned = re.sub(
+                r"\s*\[INFO:normal\]\s*", "", text, flags=re.IGNORECASE
+            ).strip()
+            return (cleaned, False)
+
+        # No tag found - default to normal
+        return (text, False)
 
     def _build_full_prompt(
         self,

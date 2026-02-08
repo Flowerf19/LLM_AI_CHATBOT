@@ -68,7 +68,10 @@ class LLMMessageService(commands.Cog):
         if not content.strip():
             return
         user_id = str(message.author.id)
-        await self._process_relationship_data(message, content, user_id)
+        # Process relationship data in background (don't block response)
+        import asyncio
+
+        asyncio.create_task(self._process_relationship_data(message, content, user_id))
         is_spam, cooldown_remaining = self.queue_manager.is_spam(user_id)
         if is_spam:
             spam_msg = f"🚫 **Anti-Spam**: Bạn đang gửi tin nhắn quá nhanh! Vui lòng đợi {cooldown_remaining}s."
@@ -98,8 +101,12 @@ class LLMMessageService(commands.Cog):
             async with message.channel.typing():
                 # Try Ollama first, fallback to Gemini if enabled
                 response = None
+                is_important = False
                 try:
-                    response = await self.ollama_service.generate_response(
+                    (
+                        response,
+                        is_important,
+                    ) = await self.ollama_service.generate_response(
                         content, user_id, enhanced_context
                     )
                 except Exception as ollama_error:
@@ -107,9 +114,18 @@ class LLMMessageService(commands.Cog):
                     if self.gemini_service:
                         logger.info("✨ Falling back to Gemini...")
                         try:
-                            response = await self.gemini_service.generate_response(
-                                content, user_id, enhanced_context
+                            gemini_response = (
+                                await self.gemini_service.generate_response(
+                                    content, user_id, enhanced_context
+                                )
                             )
+                            # Gemini doesn't return tuple, wrap it
+                            response = (
+                                gemini_response
+                                if isinstance(gemini_response, str)
+                                else gemini_response[0]
+                            )
+                            is_important = False
                         except Exception as gemini_error:
                             logger.error(f"❌ Gemini also failed: {gemini_error}")
 
@@ -120,16 +136,15 @@ class LLMMessageService(commands.Cog):
                     self.queue_manager.save_to_persistent_history(
                         user_id, content, response
                     )
-                    self.summary_service.increment_message_count(user_id)
-                    if self.summary_service.should_update_summary(user_id):
-                        try:
-                            await self.summary_service.update_summary_smart(
-                                user_id, self.ollama_service
-                            )
-                        except Exception as e:
-                            logger.error(
-                                f"❌ Error updating summary for {user_id}: {e}"
-                            )
+
+                    # Trigger update if LLM detected important info OR context nearly full
+                    if is_important or self.summary_service.is_context_nearly_full(
+                        user_id
+                    ):
+                        # Run summary update in background (don't block response)
+                        import asyncio
+
+                        asyncio.create_task(self._update_summary_background(user_id))
                 else:
                     await message.reply(
                         "Xin lỗi, tôi không thể tạo phản hồi cho tin nhắn này."
@@ -141,6 +156,16 @@ class LLMMessageService(commands.Cog):
                 await message.reply("Xin lỗi, đã có lỗi xảy ra khi tạo phản hồi.")
         finally:
             self.queue_manager.release_conversation_lock(user_id)
+
+    async def _update_summary_background(self, user_id: str):
+        """Update user summary in background without blocking response"""
+        try:
+            await self.summary_service.update_summary_smart(
+                user_id, self.ollama_service
+            )
+            logger.debug(f"✅ Background summary update completed for {user_id}")
+        except Exception as e:
+            logger.error(f"❌ Error updating summary for {user_id}: {e}")
 
     async def send_response_in_parts(self, message, response: str, user_id: str):
         """Send response with realistic typing simulation"""
